@@ -55,7 +55,7 @@ class App {
     renderFooter() {
         const content = `
         <div class="container">
-            <footer class="row py-5">
+            <footer class="row py-md-5 py-3">
                 <div class="col-md-3 mb-3">
                     <p class="custom-paragraf-bold">Jalan Mahoni Raya No.6, Cisauk, Kabupaten Tangerang
                     </p>

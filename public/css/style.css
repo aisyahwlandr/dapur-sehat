@@ -99,6 +99,44 @@ body {
     border: none;
 }
 
+/* button-submit */
+.custom-button-submit {
+    background-color: #62C415;
+    color: #EEF5FF;
+    font-weight: 500;
+}
+
+.custom-button-submit:hover {
+    background-color: #013D45;
+    color: #EEF5FF;
+}
+
+/* radio-button-produk */
+    /* Menyembunyikan elemen radio button */
+    .produk-images input[type="radio"] {
+        display: none;
+    }
+
+    /* Styling untuk label dan gambar */
+    .produk-images label {
+        display: inline-block;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .produk-images label img {
+        width: 150px;
+        height: auto;
+        border-radius: 50%; /* Untuk membuat gambar menjadi bulat */
+        object-fit: cover;
+    }
+
+    /* Efek hover pada label */
+    .produk-images label:hover img, 
+    .produk-images label input[type="radio"]:checked + img {
+        background-color: #013D45;
+    }
+
 
 /* tampilan pada perangkat seluler */
 @media only screen and (max-width: 768px) {

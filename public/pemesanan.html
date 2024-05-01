@@ -23,63 +23,98 @@
         <div id="navbar"></div>
     </section>
 
-    <!-- form -->
-    <section id="form">
+    <!-- form pemesanan -->
+    <section id="formPemesanan">
         <div class="container py-4">
-            <h2>Silahkan Isi Data</h2>
-            <div class="row">
-                <form class="d-flex gap-4">
-                    <div class="col-md-6">
+            <form>
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <h2>Data Diri</h2>
                         <div class="mb-3">
                             <label class="form-label">Nama</label>
                             <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama Anda">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">No. Telepon</label>
-                            <input type="text" name="email" class="form-control" placeholder="Masukkan No.Telepon">
+                            <input type="text" name="telepon" class="form-control" placeholder="Contoh: 08xxxxxxx">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Pilih Wilayah</label>
-                            <select name="jenislap" class="form-select">
-                                <option name="#">Silahkan Pilih Wilayah Pengiriman</option>
-                                <option name="1">Cisauk</option>
-                                <option name="2">Tangerang Selatan</option>
-                                <option name="3">Kampus K Universitas Gunadarma</option>
+                            <select name="wilayah" class="form-select">
+                                <option value="" selected disabled>Silahkan Pilih Wilayah Pemesanan</option>
+                                <option value="1">Cisauk</option>
+                                <option value="2">Tangerang Selatan</option>
+                                <option value="3">Kampus K Universitas Gunadarma</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Alamat Lengkap</label>
-                            <input type="text" name="notlp" class="form-control"
+                            <input type="text" name="alamat" class="form-control"
                                 placeholder="Masukkan Alamat Lengkap Pemesanan">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-12">
+                        <h2>Produk</h2>
+                        <!-- <div class="mb-3">
+                            <label class="form-label">Jumlah Produk</label>
+                            <input type="number" min="1" name="jmhproduk" class="form-control"
+                                placeholder="Ingin Pesan Berapa Kotak?">
+                        </div> -->
                         <div class="mb-3">
-                            <label class="form-label">Pilih Poduk</label>
-                            <select name="jenislap" class="form-select">
-                                <option name="#">Silahkan Pilih Poduk</option>
-                                <option name="1">Nugget Ayam Original</option>
-                                <option name="2">Nugget Ayam Keju</option>
-                                <option name="3">Nugget Pisang</option>
-                                <option name="4">Bakso Sapi</option>
-                                <option name="4">Kentang Goreng</option>
-                            </select>
+                            <label class="form-label">Pilih Variant</label>
+                            <div class="produk-images">
+                                <label>
+                                    <input type="radio" name="produk" value="1" />
+                                    <img src="images/NuggetAyamOriginal.png" alt="Produk 1" />
+                                </label>
+                                <label>
+                                    <input type="radio" name="produk" value="2" />
+                                    <img src="images/NuggetAyamKeju.png" alt="Produk 2" />
+                                </label>
+                                <label>
+                                    <input type="radio" name="produk" value="3" />
+                                    <img src="images/NuggetPisang.png" alt="Produk 3" />
+                                </label>
+                                <label>
+                                    <input type="radio" name="produk" value="4" />
+                                    <img src="images/BaksoSapi.png" alt="Produk 4" />
+                                </label>
+                                <label>
+                                    <input type="radio" name="produk" value="5" />
+                                    <img src="images/KentangGoreng.png" alt="Produk 5" />
+                                </label>
+                            </div>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <h2>Metode Pembayaran</h2>
                         <div class="mb-3">
                             <label class="form-label">Pilih Metode Pembayaran</label>
-                            <select name="jenislap" class="form-select">
-                                <option name="#">Silahkan Pilih Metode Pembayaran</option>
-                                <option name="1">OVO</option>
-                                <option name="2">DANA</option>
-                                <option name="3">GOPAY</option>
-                                <option name="4">Cash On Delivery</option>
+                            <select name="metopembayaran" class="form-select">
+                                <option value="" selected disabled>Silahkan Pilih Metode Pembayaran</option>
+                                <option value="1">OVO</option>
+                                <option value="2">DANA</option>
+                                <option value="3">GOPAY</option>
+                                <option value="4">Cash On Delivery</option>
                             </select>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                </form>
-            </div>
+                    <div class="col-md-6 col-12">
+                        <h2>Total Pembayaran</h2>
+                        <p>Total Pembayaran</p>
+                        <div class="d-flex">
+                            <div class="mb-3">
+                                <h4>Rp APAYA,-</h4>
+                            </div>
+                            <div class="mb-3 ms-auto">
+                                <button type="submit" class="btn custom-button-submit">PESAN</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
 
