@@ -36,12 +36,16 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">No. Telepon</label>
-                            <input type="text" name="telepon" class="form-control" placeholder="Contoh: 08xxxxxxx">
+                            <input type="text" name="telepon" class="form-control" placeholder="Contoh: 628xxxxxxx">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">EMail (Optional)</label>
+                            <input type="text" name="email" class="form-control" placeholder="Isi Jika Memiliki EMail">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Pilih Wilayah</label>
                             <select name="wilayah" class="form-select">
-                                <option value="" selected disabled>Silahkan Pilih Wilayah Pemesanan</option>
+                                <option value="" selected disabled>Pilih Wilayah Terdekat Pemesan</option>
                                 <option value="1">Cisauk</option>
                                 <option value="2">Tangerang Selatan</option>
                                 <option value="3">Kampus K Universitas Gunadarma</option>
@@ -49,17 +53,16 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Alamat Lengkap</label>
-                            <input type="text" name="alamat" class="form-control"
-                                placeholder="Masukkan Alamat Lengkap Pemesanan">
+                            <input type="text" name="alamat" class="form-control" placeholder="Ingin Diantar Kemana?">
                         </div>
                     </div>
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-12 pt-md-0 pt-3">
                         <h2>Produk</h2>
-                        <!-- <div class="mb-3">
+                        <div class="mb-3">
                             <label class="form-label">Jumlah Produk</label>
                             <input type="number" min="1" name="jmhproduk" class="form-control"
                                 placeholder="Ingin Pesan Berapa Kotak?">
-                        </div> -->
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">Pilih Variant</label>
                             <div class="produk-images">
@@ -88,28 +91,26 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-12 pt-md-5 pt-3">
                         <h2>Metode Pembayaran</h2>
                         <div class="mb-3">
-                            <label class="form-label">Pilih Metode Pembayaran</label>
+                            <!-- <label class="form-label">Pilih Metode Pembayaran</label> -->
                             <select name="metopembayaran" class="form-select">
-                                <option value="" selected disabled>Silahkan Pilih Metode Pembayaran</option>
+                                <option value="" selected disabled>Pilih Metode Pembayaran</option>
                                 <option value="1">OVO</option>
-                                <option value="2">DANA</option>
-                                <option value="3">GOPAY</option>
-                                <option value="4">Cash On Delivery</option>
+                                <option value="2">GOPAY</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-12 pt-md-5 pt-3">
                         <h2>Total Pembayaran</h2>
-                        <p>Total Pembayaran</p>
+                        <!-- <p>Total Pembayaran</p> -->
                         <div class="d-flex">
                             <div class="mb-3">
                                 <h4>Rp APAYA,-</h4>
                             </div>
                             <div class="mb-3 ms-auto">
-                                <button type="submit" class="btn custom-button-submit">PESAN</button>
+                                <button type="submit" class="btn custom-button-submit">ORDER</button>
                             </div>
                         </div>
                     </div>

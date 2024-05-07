@@ -20,7 +20,10 @@ class App {
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav ms-auto"> <!-- Changed ms-auto to mx-auto -->
+                        <ul class="navbar-nav custom-navbar ms-auto"> <!-- Changed ms-auto to mx-auto -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.html#produk">Produk</a>
                             </li>
@@ -80,12 +83,12 @@ class App {
                     <p align="justify" class="custom-paragraf-bold">Kontak Kami</p>
                     <ul class="nav gap-2 mb-3">
                         <li class="nav-item">
-                            <a href="https://www.whatsapp.com" target="_blank" class="nav-link p-0">
+                            <a href="https://api.whatsapp.com/send?phone=6281337742520&text=Halo%2C%20Dapur%20Sehat!%20Saya%20memiliki%20kendala.%20Bisakah%20Dapur%20Sehat%20membantu%20saya%3F" target="_blank" class="nav-link p-0">
                                 <img src="images/whatsapp.svg" alt="whatsapp">
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://www.gmail.com" target="_blank" class="nav-link p-0">
+                            <a href="mailto:ashndr10@gmail.com?subject=Kontak%20Dapur%20Sehat&body=Halo,%20Dapur%20Sehat!%20Saya%20memiliki%20kendala,%20Bisakah%20Dapur%20Sehat%20membantu%20saya%3F%0A%0ANama%20Saya:%20%0ATelepon%20Saya:%20%0AKendala%20Saya:%20" target="_blank" class="nav-link p-0">
                                 <img src="images/gmail.svg" alt="gmail">
                             </a>
                         </li>

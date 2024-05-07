@@ -41,6 +41,12 @@ body {
     color: #ffffff;
 }
 
+/* navbar */
+.custom-navbar li a:hover {
+    border-bottom: 3px solid #3468C0;
+    color: #38419D;
+}
+
 /* button-search */
 .search {
     display: inline-block;
@@ -76,6 +82,29 @@ body {
     background-color: #38419D;
 }
 
+/* button-order */
+.button-order {
+    text-decoration: none;
+}
+
+.button-order button {
+    background-color: #3468C0;
+    border: none;
+    color: #EEF5FF;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: .9s ease;
+    width: 90%;
+}
+
+.button-order button:hover {
+    transform: scale(1.1);
+    color: rgb(255, 255, 255);
+    background-color: #38419D;
+}
+
 /* card-image */
 .card {
     background-color: #EEF5FF;
@@ -90,9 +119,12 @@ body {
 /* scrollUp */
 #scrollUpBtn {
     position: fixed;
-    bottom: 20px; /* Jarak dari bagian bawah layar */
-    right: 20px; /* Jarak dari bagian kanan layar */
-    z-index: 1000; /* Pastikan tombol berada di atas konten lain */
+    bottom: 20px;
+    /* Jarak dari bagian bawah layar */
+    right: 20px;
+    /* Jarak dari bagian kanan layar */
+    z-index: 1000;
+    /* Pastikan tombol berada di atas konten lain */
 }
 
 #scrollUpBtn:focus {
@@ -101,41 +133,44 @@ body {
 
 /* button-submit */
 .custom-button-submit {
-    background-color: #62C415;
+    background-color: #3468C0;
     color: #EEF5FF;
     font-weight: 500;
 }
 
 .custom-button-submit:hover {
-    background-color: #013D45;
+    background-color: #38419D;
     color: #EEF5FF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* radio-button-produk */
-    /* Menyembunyikan elemen radio button */
-    .produk-images input[type="radio"] {
-        display: none;
-    }
+/* Menyembunyikan elemen radio button */
+.produk-images input[type="radio"] {
+    display: none;
+}
 
-    /* Styling untuk label dan gambar */
-    .produk-images label {
-        display: inline-block;
-        cursor: pointer;
-        margin-right: 10px;
-    }
+/* Styling untuk label dan gambar */
+.produk-images label {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 10px;
+}
 
-    .produk-images label img {
-        width: 150px;
-        height: auto;
-        border-radius: 50%; /* Untuk membuat gambar menjadi bulat */
-        object-fit: cover;
-    }
+.produk-images label img {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    /* Untuk membuat gambar menjadi bulat */
+    object-fit: cover;
+}
 
-    /* Efek hover pada label */
-    .produk-images label:hover img, 
-    .produk-images label input[type="radio"]:checked + img {
-        background-color: #013D45;
-    }
+/* Efek hover pada label */
+.produk-images label:hover img,
+.produk-images label input[type="radio"]:checked+img {
+    background-color: #013D45;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 
 /* tampilan pada perangkat seluler */
@@ -145,7 +180,7 @@ body {
     }
 
     .alur-body {
-        font-size: 0.6rem !important; 
+        font-size: 0.6rem !important;
         width: 70px !important;
         height: 50px !important;
         border-radius: 5px !important;
