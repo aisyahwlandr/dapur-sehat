@@ -25,16 +25,16 @@ class App {
                                 <a class="nav-link" href="index.html">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html#produk">Produk</a>
+                            <a class="nav-link" href="index.html#produk">Produk</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pembayaran.html"">Pembayaran</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="about.html">Tentang Kami</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.html#faq">FAQ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="pembayaran.html"">Pembayaran</a>
                             </li>
                             <li class=" nav-item mx-md-2 align-content-center">
                                     <form role="search" action="cari-pesanan.php" method="get">

@@ -1,0 +1,92 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* tengah horizontal */
+    justify-content: center; /* tengah vertikal */
+    gap: 10px;
+    padding: 2em;
+    background-color: #38419D;
+    border-radius: 25px;
+    transition: 0.4s ease-in-out;
+    position: absolute; /* Menggunakan posisi absolut agar mudah mengatur tengahnya */
+    top: 50%; /* Menempatkan form tepat di tengah vertikal */
+    left: 50%; /* Menempatkan form tepat di tengah horizontal */
+    transform: translate(-50%, -50%); 
+    /* Menggeser form ke kiri dan ke atas sejauh setengah dari lebar dan tingginya, sehingga berada di tengah */
+    box-shadow: 10px 10px 0px 0px #200E3A;
+}
+
+#heading {
+    text-align: center;
+    margin: 1em;
+    color: #DADDFC;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 25px;
+    padding: 0.6em;
+    border: none;
+    outline: none;
+    color: #3468C0; /* Warna teks dalam field */
+    background-color: #DADDFC; /* Warna latar belakang field */
+}
+
+.input-icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: #3468C0; /* Warna icon dalam field */
+}
+
+.input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #3468C0; /* Warna teks placeholder */
+}
+
+.form .custom-btn{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 2.5em;
+    gap: 15px;
+}
+
+.button1 {
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: 0.4s ease-in-out;
+    background-color: #200e3aad;
+    color: #DADDFC;
+}
+
+.button1:hover {
+    transform: scale(1.1);
+    background-color: #200E3A;
+    color: #ffffff;
+}
+
+.button2 {
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: 0.4s ease-in-out;
+    background-color: #200e3aad;
+    color: #DADDFC;
+}
+
+.button2:hover {
+    transform: scale(1.1);
+    background-color: #200E3A;
+    color: #ffffff;
+}
