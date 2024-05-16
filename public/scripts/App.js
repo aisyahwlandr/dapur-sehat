@@ -8,7 +8,7 @@ class App {
         const content = `
         <nav class="navbar navbar-expand-md py-3">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><img width="120px" src="images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand" href="index.php"><img width="120px" src="images/logo.png" alt="Logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,10 +22,10 @@ class App {
                     <div class="offcanvas-body">
                         <ul class="navbar-nav custom-navbar ms-auto"> <!-- Changed ms-auto to mx-auto -->
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="index.html#produk">Produk</a>
+                            <a class="nav-link" href="index.php#produk">Produk</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="pembayaran.html"">Pembayaran</a>
@@ -34,7 +34,7 @@ class App {
                                 <a class="nav-link" href="about.html">Tentang Kami</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html#faq">FAQ</a>
+                                <a class="nav-link" href="index.php#faq">FAQ</a>
                             </li>
                             <li class=" nav-item mx-md-2 align-content-center">
                                     <form role="search" action="cari-pesanan.php" method="get">
@@ -66,13 +66,13 @@ class App {
                 <div class="col-md-3 mb-3">
                     <ul class="navbar-nav flex-column ms-md-5">
                         <li class="nav-item mb-2">
-                            <a href="index.html#produk" class="custom-paragraf-bold pt-0-bold">Produk</a>
+                            <a href="index.php#produk" class="custom-paragraf-bold pt-0-bold">Produk</a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="about.html" class="custom-paragraf-bold pt-0-bold">Tentang Kami</a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="index.html#faq" class="custom-paragraf-bold pt-0-bold">FAQ</a>
+                            <a href="index.php#faq" class="custom-paragraf-bold pt-0-bold">FAQ</a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="pembayaran.html" class="custom-paragraf-bold pt-0-bold">Pembayaran</a>
