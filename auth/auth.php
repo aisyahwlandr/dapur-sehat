@@ -3,6 +3,8 @@ include '../connection.php';
 
 $loginMessage = "";
 $registerMessage = "";
+$loginSuccess = false;
+$registerSuccess = false;
 
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
@@ -14,12 +16,16 @@ if (isset($_POST['login'])) {
     if (mysqli_num_rows($result) == 1) {
         // Login berhasil
         session_start();
+        $row = mysqli_fetch_object($result); // Mengambil data dari hasil query
         $_SESSION['email'] = $email;
-        header("Location: /dapursehat/admin/dashboard.php");
+        $_SESSION['id'] = $row->id;  // Menyimpan id ke dalam sesi jika diperlukan
+        $loginSuccess = true;
+        header("Location: /dapursehat/admin/dashboard.php?id=" . $row->id );
         exit();
     } else {
         // Login gagal
         $loginMessage = "Email atau password salah";
+        $loginSuccess = false;
     }
 }
 
@@ -39,15 +45,19 @@ if (isset($_POST['register'])) {
             if ($result) {
                 // Register berhasil
                 $registerMessage = "Registrasi berhasil, silahkan login.";
+                $registerSuccess = true;
             } else {
                 // Register gagal
                 $registerMessage = "Terjadi kesalahan: " . mysqli_error($db);
+                $registerSuccess = false;
             }
         } else {
             $registerMessage = "Password dan konfirmasi password tidak cocok. Harap registrasi ulang!";
+            $registerSuccess = false;
         }
     } else {
         $registerMessage = "Konfirmasi password tidak ditemukan.";
+        $registerSuccess = false;
     }
 }
 
@@ -134,14 +144,26 @@ background-image: linear-gradient(90deg, rgba(141, 139, 226, 1), rgba(253, 187, 
     </form>
 
     <!-- Toast Container -->
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" 
+    <div id="toast-failed" class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToastFailed" class="toast" role="alert" aria-live="assertive" aria-atomic="true" 
         style="background-color: #BF3131; color: #F3EDC8;">
             <div class="toast-header" style="background-color: #7D0A0A; color: #EAD196;">
-                <strong class="me-auto" id="toast-title"></strong>
+                <strong class="me-auto" id="toast-title-failed"></strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-            <div class="toast-body" id="toast-body">
+            <div class="toast-body" id="toast-body-failed">
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-success" class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToastSuccess" class="toast" role="alert" aria-live="assertive" aria-atomic="true" 
+        style="background-color: #7ABA78; color: #FFFFFF;">
+            <div class="toast-header" style="background-color: #0A6847; color: #FFFFFF;">
+                <strong class="me-auto" id="toast-title-success"></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toast-body-success">
             </div>
         </div>
     </div>
@@ -168,17 +190,25 @@ background-image: linear-gradient(90deg, rgba(141, 139, 226, 1), rgba(253, 187, 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             <?php if ($loginMessage) : ?>
-                showToast('Login Notification', '<?php echo $loginMessage; ?>');
+                <?php if ($loginSuccess) : ?>
+                    showToast('success', 'Login Notification', '<?php echo $loginMessage; ?>');
+                <?php else : ?>
+                    showToast('failed', 'Login Notification', '<?php echo $loginMessage; ?>');
+                <?php endif; ?>
             <?php endif; ?>
             <?php if ($registerMessage) : ?>
-                showToast('Register Notification', '<?php echo $registerMessage; ?>');
+                <?php if ($registerSuccess) : ?>
+                    showToast('success', 'Register Notification', '<?php echo $registerMessage; ?>');
+                <?php else : ?>
+                    showToast('failed', 'Register Notification', '<?php echo $registerMessage; ?>');
+                <?php endif; ?>
             <?php endif; ?>
         });
 
-        function showToast(title, message) {
-            const toastTitle = document.getElementById('toast-title');
-            const toastBody = document.getElementById('toast-body');
-            const toastElement = new bootstrap.Toast(document.getElementById('liveToast'));
+        function showToast(type, title, message) {
+            const toastTitle = type === 'success' ? document.getElementById('toast-title-success') : document.getElementById('toast-title-failed');
+            const toastBody = type === 'success' ? document.getElementById('toast-body-success') : document.getElementById('toast-body-failed');
+            const toastElement = new bootstrap.Toast(type === 'success' ? document.getElementById('liveToastSuccess') : document.getElementById('liveToastFailed'));
 
             toastTitle.textContent = title;
             toastBody.textContent = message;

@@ -1,4 +1,14 @@
-<?php include '../connection.php' ?>
+<?php
+session_start();
+include '../connection.php';
+
+// Periksa apakah sesi email telah disetel
+if (!isset($_SESSION['email'])) {
+    header("Location: /dapursehat/auth/auth.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,43 +28,52 @@
         <div class="px-3 py-2 border-bottom" style="background-image: linear-gradient(180deg, rgba(141, 139, 226, 1), rgba(253, 187, 203, 1));">
             <div class="container">
                 <div class="py-2 d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="dashboard.php" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-blue-custom text-decoration-none">
-                        <img width="120px" src="../public/images/logo.png" alt="Logo">
-                    </a>
-                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center align-items-center my-md-0 text-small">
-                        <li>
-                            <a href="dashboard.php" class="nav-link text-blue-custom rounded">
-                                <i class="bi bi-house-door"></i>
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="?page=products" class="nav-link text-blue-custom rounded">
-                                <i class="bi bi-grid"></i>
-                                Products
-                            </a>
-                        </li>
-                        <li>
-                            <a href="?page=orders" class="nav-link text-blue-custom rounded">
-                                <i class="bi bi-bag"></i>
-                                Orders
-                            </a>
-                        </li>
-                        <li>
-                            <a href="?page=receipts" class="nav-link text-blue-custom rounded">
-                                <i class="bi bi-receipt"></i>
-                                Receipts
-                            </a>
-                        </li>
-                        <li>
-                            <p class="navbar-text mt-3 mx-3 fw-bold">Hi Admin !</p>
-                        </li>
-                        <li>
-                            <a href="../auth/auth.php">
-                                <button id="logoutButton" type="button" class="btn btn-danger">LogOut</button>
-                            </a>
-                        </li>
-                    </ul>
+                    <?php
+                    $result = mysqli_query($db, "SELECT * FROM admin WHERE id='$_GET[id]'");
+
+                    while ($row = mysqli_fetch_object($result)) {
+                    ?>
+                        <a href="dashboard.php?id=<?php echo $row->id; ?>" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-blue-custom text-decoration-none">
+                            <img width="120px" src="../public/images/logo.png" alt="Logo">
+                        </a>
+                        <ul class="nav col-12 col-lg-auto my-2 justify-content-center align-items-center my-md-0 text-small">
+                            <li>
+                                <a href="dashboard.php?id=<?php echo $row->id; ?>" class="nav-link text-blue-custom rounded">
+                                    <i class="bi bi-house-door"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="dashboard.php?id=<?php echo $row->id; ?>&page=products" class="nav-link text-blue-custom rounded">
+                                    <i class="bi bi-grid"></i>
+                                    Products
+                                </a>
+                            </li>
+                            <li>
+                                <a href="dashboard.php?id=<?php echo $row->id; ?>&page=orders" class="nav-link text-blue-custom rounded">
+                                    <i class="bi bi-bag"></i>
+                                    Orders
+                                </a>
+                            </li>
+                            <li>
+                                <a href="dashboard.php?id=<?php echo $row->id; ?>&page=receipts" class="nav-link text-blue-custom rounded">
+                                    <i class="bi bi-receipt"></i>
+                                    Receipts
+                                </a>
+                            </li>
+                            <li>
+                                <p class="navbar-text mt-3 mx-3 fw-bold">
+                                    Hi <?php echo $row->username ?> !</p>
+                            </li>
+                            <li>
+                                <a href="../auth/logout.php">
+                                    <button id="logoutButton" type="button" class="btn btn-danger">LogOut</button>
+                                </a>
+                            </li>
+                        </ul>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -83,7 +102,7 @@
         } else {
             include 'dashboard-content.php';
         }
-        
+
         ?>
     </main>
 
