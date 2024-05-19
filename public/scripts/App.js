@@ -28,7 +28,7 @@ class App {
                             <a class="nav-link" href="index.php#produk">Produk</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pembayaran.html"">Pembayaran</a>
+                                <a class="nav-link" href="pembayaran.php">Pembayaran</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="about.html">Tentang Kami</a>
@@ -75,7 +75,7 @@ class App {
                             <a href="index.php#faq" class="custom-paragraf-bold pt-0-bold">FAQ</a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="pembayaran.html" class="custom-paragraf-bold pt-0-bold">Pembayaran</a>
+                            <a href="pembayaran.php" class="custom-paragraf-bold pt-0-bold">Pembayaran</a>
                         </li>
                     </ul>
                 </div>

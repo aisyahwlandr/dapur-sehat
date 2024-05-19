@@ -17,6 +17,7 @@
             <th>Alamat</th>
             <th>Jml Produk</th>
             <th>Variant</th>
+            <th>Metode Pembayaran</th>
             <th>Status</th>
             <th>Aksi</th>
         </tr>
@@ -27,12 +28,12 @@
             <td>email</td>
             <td>wilayah</td>
             <td>Alamat</td>
-            <td>jmlproduk</td>
+            <td>jmlProduk</td>
             <td>variant</td>
+            <td>mtdBayar</td>
             <td>status</td>
             <td class="d-flex justify-content-center gap-2">
-                <a class="btn btn-warning" href="?page=products&view=update&id=<?= $row->id ?>">Update</a>
-                <a class="btn btn-danger" href="products-proses.php?aksi=delete&id=<?= $row->id ?>">Delete</a>
+                <a class="btn btn-danger">Delete</a>
             </td>
         </tr>
     </table>

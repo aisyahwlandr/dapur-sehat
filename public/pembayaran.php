@@ -1,11 +1,11 @@
+<?php include '../connection.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="css/style.css">
@@ -45,8 +45,7 @@
                 <div class="col-md-6">
                     <!-- form pembayaran -->
                     <div id="formPembayaran">
-                        <form class="p-4 mb-md-0 mb-4 rounded"
-                            style="max-width: 500px; background-color: rgba(248, 249, 250, 0.5); box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);">
+                        <form method="post" action="../admin/receipts-proses.php" enctype="multipart/form-data" class="p-4 mb-md-0 mb-4 rounded" style="max-width: 500px; background-color: rgba(248, 249, 250, 0.5); box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);">
                             <h2>Bukti Pembayaran</h2>
                             <div class="mb-3">
                                 <label class="form-label">No. Telepon</label>
@@ -54,7 +53,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Upload Bukti Pembayaran</label>
-                                <input type="file" name="bukti" class="form-control">
+                                <input type="file" name="bktBayar" class="form-control">
                                 <small class="form-text text-muted">Mohon unggah bukti pembayaran dalam format JPG / JPEG / PNG.</small>
                             </div>
                             <div class="mb-3 ms-auto">
@@ -78,10 +77,22 @@
         </button>
     </div>
 
+    <!-- Toast Container -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <!-- Toast message will be inserted here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Import Bootsrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 
     <!-- DOM Navbar dan Footer -->
     <script src="scripts/App.js"></script>
@@ -96,9 +107,9 @@
 
     <!-- Scroll Up -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Fungsi untuk menangani perilaku tombol "Scroll Up"
-            document.getElementById('scrollUpBtn').addEventListener('click', function () {
+            document.getElementById('scrollUpBtn').addEventListener('click', function() {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
@@ -106,7 +117,7 @@
             });
 
             // Fungsi untuk memeriksa posisi scroll
-            window.addEventListener('scroll', function () {
+            window.addEventListener('scroll', function() {
                 var scrollPosition = window.scrollY;
 
                 if (scrollPosition > 300) {
@@ -117,6 +128,17 @@
             });
         });
     </script>
+
+    <!-- Toast -->
+    <script>
+        function showToast(message) {
+            const toastBody = document.querySelector('.toast-body');
+            toastBody.textContent = message;
+            const toastElement = new bootstrap.Toast(document.getElementById('liveToast'));
+            toastElement.show();
+        }
+    </script>
+
 </body>
 
 </html>
