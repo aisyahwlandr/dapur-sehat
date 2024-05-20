@@ -28,8 +28,10 @@
                     <td><?= $row->id ?></td>
                     <td><?= $row->telepon ?></td>
                     <td><?= $row->createdAt ?></td>
-                    <td><?= $row->bktBayar ?></td>
-                    <td class="d-flex justify-content-center gap-2">
+                    <td> 
+                        <button class="btn btn-primary" onclick="showReceipt('<?= $row->bktBayar ?>')">Lihat</button>
+                    </td>
+                    <td>
                         <a class="btn btn-danger" href="aksi-proses.php?aksi=delete&id=<?= $row->id ?>">Delete</a>
                     </td>
                 </tr>
@@ -39,3 +41,30 @@
     }
     ?>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="receiptModalLabel">Bukti Pembayaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="receiptImage" src="" alt="Bukti Pembayaran" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showReceipt(imageSrc) {
+        // Menambahkan path yang diinginkan sebelum nama file gambar
+        var imagePath = "/dapursehat/admin/uploads/receipts/" + imageSrc;
+        document.getElementById('receiptImage').src = imagePath;
+        var myModal = new bootstrap.Modal(document.getElementById('receiptModal'), {
+            keyboard: false
+        });
+        myModal.show();
+    }
+</script>
