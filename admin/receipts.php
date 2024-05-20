@@ -1,9 +1,12 @@
 <div id="receipts" class="container py-4 table-responsive">
     <h3 class="text-center fw-bold">DAFTAR BUKTI PEMBAYARAN</h3>
-    <form class="mb-3 float-end" role="search">
+    <form class="mb-3 float-end" role="search" action="search-admin.php?id=" method="get">
         <div class="search">
-            <input id="searchInput" type="text" class="form-control" placeholder="Search..." aria-label="Search">
-            <button id="searchButton" type="submit"><img src="../public/images/search.svg" width="20px" alt="search"></button>
+            <?php $tcari = isset($_GET['tcari']) ? $_GET['tcari'] : ''; ?>
+            <input id="searchInput" type="text" name="tcari" value="<?= $tcari ?>" class="form-control" placeholder="Search..." aria-label="Search">
+            <button id="searchButton" type="submit">
+                <img src="../public/images/search.svg" width="20px" alt="search">
+            </button>
         </div>
     </form>
     <?php if (!isset($_GET['view'])) { ?>
@@ -28,7 +31,7 @@
                     <td><?= $row->id ?></td>
                     <td><?= $row->telepon ?></td>
                     <td><?= $row->createdAt ?></td>
-                    <td> 
+                    <td>
                         <button class="btn btn-primary" onclick="showReceipt('<?= $row->bktBayar ?>')">Lihat</button>
                     </td>
                     <td>
