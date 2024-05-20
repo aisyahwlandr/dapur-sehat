@@ -45,7 +45,7 @@
                 <div class="col-md-6">
                     <!-- form pembayaran -->
                     <div id="formPembayaran">
-                        <form method="post" action="../admin/receipts-proses.php" enctype="multipart/form-data" class="p-4 mb-md-0 mb-4 rounded" style="max-width: 500px; background-color: rgba(248, 249, 250, 0.5); box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);">
+                        <form method="post" action="../admin/receipts-proses.php?aksi=insert" enctype="multipart/form-data" class="p-4 mb-md-0 mb-4 rounded" style="max-width: 500px; background-color: rgba(248, 249, 250, 0.5); box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);">
                             <h2>Bukti Pembayaran</h2>
                             <div class="mb-3">
                                 <label class="form-label">No. Telepon</label>
@@ -77,18 +77,6 @@
         </button>
     </div>
 
-    <!-- Toast Container -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                <!-- Toast message will be inserted here -->
-            </div>
-        </div>
-    </div>
 
     <!-- Import Bootsrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -127,16 +115,6 @@
                 }
             });
         });
-    </script>
-
-    <!-- Toast -->
-    <script>
-        function showToast(message) {
-            const toastBody = document.querySelector('.toast-body');
-            toastBody.textContent = message;
-            const toastElement = new bootstrap.Toast(document.getElementById('liveToast'));
-            toastElement.show();
-        }
     </script>
 
 </body>

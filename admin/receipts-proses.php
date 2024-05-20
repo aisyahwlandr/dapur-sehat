@@ -1,7 +1,7 @@
 <?php
-include '../connection.php'; 
+include '../connection.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_GET['aksi'] == 'insert') {
     $telepon = $_POST['telepon'];
     $bukti = $_FILES['bktBayar'];
 
@@ -19,39 +19,64 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($check !== false) {
         $uploadOk = 1;
     } else {
-        echo "<script>showToast('File bukan gambar.');</script>";
+        echo "<script>
+                alert('File bukan gambar.');
+                window.location.href = '../public/pembayaran.php';
+                </script>";
         $uploadOk = 0;
+        exit(); // Menghentikan eksekusi skrip PHP setelah menampilkan popup
     }
 
     // Check file size
     if ($bukti["size"] > 5000000) {
-        echo "Maaf, file Anda terlalu besar.";
+        echo "<script>
+                alert('Maaf, file Anda terlalu besar.');
+                window.location.href = '../public/pembayaran.php';
+                </script>";
         $uploadOk = 0;
+        exit(); // Menghentikan eksekusi skrip PHP setelah menampilkan popup
     }
 
     // Allow certain file formats
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-        echo "<script>showToast('File bukan gambar.');</script>";
+        echo "<script>
+                alert('File bukan gambar.');
+                window.location.href = '../public/pembayaran.php';
+                </script>";
         $uploadOk = 0;
+        exit(); // Menghentikan eksekusi skrip PHP setelah menampilkan popup
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "<script>showToast('Maaf, file Anda belum diunggah.');</script>";
-    } else {
-        if (move_uploaded_file ($_FILES["bktBayar"]["tmp_name"],$target_file)) {
-            // Insert into database
-            $insertQuery = "INSERT INTO receipts (telepon, bktBayar) VALUES ('$telepon', '$path_bktBayar')";
-            $result = mysqli_query($db, $insertQuery);
+        echo "<script>
+                alert('Maaf, file Anda belum diunggah.');
+                window.location.href = '../public/pembayaran.php';
+                </script>";
+        exit(); // Menghentikan eksekusi skrip PHP setelah menampilkan popup
+    }
 
-            if ($result) {
-                echo "<script>showToast('Terima Kasih, Bukti Bayar Berhasil Diunggah');</script>";
-            } else {
-                echo "<script>showToast('Error: " . mysqli_error($db) . "');</script>";
-            }
+    if (move_uploaded_file($_FILES["bktBayar"]["tmp_name"], $target_file)) {
+        // Insert into database
+        $insertQuery = "INSERT INTO receipts (telepon, bktBayar) VALUES ('$telepon', '$path_bktBayar')";
+        $result = mysqli_query($db, $insertQuery);
+
+        if ($result) {
+            echo "<script>
+                    alert('Terima Kasih, Bukti Bayar Berhasil Diunggah');
+                    window.location.href = '../public/pembayaran.php';
+                    </script>";
         } else {
-            echo "<script>showToast('Maaf, terjadi kesalahan saat mengunggah file Anda.');</script>";
+            echo "<script>
+                    alert('Error: " . mysqli_error($db) . "');
+                    window.location.href = '../public/pembayaran.php';
+                    </script>";
         }
+    } else {
+        echo "<script>
+                alert('Maaf, terjadi kesalahan saat mengunggah file Anda.');
+                window.location.href = '../public/pembayaran.php';
+                </script>";
     }
 }
 ?>
