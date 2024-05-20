@@ -172,7 +172,7 @@
                             <p class="">Rp. 50.000 / kotak (isi 20 pcs)</p>
                             <p class="custom-paragraf">Dibuat dengan mengutamakan kebersihan dan keamanan dari setiap
                                 bahan</p>
-                            <a class="d-flex align-items-center justify-content-center button-order" href="pemesanan.html">
+                            <a class="d-flex align-items-center justify-content-center button-order" href="pemesanan.php">
                                 <button type="button" class="btn fw-bold">Order</button>
                             </a>
                         </div>

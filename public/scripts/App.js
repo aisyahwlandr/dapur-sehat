@@ -31,7 +31,7 @@ class App {
                                 <a class="nav-link" href="pembayaran.php">Pembayaran</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">Tentang Kami</a>
+                                <a class="nav-link" href="about.php">Tentang Kami</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php#faq">FAQ</a>
@@ -69,7 +69,7 @@ class App {
                             <a href="index.php#produk" class="custom-paragraf-bold pt-0-bold">Produk</a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="about.html" class="custom-paragraf-bold pt-0-bold">Tentang Kami</a>
+                            <a href="about.php" class="custom-paragraf-bold pt-0-bold">Tentang Kami</a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="index.php#faq" class="custom-paragraf-bold pt-0-bold">FAQ</a>
