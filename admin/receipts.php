@@ -1,14 +1,21 @@
 <div id="receipts" class="container py-4 table-responsive">
     <h3 class="text-center fw-bold">DAFTAR BUKTI PEMBAYARAN</h3>
-    <form class="mb-3 float-end" role="search" action="search-admin.php?id=" method="get">
+    <?php
+    $result = mysqli_query($db, "SELECT * FROM admin WHERE id='$_GET[id]'");
+    $row = mysqli_fetch_object($result);
+    ?>
+    <form class="mb-3 float-end" role="search" action="search-admin.php" method="get">
         <div class="search">
             <?php $tcari = isset($_GET['tcari']) ? $_GET['tcari'] : ''; ?>
             <input id="searchInput" type="text" name="tcari" value="<?= $tcari ?>" class="form-control" placeholder="Search..." aria-label="Search">
+            <!-- Menambahkan input tersembunyi untuk menyertakan ID -->
+            <input type="hidden" name="id" value="<?= $row->id ?>">
             <button id="searchButton" type="submit">
                 <img src="../public/images/search.svg" width="20px" alt="search">
             </button>
         </div>
     </form>
+
     <?php if (!isset($_GET['view'])) { ?>
         <table class=" table table-hover text-center" data-aos="fade-down">
             <tr class="table-dark">

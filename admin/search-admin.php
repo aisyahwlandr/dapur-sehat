@@ -1,4 +1,20 @@
-<?php include '../connection.php'; ?>
+<?php
+session_start();
+include '../connection.php';
+
+// Periksa apakah sesi email telah disetel
+if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+    header("Location: ../auth/auth.php");
+    exit();
+}
+
+// Validasi ID yang ada di URL dengan ID yang ada di sesi
+$id = $_GET['id'] ?? null;
+if ($id !== $_SESSION['id']) {
+    header("Location: ../auth/auth.php");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
