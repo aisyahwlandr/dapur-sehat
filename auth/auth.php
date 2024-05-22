@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
         $_SESSION['email'] = $email;
         $_SESSION['id'] = $row->id;  // Menyimpan id ke dalam sesi jika diperlukan
         $loginSuccess = true;
-        header("Location: /dapursehat/admin/dashboard.php?id=" . $row->id );
+        header("Location: ../admin/dashboard.php?id=" . $row->id );
         exit();
     } else {
         // Login gagal

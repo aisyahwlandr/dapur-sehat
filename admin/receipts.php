@@ -63,7 +63,7 @@
 <script>
     function showReceipt(imageSrc) {
         // Menambahkan path yang diinginkan sebelum nama file gambar
-        var imagePath = "/dapursehat/admin/uploads/receipts/" + imageSrc;
+        var imagePath = "./uploads/receipts/" + imageSrc;
         document.getElementById('receiptImage').src = imagePath;
         var myModal = new bootstrap.Modal(document.getElementById('receiptModal'), {
             keyboard: false
