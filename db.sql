@@ -4,9 +4,9 @@ CREATE TABLE products (
     photo1 VARCHAR(225) NOT NULL,
     photo2 VARCHAR(225) NOT NULL,
     photo3 VARCHAR(225) NOT NULL,
-    harga decimal(10, 2) NOT NULL,
+    harga DECIMAL(10, 2) NOT NULL,
     isi VARCHAR(50) NOT NULL,
-    desc VARCHAR(50) NOT NULL,
+    deskripsi VARCHAR(50) NOT NULL,
     stock INT NOT NULL
 );
 
@@ -19,7 +19,7 @@ CREATE TABLE orders (
     alamat VARCHAR(225) NOT NULL,
     variant_orders VARCHAR(50) NOT NULL,
     quantity INT NOT NULL,
-    harga decimal(10, 2) NOT NULL,
+    harga_orders DECIMAL(10, 2) NOT NULL,
     mtdBayar VARCHAR(50) NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(50) NOT NULL,

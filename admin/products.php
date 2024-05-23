@@ -31,7 +31,7 @@
             <td>photo3</td>
             <td>harga</td>
             <td>isi</td>
-            <td>desc</td>
+            <td>deskripsi</td>
             <td>stock</td>
             <td class="d-flex justify-content-center gap-2">
                 <a class="btn btn-warning">Update</a>

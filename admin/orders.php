@@ -32,7 +32,7 @@
             <td>alamat</td>
             <td>variant_orders</td>
             <td>quantity</td>
-            <td>harga</td>
+            <td>harga_orders</td>
             <td>mtdBayar</td>
             <td>order_date</td>
             <td>status</td>
