@@ -14,19 +14,25 @@
         <tr class="table-dark">
             <th>Id</th>
             <th>Variant</th>
+            <th>Photo 1</th>
+            <th>Photo 2</th>
+            <th>Photo 3</th>
             <th>Harga</th>
             <th>Isi</th>
             <th>Deskripsi</th>
-            <th>Status</th>
+            <th>Stock</th>
             <th>Aksi</th>
         </tr>
         <tr>
             <td>id</td>
             <td>variant</td>
+            <td>photo1</td>
+            <td>photo2</td>
+            <td>photo3</td>
             <td>harga</td>
             <td>isi</td>
             <td>desc</td>
-            <td>status</td>
+            <td>stock</td>
             <td class="d-flex justify-content-center gap-2">
                 <a class="btn btn-warning">Update</a>
                 <a class="btn btn-danger">Delete</a>

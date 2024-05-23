@@ -15,9 +15,11 @@
             <th>Email</th>
             <th>Wilayah</th>
             <th>Alamat</th>
-            <th>Jml Produk</th>
             <th>Variant</th>
+            <th>Quantity</th>
+            <th>Harga</th>
             <th>Metode Pembayaran</th>
+            <th>Waktu Order</th>
             <th>Status</th>
             <th>Aksi</th>
         </tr>
@@ -27,10 +29,12 @@
             <td>telepon</td>
             <td>email</td>
             <td>wilayah</td>
-            <td>Alamat</td>
-            <td>jmlProduk</td>
-            <td>variant</td>
+            <td>alamat</td>
+            <td>variant_orders</td>
+            <td>quantity</td>
+            <td>harga</td>
             <td>mtdBayar</td>
+            <td>order_date</td>
             <td>status</td>
             <td class="d-flex justify-content-center gap-2">
                 <a class="btn btn-danger">Delete</a>

@@ -167,11 +167,32 @@
                 <div class="col-md-3">
                     <div class="card mb-3 shadow">
                         <div class="card-body">
-                            <img class="img-fluid rounded card-image mb-3" src="images/NuggetAyamOriginal.png" alt="higienis">
+                            <!-- Carousel Bootstrap -->
+                            <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="images/produk/NuggetAyamPhoto1.jpg" class="d-block w-100 rounded card-image mb-3" alt="Photo1">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="images/produk/NuggetUniversalPhoto2.jpg" class="d-block w-100 rounded card-image mb-3" alt="Photo2">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="images/NuggetAyamOriginal.png" class="d-block w-100 rounded card-image mb-3" alt="variantLogo">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                            <!-- End of Carousel -->
                             <h5 class="custom-card-title">Higienis</h5>
                             <p class="">Rp. 50.000 / kotak (isi 20 pcs)</p>
-                            <p class="custom-paragraf">Dibuat dengan mengutamakan kebersihan dan keamanan dari setiap
-                                bahan</p>
+                            <p class="custom-paragraf">Dibuat dengan mengutamakan kebersihan dan keamanan dari setiap bahan</p>
                             <a class="d-flex align-items-center justify-content-center button-order" href="pemesanan.php">
                                 <button type="button" class="btn fw-bold">Order</button>
                             </a>
