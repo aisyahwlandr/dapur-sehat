@@ -7,7 +7,6 @@ CREATE TABLE products (
     harga decimal(10, 2) NOT NULL,
     isi VARCHAR(50) NOT NULL,
     desc VARCHAR(50) NOT NULL,
-    status VARCHAR(50) NOT NULL,
     stock INT NOT NULL
 );
 
@@ -23,5 +22,6 @@ CREATE TABLE orders (
     harga decimal(10, 2) NOT NULL,
     mtdBayar VARCHAR(50) NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(50) NOT NULL,
     FOREIGN KEY (variant_orders) REFERENCES products(variant)
 );
