@@ -1,12 +1,13 @@
+<?php include '../connection.php' ?>
+
 <div id="products" class="container py-4 table-responsive">
     <h3 class="text-center fw-bold">DAFTAR PRODUK</h3>
     <div class="mb-3 d-flex align-content-center align-items-center">
-        <a class="btn btn-success">Tambah Produk</a>
+        <a class="btn btn-success" href="product-form.php?id=<?php echo $id; ?>">Tambah Produk</a>
         <form class="ms-auto" role="search">
             <div class="search">
                 <input id="searchInput" type="text" class="form-control" placeholder="Search..." aria-label="Search">
-                <button id="searchButton" type="submit"><img src="../public/images/search.svg" width="20px"
-                        alt="search"></button>
+                <button id="searchButton" type="submit"><img src="../public/images/search.svg" width="20px" alt="search"></button>
             </div>
         </form>
     </div>
@@ -23,20 +24,55 @@
             <th>Stock</th>
             <th>Aksi</th>
         </tr>
-        <tr>
-            <td>id</td>
-            <td>variant</td>
-            <td>photo1</td>
-            <td>photo2</td>
-            <td>photo3</td>
-            <td>harga</td>
-            <td>isi</td>
-            <td>deskripsi</td>
-            <td>stock</td>
-            <td class="d-flex justify-content-center gap-2">
-                <a class="btn btn-warning">Update</a>
-                <a class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
+        <?php
+        $no = 0;
+        $result = mysqli_query($db, "SELECT * FROM products");
+
+        while ($row = mysqli_fetch_object($result)) {
+            $no++;
+        ?>
+            <tr>
+                <td><?= $row->id ?></td>
+                <td><?= $row->variant ?></td>
+                <td><button class="btn btn-primary" onclick="showProduct('<?= $row->photo1 ?>')">Lihat</button></td>
+                <td><button class="btn btn-primary" onclick="showProduct('<?= $row->photo2 ?>')">Lihat</button></td>
+                <td><button class="btn btn-primary" onclick="showProduct('<?= $row->photo3 ?>')">Lihat</button></td>
+                <td><?= $row->harga ?></td>
+                <td><?= $row->isi ?></td>
+                <td><?= $row->deskripsi ?></td>
+                <td><?= $row->stock ?></td>
+                <td>
+                    <a class="btn btn-warning" href="update_product.php?id=<?= $row->id ?>">Update</a>
+                    <a class="btn btn-danger" href="delete_product.php?id=<?= $row->id ?>">Delete</a>
+                </td>
+            </tr>
+        <?php } ?>
     </table>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel">Photo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="receiptImage" src="" alt="Photo" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showProduct(imageSrc) {
+        // Menambahkan path yang diinginkan sebelum nama file gambar
+        var imagePath = "./uploads/products/" + imageSrc;
+        document.getElementById('receiptImage').src = imagePath;
+        var myModal = new bootstrap.Modal(document.getElementById('productModal'), {
+            keyboard: false
+        });
+        myModal.show();
+    }
+</script>

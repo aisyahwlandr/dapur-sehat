@@ -5,8 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="css/style.css">
@@ -97,46 +96,32 @@
                     <div class="col-md-6">
                         <p>Proses 1</p>
                         <div class="d-flex gap-md-3 gap-1 pb-4">
-                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body"
-                                style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pilih Produk
+                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pilih Produk
                             </div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center"
-                                style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body"
-                                style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Isi Data
+                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Isi Data
                             </div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center"
-                                style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body"
-                                style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Lakukan
+                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Lakukan
                                 Pembayaran</div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center"
-                                style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body"
-                                style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Upload Bukti
+                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Upload Bukti
                                 Pembayaran</div>
                         </div>
                         <p>Proses 2</p>
                         <div class="d-flex gap-md-3 gap-1 pb-4">
-                            <div class="bg-success align-content-center text-center custom-paragraf-bold alur-body"
-                                style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Bukti Bayar
+                            <div class="bg-success align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Bukti Bayar
                                 Terkonfirmasi</div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center"
-                                style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-warning align-content-center text-center custom-paragraf-bold alur-body"
-                                style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
+                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div class="bg-warning align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
                                 Diproses
                             </div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center"
-                                style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-info align-content-center text-center custom-paragraf-bold alur-body"
-                                style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
+                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div class="bg-info align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
                                 Diantar
                             </div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center"
-                                style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-primary align-content-center text-center custom-paragraf-bold alur-body"
-                                style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
+                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div class="bg-primary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
                                 Diterima
                             </div>
                         </div>
@@ -148,8 +133,7 @@
                         <form role="search" action="cari-pesanan.php" method="get">
                             <div class="search my-md-0 my-3">
                                 <input id="searchInput" placeholder="Cek Pesanan..." type="text">
-                                <button id="searchButton" type="submit"><img src="images/search.svg" width="20px"
-                                        alt="search"></button>
+                                <button id="searchButton" type="submit"><img src="images/search.svg" width="20px" alt="search"></button>
                             </div>
                         </form>
                     </div>
@@ -164,41 +148,49 @@
                 <h1 class="title py-2">Produk</h1>
             </div>
             <div class="row my-3">
-                <div class="col-md-3">
-                    <div class="card mb-3 shadow">
-                        <div class="card-body">
-                            <!-- Carousel Bootstrap -->
-                            <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="images/produk/NuggetAyamPhoto1.jpg" class="d-block w-100 rounded card-image mb-3" alt="Photo1">
+                <?php
+                $result = mysqli_query($db, "SELECT * FROM products");
+                $counter = 0; // Counter untuk menghasilkan ID yang unik
+                while ($row = mysqli_fetch_object($result)) {
+                    $counter++; // Increment counter setiap kali loop
+                ?>
+                    <div class="col-md-3">
+                        <div class="card mb-3 shadow">
+                            <div class="card-body">
+                                <!-- Carousel Bootstrap -->
+                                <h4>Tersedia: <?= $row->stock ?></h4>
+                                <div id="productCarousel<?= $counter ?>" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="../admin/uploads/products/<?= $row->photo1 ?>" class="d-block w-100 rounded card-image mb-3" alt="Photo1">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../admin/uploads/products/<?= $row->photo2 ?>" class="d-block w-100 rounded card-image mb-3" alt="Photo2">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../admin/uploads/products/<?= $row->photo3 ?>" class="d-block w-100 rounded card-image mb-3" alt="variantLogo">
+                                        </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="images/produk/NuggetUniversalPhoto2.jpg" class="d-block w-100 rounded card-image mb-3" alt="Photo2">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="images/NuggetAyamOriginal.png" class="d-block w-100 rounded card-image mb-3" alt="variantLogo">
-                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel<?= $counter ?>" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel<?= $counter ?>" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
+                                <!-- End of Carousel -->
+                                <h5 class="custom-card-title"><?= $row->variant ?></h5>
+                                <p>Rp <?= $row->harga ?> / kotak (isi <?= $row->isi ?> pcs)</p>
+                                <p class="custom-paragraf"><?= $row->deskripsi ?></p>
+                                <a class="d-flex align-items-center justify-content-center button-order" href="pemesanan.php">
+                                    <button type="button" class="btn fw-bold">Order</button>
+                                </a>
                             </div>
-                            <!-- End of Carousel -->
-                            <h5 class="custom-card-title">Higienis</h5>
-                            <p class="">Rp. 50.000 / kotak (isi 20 pcs)</p>
-                            <p class="custom-paragraf">Dibuat dengan mengutamakan kebersihan dan keamanan dari setiap bahan</p>
-                            <a class="d-flex align-items-center justify-content-center button-order" href="pemesanan.php">
-                                <button type="button" class="btn fw-bold">Order</button>
-                            </a>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </section>
@@ -222,13 +214,11 @@
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         <span class="custom-paragraf">Bagaimana cara melakukan pembayaran?</span>
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
+                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body custom-paragraf">
                                         <p>Pilih Menu Pembayaran > Masukkan No Telp Pemesan > Upload Bukti Pembayaran
                                         </p>
@@ -237,13 +227,11 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         <span class="custom-paragraf">Metode Pembayaran apa saja yang tersedia?</span>
                                     </button>
                                 </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body custom-paragraf">
                                         <p>OVO dan GOPAY </p>
                                     </div>
@@ -251,14 +239,11 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                         <span class="custom-paragraf">Berapa hari produk dapat bertahan?</span>
                                     </button>
                                 </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body custom-paragraf">
                                         <p>Produk dapat bertahan maksimal <b>3 minggu</b> setelah pesanan dikirim dan
                                             <b>harus berada di dalam freezer</b>
@@ -268,14 +253,11 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseFour" aria-expanded="false"
-                                        aria-controls="collapseFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                         <span class="custom-paragraf">Apakah Ada biaya pesan-antar?</span>
                                     </button>
                                 </h2>
-                                <div id="collapseFour" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
+                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body custom-paragraf">
                                         <p><b>Tidak dikenakan</b> biaya pesan-antar</p>
                                     </div>
@@ -283,14 +265,11 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseFive" aria-expanded="false"
-                                        aria-controls="collapseFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                         <span class="custom-paragraf">Bagaimana cara cek progress pesanan?</span>
                                     </button>
                                 </h2>
-                                <div id="collapseFive" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
+                                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body custom-paragraf">
                                         <p>Pelanggan dapat mengecek progress pemesanan dengan memasukkan <b>nomor
                                                 telepon</b> di kolom <b>cek pesanan</b></p>
@@ -299,13 +278,11 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                         <span class="custom-paragraf">Kapan pesanan diantar?</span>
                                     </button>
                                 </h2>
-                                <div id="collapseSix" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
+                                <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body custom-paragraf">
                                         <p>Setelah Bukti Pembayaran terkonfirmasi dan pesanan diproses, pesanan paling lambat diantar 3 hari setelah diproses</p>
                                     </div>
@@ -331,9 +308,8 @@
     </div>
 
     <!-- Import Bootsrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 
     <!-- DOM Navbar dan Footer -->
     <script src="scripts/App.js"></script>
@@ -348,9 +324,9 @@
 
     <!-- Scroll Up -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Fungsi untuk menangani perilaku tombol "Scroll Up"
-            document.getElementById('scrollUpBtn').addEventListener('click', function () {
+            document.getElementById('scrollUpBtn').addEventListener('click', function() {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
@@ -358,7 +334,7 @@
             });
 
             // Fungsi untuk memeriksa posisi scroll
-            window.addEventListener('scroll', function () {
+            window.addEventListener('scroll', function() {
                 var scrollPosition = window.scrollY;
 
                 if (scrollPosition > 300) {

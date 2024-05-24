@@ -1,12 +1,12 @@
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    variant VARCHAR(50) NOT NULL UNIQUE,
+    variant VARCHAR(50) NOT NULL,
     photo1 VARCHAR(225) NOT NULL,
     photo2 VARCHAR(225) NOT NULL,
     photo3 VARCHAR(225) NOT NULL,
-    harga DECIMAL(10, 2) NOT NULL,
+    harga DECIMAL(10) NOT NULL,
     isi VARCHAR(50) NOT NULL,
-    deskripsi VARCHAR(50) NOT NULL,
+    deskripsi VARCHAR(225) NOT NULL,
     stock INT NOT NULL
 );
 
@@ -18,10 +18,11 @@ CREATE TABLE orders (
     wilayah VARCHAR(50) NOT NULL,
     alamat VARCHAR(225) NOT NULL,
     variant_orders VARCHAR(50) NOT NULL,
+    product_id INT NOT NULL,
     quantity INT NOT NULL,
-    harga_orders DECIMAL(10, 2) NOT NULL,
+    harga_orders DECIMAL(10) NOT NULL,
     mtdBayar VARCHAR(50) NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) NOT NULL,
-    FOREIGN KEY (variant_orders) REFERENCES products(variant)
+    status VARCHAR(50) DEFAULT 'Menunggu Bukti Pembayaran',
+    FOREIGN KEY (product_id) REFERENCES products(id)
 );

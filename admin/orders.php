@@ -23,22 +23,36 @@
             <th>Status</th>
             <th>Aksi</th>
         </tr>
-        <tr>
-            <td>id</td>
-            <td>nama</td>
-            <td>telepon</td>
-            <td>email</td>
-            <td>wilayah</td>
-            <td>alamat</td>
-            <td>variant_orders</td>
-            <td>quantity</td>
-            <td>harga_orders</td>
-            <td>mtdBayar</td>
-            <td>order_date</td>
-            <td>status</td>
-            <td class="d-flex justify-content-center gap-2">
-                <a class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
+        <?php
+        include '../connection.php';
+
+        //query untuk menampilkan data
+        $query = "SELECT * FROM orders";
+        $result = mysqli_query($db, $query);
+
+        //loop untuk menampilkan data
+        while ($row = mysqli_fetch_object($result)) {
+            echo "<tr>";
+            echo "<td>" . $row->id . "</td>";
+            echo "<td>" . $row->nama . "</td>";
+            echo "<td>" . $row->telepon . "</td>";
+            echo "<td>" . $row->email . "</td>";
+            echo "<td>" . $row->wilayah . "</td>";
+            echo "<td>" . $row->alamat . "</td>";
+            echo "<td>" . $row->variant_orders . "</td>";
+            echo "<td>" . $row->quantity . "</td>";
+            echo "<td>" . $row->harga_orders . "</td>";
+            echo "<td>" . $row->mtdBayar . "</td>";
+            echo "<td>" . $row->order_date . "</td>";
+            echo "<td>" . $row->status . "</td>";
+            echo "<td class='d-flex justify-content-center gap-2'>";
+            echo "<a class='btn btn-danger' href='delete_order.php?id=" . $row->id . "'>Delete</a>";
+            echo "</td>";
+            echo "</tr>";
+        }
+
+        //tutup koneksi database
+        mysqli_close($db);
+        ?>
     </table>
 </div>

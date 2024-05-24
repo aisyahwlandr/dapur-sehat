@@ -25,7 +25,7 @@
     <!-- form pemesanan -->
     <section id="formPemesanan">
         <div class="container py-4">
-            <form id="orderForm">
+            <form id="orderForm" action="../admin/insert-order.php" method="POST">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <h2>Data Diri</h2>
@@ -84,7 +84,7 @@
                         <div class="col-md-6 col-12 pt-md-5 pt-3">
                             <h2>Metode Pembayaran</h2>
                             <div class="mb-3">
-                                <select name="metopembayaran" class="form-select" required>
+                                <select name="mtdBayar" class="form-select" required>
                                     <option value="" selected disabled>Pilih Metode Pembayaran</option>
                                     <option value="OVO">OVO</option>
                                     <option value="GOPAY">GOPAY</option>
@@ -241,7 +241,7 @@
                 message += "Tidak ada produk yang dipilih.\n";
             }
 
-            if (!form['metopembayaran'].value) {
+            if (!form['mtdBayar'].value) {
                 message += "Metode Pembayaran belum terisi.\n";
             }
 
@@ -255,7 +255,7 @@
             const email = form['email'].value;
             const wilayah = form['wilayah'].value;
             const alamat = form['alamat'].value;
-            const metopembayaran = form['metopembayaran'].value;
+            const mtdBayar = form['mtdBayar'].value;
 
             let summaryText = `
                 <strong>Nama:</strong> ${nama}<br>
@@ -263,7 +263,7 @@
                 <strong>Email:</strong> ${email ? email : 'Tidak ada'}<br>
                 <strong>Wilayah:</strong> ${wilayah}<br>
                 <strong>Alamat:</strong> ${alamat}<br>
-                <strong>Metode Pembayaran:</strong> ${metopembayaran}<br>
+                <strong>Metode Pembayaran:</strong> ${mtdBayar}<br>
                 <strong>Produk:</strong><br>
             `;
 
@@ -285,10 +285,47 @@
         }
 
         function submitForm() {
+            const form = document.forms['orderForm'];
+            const formData = new FormData(form);
+
+            const selectedProducts = [];
+            document.querySelectorAll('#productList input[type="number"]').forEach(input => {
+                let jumlah = parseInt(input.value);
+                if (jumlah > 0) {
+                    let productName = input.name.replace("produk[", "").replace("]", "");
+                    selectedProducts.push({
+                        produk: productName,
+                        jumlah: jumlah,
+                        harga: productPrices[productName]
+                    });
+                }
+            });
+
+            // Create a single order entry for each product
+            selectedProducts.forEach(product => {
+                const productFormData = new FormData();
+                productFormData.append('nama', formData.get('nama'));
+                productFormData.append('telepon', formData.get('telepon'));
+                productFormData.append('email', formData.get('email'));
+                productFormData.append('wilayah', formData.get('wilayah'));
+                productFormData.append('alamat', formData.get('alamat'));
+                productFormData.append('variant_orders', product.produk);
+                productFormData.append('quantity', product.jumlah);
+                productFormData.append('harga_orders', product.harga * product.jumlah);
+                productFormData.append('mtdBayar', formData.get('mtdBayar'));
+
+                fetch('../admin/insert-order.php', {
+                    method: 'POST',
+                    body: productFormData
+                }).then(response => response.text()).then(result => {
+                    console.log(result);
+                }).catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+
             const modal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
             modal.hide();
-
-            // add actual form submission logic, like an AJAX request to server
             window.location.href = "pembayaran.php";
         }
     </script>
