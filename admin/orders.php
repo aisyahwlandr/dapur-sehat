@@ -16,6 +16,7 @@
             <th>Wilayah</th>
             <th>Alamat</th>
             <th>Variant</th>
+            <th>Vairant Id</th>
             <th>Quantity</th>
             <th>Harga</th>
             <th>Metode Pembayaran</th>
@@ -40,12 +41,13 @@
             echo "<td>" . $row->wilayah . "</td>";
             echo "<td>" . $row->alamat . "</td>";
             echo "<td>" . $row->variant_orders . "</td>";
+            echo "<td>" . $row->product_id . "</td>";
             echo "<td>" . $row->quantity . "</td>";
             echo "<td>" . $row->harga_orders . "</td>";
             echo "<td>" . $row->mtdBayar . "</td>";
             echo "<td>" . $row->order_date . "</td>";
             echo "<td>" . $row->status . "</td>";
-            echo "<td class='d-flex justify-content-center gap-2'>";
+            echo "<td>";
             echo "<a class='btn btn-danger' href='delete_order.php?id=" . $row->id . "'>Delete</a>";
             echo "</td>";
             echo "</tr>";

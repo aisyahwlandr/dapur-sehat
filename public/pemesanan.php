@@ -154,9 +154,9 @@
 
     <!-- Scroll Up -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Fungsi untuk menangani perilaku tombol "Scroll Up"
-            document.getElementById('scrollUpBtn').addEventListener('click', function () {
+            document.getElementById('scrollUpBtn').addEventListener('click', function() {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
@@ -164,7 +164,7 @@
             });
 
             // Fungsi untuk memeriksa posisi scroll
-            window.addEventListener('scroll', function () {
+            window.addEventListener('scroll', function() {
                 var scrollPosition = window.scrollY;
 
                 if (scrollPosition > 300) {
@@ -206,7 +206,6 @@
             const form = document.forms['orderForm'];
             let message = "";
 
-            // Check each field and accumulate error messages for empty fields
             if (!form['nama'].value) {
                 message += "Nama belum terisi.\n";
             }
@@ -258,14 +257,14 @@
             const mtdBayar = form['mtdBayar'].value;
 
             let summaryText = `
-                <strong>Nama:</strong> ${nama}<br>
-                <strong>Telepon:</strong> ${telepon}<br>
-                <strong>Email:</strong> ${email ? email : 'Tidak ada'}<br>
-                <strong>Wilayah:</strong> ${wilayah}<br>
-                <strong>Alamat:</strong> ${alamat}<br>
-                <strong>Metode Pembayaran:</strong> ${mtdBayar}<br>
-                <strong>Produk:</strong><br>
-            `;
+        <strong>Nama:</strong> ${nama}<br>
+        <strong>Telepon:</strong> ${telepon}<br>
+        <strong>Email:</strong> ${email ? email : 'Tidak ada'}<br>
+        <strong>Wilayah:</strong> ${wilayah}<br>
+        <strong>Alamat:</strong> ${alamat}<br>
+        <strong>Metode Pembayaran:</strong> ${mtdBayar}<br>
+        <strong>Produk:</strong><br>
+    `;
 
             selectedProducts.forEach(product => {
                 summaryText += `${product.produk}: ${product.jumlah} x Rp ${productPrices[product.produk].toLocaleString('id-ID')}<br>`;
@@ -277,11 +276,6 @@
 
             const modal = new bootstrap.Modal(document.getElementById('orderModal'));
             modal.show();
-        }
-
-        function resetForm() {
-            document.getElementById('orderForm').reset();
-            updateTotal();
         }
 
         function submitForm() {
@@ -301,7 +295,6 @@
                 }
             });
 
-            // Create a single order entry for each product
             selectedProducts.forEach(product => {
                 const productFormData = new FormData();
                 productFormData.append('nama', formData.get('nama'));

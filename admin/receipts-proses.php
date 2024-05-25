@@ -64,7 +64,7 @@ if ($_GET['aksi'] == 'insert') {
         if ($result) {
             echo "<script>
                     alert('Terima Kasih, Bukti Bayar Berhasil Diunggah');
-                    window.location.href = '../public/pembayaran.php';
+                    window.location.href = '../public/index.php';
                     </script>";
         } else {
             echo "<script>
