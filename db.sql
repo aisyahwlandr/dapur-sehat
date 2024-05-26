@@ -17,12 +17,18 @@ CREATE TABLE orders (
     email VARCHAR(50),
     wilayah VARCHAR(50) NOT NULL,
     alamat VARCHAR(225) NOT NULL,
-    variant_orders VARCHAR(50) NOT NULL,
-    product_id INT NOT NULL,
-    quantity INT NOT NULL,
-    harga_orders DECIMAL(10) NOT NULL,
     mtdBayar VARCHAR(50) NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) DEFAULT 'Menunggu Bukti Pembayaran',
+    status VARCHAR(50) DEFAULT 'Menunggu Bukti Pembayaran'
+);
+
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    variant VARCHAR(50) NOT NULL,
+    quantity INT NOT NULL,
+    harga_orders DECIMAL(10) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 );

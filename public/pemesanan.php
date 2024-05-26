@@ -1,3 +1,5 @@
+<?php include '../connection.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,24 +27,24 @@
     <!-- form pemesanan -->
     <section id="formPemesanan">
         <div class="container py-4">
-            <form id="orderForm" action="../admin/insert-order.php" method="POST">
+            <form action="../admin/insert-order.php" method="POST">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <h2>Data Diri</h2>
                         <div class="mb-3">
-                            <label class="form-label">Nama</label>
-                            <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama Anda" required>
+                            <label class="form-label" for="nama">Nama:</label>
+                            <input class="form-control" placeholder="Masukkan Nama Anda" type="text" id="nama" name="nama" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">No. Telepon</label>
-                            <input type="text" name="telepon" class="form-control" placeholder="Contoh: 628xxxxxxx" required>
+                            <label class="form-label" for="telepon">Telepon:</label>
+                            <input class="form-control" placeholder="Contoh: 628xxxxxxx" type="text" id="telepon" name="telepon" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">EMail (Optional)</label>
-                            <input type="email" name="email" class="form-control" placeholder="Isi Jika Memiliki EMail">
+                            <label class="form-label" for="email">Email:</label>
+                            <input class="form-control" placeholder="Isi Jika Memiliki EMail" type="email" id="email" name="email">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Pilih Wilayah</label>
+                            <label class="form-label" for="wilayah">Pilih Wilayah:</label>
                             <select name="wilayah" class="form-select" required>
                                 <option value="" selected disabled>Pilih Wilayah Terdekat Pemesan</option>
                                 <option value="Cisauk">Cisauk</option>
@@ -51,80 +53,42 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Alamat Lengkap</label>
-                            <input type="text" name="alamat" class="form-control" placeholder="Ingin Diantar Kemana?" required>
+                            <label class="form-label" for="alamat">Alamat Lengkap:</label>
+                            <input class="form-control" placeholder="Ingin Diantar Kemana?" type="text" id="alamat" name="alamat" required>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-12 pt-md-0 pt-3">
                         <h2>Produk</h2>
-                        <div id="productList">
-                            <div class="mb-3">
-                                <label class="form-label">Nugget Ayam Original (Rp 30.000)</label>
-                                <input type="number" min="0" name="produk[Nugget Ayam Original]" class="form-control" placeholder="Jumlah" onchange="updateTotal()">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Nugget Ayam Keju (Rp 35.000)</label>
-                                <input type="number" min="0" name="produk[Nugget Ayam Keju]" class="form-control" placeholder="Jumlah" onchange="updateTotal()">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Nugget Pisang (Rp 20.000)</label>
-                                <input type="number" min="0" name="produk[Nugget Pisang]" class="form-control" placeholder="Jumlah" onchange="updateTotal()">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Bakso Sapi (Rp 25.000)</label>
-                                <input type="number" min="0" name="produk[Bakso Sapi]" class="form-control" placeholder="Jumlah" onchange="updateTotal()">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Kentang Goreng (Rp 35.000)</label>
-                                <input type="number" min="0" name="produk[Kentang Goreng]" class="form-control" placeholder="Jumlah" onchange="updateTotal()">
-                            </div>
-                        </div>
+                        <?php
+                        // Ambil data produk dari database
+                        $sql = "SELECT id, variant, stock FROM products";
+                        $result = $db->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            foreach ($result as $row) {
+                                echo "<div class='form-check'>";
+                                echo "<input class='form-check-input' type='checkbox' id='product_" . $row["id"] . "' name='product_id[" . $row["id"] . "]' value='" . $row["id"] . "' data-stock='" . $row["stock"] . "'>
+                                        <label class='form-check-label' for='product_" . $row["id"] . "'>" . $row["variant"] . " (Stok: " . $row["stock"] . ")</label>";
+                                echo "</div>";
+                                echo "<input class='form-control' placeholder='Ingin Berapa Kotak?'  type='number' id='quantity_" . $row["id"] . "' name='quantity[" . $row["id"] . "]' min='1'><br>";
+                            }
+                        } else {
+                            echo "<p>Tidak ada produk tersedia</p>";
+                        }
+                        ?>
+                        <h2>Metode Pembayaran</h2>
+                        <label class="form-label" for="mtdBayar">Pilih Metode Pembayaran</label>
+                        <select class="form-select" id="mtdBayar" name="mtdBayar" required>
+                            <option value="" selected disabled>Pilih Metode Pembayaran</option>
+                            <option value="OVO">OVO</option>
+                            <option value="GOPAY">GOPAY</option>
+                        </select>
+                        
+                        <button type="submit" class="btn custom-button-submit mt-4">ORDER</button>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 col-12 pt-md-5 pt-3">
-                            <h2>Metode Pembayaran</h2>
-                            <div class="mb-3">
-                                <select name="mtdBayar" class="form-select" required>
-                                    <option value="" selected disabled>Pilih Metode Pembayaran</option>
-                                    <option value="OVO">OVO</option>
-                                    <option value="GOPAY">GOPAY</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12 pt-md-5 pt-3">
-                            <h2>Total Pembayaran</h2>
-                            <div class="d-flex">
-                                <div class="mb-3">
-                                    <h4 id="totalPembayaran">Rp 0,-</h4>
-                                </div>
-                                <div class="mb-3 ms-auto">
-                                    <button type="button" class="btn custom-button-submit" onclick="showPopup()">ORDER</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
             </form>
         </div>
     </section>
 
-    <!-- Modal -->
-    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="orderModalLabel">Order Summary</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p id="orderSummary"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetForm()">Cancel</button>
-                    <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- footer -->
     <section id="footer" style="background-color: #3468C0;">
@@ -174,153 +138,6 @@
                 }
             });
         });
-    </script>
-
-    <!-- price and popup -->
-    <script>
-        // price for products
-        const productPrices = {
-            'Nugget Ayam Original': 30000,
-            'Nugget Ayam Keju': 35000,
-            'Nugget Pisang': 20000,
-            'Bakso Sapi': 25000,
-            'Kentang Goreng': 35000
-        };
-
-        function updateTotal() {
-            let total = 0;
-
-            document.querySelectorAll('#productList input[type="number"]').forEach(input => {
-                let jumlah = parseInt(input.value);
-                if (jumlah > 0) {
-                    let productName = input.name.replace("produk[", "").replace("]", "");
-                    total += jumlah * productPrices[productName];
-                }
-            });
-
-            document.getElementById('totalPembayaran').innerText = 'Rp ' + total.toLocaleString('id-ID') + ',-';
-        }
-
-        // popup
-        function showPopup() {
-            const form = document.forms['orderForm'];
-            let message = "";
-
-            if (!form['nama'].value) {
-                message += "Nama belum terisi.\n";
-            }
-            if (!form['telepon'].value) {
-                message += "Telepon belum terisi.\n";
-            }
-            if (!form['wilayah'].value) {
-                message += "Wilayah belum terisi.\n";
-            }
-            if (!form['alamat'].value) {
-                message += "Alamat belum terisi.\n";
-            }
-
-            let selectedProducts = [];
-            let totalJumlahProduk = 0;
-            let totalHarga = 0;
-
-            document.querySelectorAll('#productList input[type="number"]').forEach(input => {
-                let jumlah = parseInt(input.value);
-                if (jumlah > 0) {
-                    let productName = input.name.replace("produk[", "").replace("]", "");
-                    selectedProducts.push({
-                        produk: productName,
-                        jumlah: jumlah
-                    });
-                    totalJumlahProduk += jumlah;
-                    totalHarga += jumlah * productPrices[productName];
-                }
-            });
-
-            if (selectedProducts.length === 0) {
-                message += "Tidak ada produk yang dipilih.\n";
-            }
-
-            if (!form['mtdBayar'].value) {
-                message += "Metode Pembayaran belum terisi.\n";
-            }
-
-            if (message) {
-                alert(message);
-                return;
-            }
-
-            const nama = form['nama'].value;
-            const telepon = form['telepon'].value;
-            const email = form['email'].value;
-            const wilayah = form['wilayah'].value;
-            const alamat = form['alamat'].value;
-            const mtdBayar = form['mtdBayar'].value;
-
-            let summaryText = `
-        <strong>Nama:</strong> ${nama}<br>
-        <strong>Telepon:</strong> ${telepon}<br>
-        <strong>Email:</strong> ${email ? email : 'Tidak ada'}<br>
-        <strong>Wilayah:</strong> ${wilayah}<br>
-        <strong>Alamat:</strong> ${alamat}<br>
-        <strong>Metode Pembayaran:</strong> ${mtdBayar}<br>
-        <strong>Produk:</strong><br>
-    `;
-
-            selectedProducts.forEach(product => {
-                summaryText += `${product.produk}: ${product.jumlah} x Rp ${productPrices[product.produk].toLocaleString('id-ID')}<br>`;
-            });
-
-            summaryText += `<strong>Total Pembayaran:</strong> Rp ${totalHarga.toLocaleString('id-ID')},-`;
-
-            document.getElementById('orderSummary').innerHTML = summaryText;
-
-            const modal = new bootstrap.Modal(document.getElementById('orderModal'));
-            modal.show();
-        }
-
-        function submitForm() {
-            const form = document.forms['orderForm'];
-            const formData = new FormData(form);
-
-            const selectedProducts = [];
-            document.querySelectorAll('#productList input[type="number"]').forEach(input => {
-                let jumlah = parseInt(input.value);
-                if (jumlah > 0) {
-                    let productName = input.name.replace("produk[", "").replace("]", "");
-                    selectedProducts.push({
-                        produk: productName,
-                        jumlah: jumlah,
-                        harga: productPrices[productName]
-                    });
-                }
-            });
-
-            selectedProducts.forEach(product => {
-                const productFormData = new FormData();
-                productFormData.append('nama', formData.get('nama'));
-                productFormData.append('telepon', formData.get('telepon'));
-                productFormData.append('email', formData.get('email'));
-                productFormData.append('wilayah', formData.get('wilayah'));
-                productFormData.append('alamat', formData.get('alamat'));
-                productFormData.append('variant_orders', product.produk);
-                productFormData.append('quantity', product.jumlah);
-                productFormData.append('harga_orders', product.harga * product.jumlah);
-                productFormData.append('mtdBayar', formData.get('mtdBayar'));
-
-                fetch('../admin/insert-order.php', {
-                    method: 'POST',
-                    body: productFormData
-                }).then(response => response.text()).then(result => {
-                    console.log(result);
-                }).catch(error => {
-                    console.error('Error:', error);
-                });
-            });
-
-            const modal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
-            modal.hide();
-            window.location.href = "pembayaran.php";
-        }
     </script>
 
 </body>

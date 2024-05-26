@@ -1,68 +1,52 @@
 <?php
 include '../connection.php';
 
-// Mendapatkan data dari form dan melakukan sanitasi
-$nama = $db->real_escape_string($_POST['nama']);
-$telepon = $db->real_escape_string($_POST['telepon']);
-$email = $db->real_escape_string($_POST['email']);
-$wilayah = $db->real_escape_string($_POST['wilayah']);
-$alamat = $db->real_escape_string($_POST['alamat']);
-$variant_orders = $db->real_escape_string($_POST['variant_orders']);
-$quantity = intval($_POST['quantity']);
-$harga_orders = intval($_POST['harga_orders']);
-$mtdBayar = $db->real_escape_string($_POST['mtdBayar']);
+$nama = $_POST['nama'];
+$telepon = $_POST['telepon'];
+$email = $_POST['email'];
+$wilayah = $_POST['wilayah'];
+$alamat = $_POST['alamat'];
+$mtdBayar = $_POST['mtdBayar'];
 
-// Mendapatkan harga produk dan stok berdasarkan variant
-$sql = "SELECT id, harga, stock FROM products WHERE variant = ?";
-$stmt = $db->prepare($sql);
-$stmt->bind_param("s", $variant_orders);
-$stmt->execute();
-$result = $stmt->get_result();
+$product_ids = $_POST['product_id'];
 
-if ($result->num_rows > 0) {
-    // Ambil data produk
-    $row = $result->fetch_assoc();
-    $product_id = $row['id'];
-    $harga = $row['harga'];
-    $stock = $row['stock'];
+// Memasukkan data pemesan ke dalam tabel orders
+$sql_order = "INSERT INTO orders (nama, telepon, email, wilayah, alamat, mtdBayar)
+                VALUES ('$nama', '$telepon', '$email', '$wilayah', '$alamat', '$mtdBayar')";
+if ($db->query($sql_order) === TRUE) {
+    $order_id = $db->insert_id; // Mendapatkan ID pesanan yang baru saja dimasukkan
 
-    // Cek apakah stok mencukupi
-    if ($stock >= $quantity) {
-        // Mengurangi stok produk
-        $new_stock = $stock - $quantity;
-        $update_stock_sql = "UPDATE products SET stock = ? WHERE id = ?";
-        $update_stmt = $db->prepare($update_stock_sql);
-        $update_stmt->bind_param("ii", $new_stock, $product_id);
+    // Proses setiap produk yang dipesan
+    foreach ($_POST['quantity'] as $product_id => $quantity) {
+        // Periksa apakah checkbox produk terkait telah dicentang
+        if (isset($_POST['product_id'][$product_id])) {
+            // Ambil harga produk dari database
+            $sql_price = "SELECT harga FROM products WHERE id = $product_id";
+            $result = $db->query($sql_price);
+            $row = $result->fetch_assoc();
+            $harga = $row['harga'];
 
-        if ($update_stmt->execute()) {
-            // Memasukkan data ke dalam tabel orders
-            $insert_order_sql = "INSERT INTO orders (nama, telepon, email, wilayah, alamat, variant_orders, product_id, quantity, harga_orders, mtdBayar)
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $insert_stmt = $db->prepare($insert_order_sql);
-            $insert_stmt->bind_param("ssssssiiis", $nama, $telepon, $email, $wilayah, $alamat, $variant_orders, $product_id, $quantity, $harga_orders, $mtdBayar);
-
-            if ($insert_stmt->execute()) {
-                // Pesanan berhasil dilakukan!
+            // Memasukkan detail pesanan ke dalam tabel order_items
+            $sql_order_item = "INSERT INTO order_items (order_id, product_id, variant, quantity, harga_orders)
+                                VALUES ('$order_id', '$product_id', 'variant_placeholder', '$quantity', '$harga' * '$quantity')";
+            if ($db->query($sql_order_item) === TRUE) {
+                // Lakukan pengurangan stok produk
+                $sql_update_stock = "UPDATE products SET stock = stock - '$quantity' WHERE id = '$product_id'";
+                if ($db->query($sql_update_stock) !== TRUE) {
+                    echo "Error updating stock: " . $db->error;
+                }
             } else {
-                echo '<script type="text/javascript">
-                    alert("Error: ' . $insert_stmt->error . '");
-                </script>';
+                echo "Error: " . $sql_order_item . "<br>" . $db->error;
             }
-        } else {
-            echo '<script type="text/javascript">
-                    alert("Error: ' . $update_stmt->error . '");
-                </script>';
         }
-    } else {
-        echo '<script type="text/javascript">
-                    alert("Stok produk tidak mencukupi!");
-                </script>';
     }
-} else {
-    echo '<script type="text/javascript">
-                    alert("Produk tidak ditemukan!");
-                </script>';
-}
 
-$stmt->close();
-$db->close();
+    // Tutup koneksi ke database
+    $db->close();
+
+    // Redirect ke halaman pembayaran
+    header("Location: ../public/pembayaran.php");
+    exit();
+} else {
+    echo "Error: " . $sql_order . "<br>" . $db->error;
+}
