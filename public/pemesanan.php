@@ -61,7 +61,7 @@
                         <h2>Produk</h2>
                         <?php
                         // Ambil data produk dari database
-                        $sql = "SELECT id, variant, stock, harga FROM products";
+                        $sql = "SELECT id, variant, stock, harga FROM products WHERE stock > 0";
                         $result = $db->query($sql);
 
                         if ($result->num_rows > 0) {
