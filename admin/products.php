@@ -1,4 +1,15 @@
-<?php include '../connection.php' ?>
+<?php include '../connection.php';
+
+// Logic for Delete
+$delete_mode = false;
+$delete_id = null;
+if (isset($_GET['delete_id'])) {
+    $delete_mode = true;
+    $delete_id = $_GET['delete_id'];
+    $result = mysqli_query($db, "SELECT * FROM products WHERE id=$delete_id");
+    $product_data = mysqli_fetch_assoc($result);
+}
+?>
 
 <div id="products" class="container py-4 table-responsive">
     <h3 class="text-center fw-bold">DAFTAR PRODUK</h3>
@@ -13,6 +24,7 @@
     </div>
     <table class=" table table-hover text-center" data-aos="fade-down">
         <tr class="table-dark">
+            <th>No</th>
             <th>Id</th>
             <th>Variant</th>
             <th>Photo 1</th>
@@ -32,6 +44,7 @@
             $no++;
         ?>
             <tr>
+                <td><?= $no ?></td>
                 <td><?= $row->id ?></td>
                 <td><?= $row->variant ?></td>
                 <td><button class="btn btn-primary" onclick="showProduct('<?= $row->photo1 ?>')">Lihat</button></td>
@@ -42,8 +55,10 @@
                 <td><?= $row->deskripsi ?></td>
                 <td><?= $row->stock ?></td>
                 <td>
-                    <a class="btn btn-warning" href="update_product.php?id=<?= $row->id ?>">Update</a>
-                    <a class="btn btn-danger" href="delete_product.php?id=<?= $row->id ?>">Delete</a>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-warning me-1" href="product-form.php?id=<?php echo $id; ?>&update_id=<?= $row->id ?>">Update</a>
+                        <a class="btn btn-danger" href="product-delete.php?delete_id=<?= $row->id ?>">Delete</a>
+                    </div>
                 </td>
             </tr>
         <?php } ?>
