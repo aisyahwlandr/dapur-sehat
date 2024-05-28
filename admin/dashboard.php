@@ -27,7 +27,7 @@ if ($id !== $_SESSION['id']) {
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="dashboard.css">
-    <title>Dapur Sehat</title>
+    <title>Admin Dapur Sehat</title>
 </head>
 
 <body style="background-color: #DADDFC;">

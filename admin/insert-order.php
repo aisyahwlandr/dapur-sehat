@@ -7,6 +7,7 @@ $email = $_POST['email'];
 $wilayah = $_POST['wilayah'];
 $alamat = $_POST['alamat'];
 $mtdBayar = $_POST['mtdBayar'];
+$variant = "SELECT variant FROM products WHERE id = $product_id";
 
 $product_ids = $_POST['product_id'];
 
@@ -20,23 +21,39 @@ if ($db->query($sql_order) === TRUE) {
     foreach ($_POST['quantity'] as $product_id => $quantity) {
         // Periksa apakah checkbox produk terkait telah dicentang
         if (isset($_POST['product_id'][$product_id])) {
-            // Ambil harga produk dari database
-            $sql_price = "SELECT harga FROM products WHERE id = $product_id";
-            $result = $db->query($sql_price);
-            $row = $result->fetch_assoc();
-            $harga = $row['harga'];
+            // Ambil nama variant dari database berdasarkan product ID
+            $sql_variant = "SELECT variant FROM products WHERE id = $product_id";
+            $result_variant = $db->query($sql_variant);
 
-            // Memasukkan detail pesanan ke dalam tabel order_items
-            $sql_order_item = "INSERT INTO order_items (order_id, product_id, variant, quantity, harga_orders)
-                                VALUES ('$order_id', '$product_id', 'variant_placeholder', '$quantity', '$harga' * '$quantity')";
-            if ($db->query($sql_order_item) === TRUE) {
-                // Lakukan pengurangan stok produk
-                $sql_update_stock = "UPDATE products SET stock = stock - '$quantity' WHERE id = '$product_id'";
-                if ($db->query($sql_update_stock) !== TRUE) {
-                    echo "Error updating stock: " . $db->error;
+            // Periksa apakah query berhasil dieksekusi
+            if ($result_variant) {
+                // Ambil baris hasil dari query
+                $row_variant = $result_variant->fetch_assoc();
+
+                // Ambil nama variant dari hasil query
+                $variant = $row_variant['variant'];
+
+                // Ambil harga produk dari database
+                $sql_price = "SELECT harga FROM products WHERE id = $product_id";
+                $result = $db->query($sql_price);
+                $row = $result->fetch_assoc();
+                $harga = $row['harga'];
+
+                // Memasukkan detail pesanan ke dalam tabel order_items
+                $sql_order_item = "INSERT INTO order_items (order_id, product_id, variant, quantity, harga_orders)
+                                VALUES ('$order_id', '$product_id', '$variant', '$quantity', '$harga' * '$quantity')";
+                if ($db->query($sql_order_item) === TRUE) {
+                    // Lakukan pengurangan stok produk
+                    $sql_update_stock = "UPDATE products SET stock = stock - '$quantity' WHERE id = '$product_id'";
+                    if ($db->query($sql_update_stock) !== TRUE) {
+                        echo "Error updating stock: " . $db->error;
+                    }
+                } else {
+                    echo "Error: " . $sql_order_item . "<br>" . $db->error;
                 }
             } else {
-                echo "Error: " . $sql_order_item . "<br>" . $db->error;
+                // Menangani jika query tidak berhasil dieksekusi
+                echo "Error getting variant: " . $db->error;
             }
         }
     }

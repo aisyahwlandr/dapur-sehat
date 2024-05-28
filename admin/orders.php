@@ -39,7 +39,8 @@ if (mysqli_num_rows($result) > 0) {
     </form>
     <table class='table table-hover text-center' data-aos='fade-down'>
             <tr class='table-dark'>
-                <th>ID</th>
+                <th>No</th>
+                <th>Id</th>
                 <th>Nama</th>
                 <th>Telepon</th>
                 <th>Email</th>
@@ -54,8 +55,11 @@ if (mysqli_num_rows($result) > 0) {
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>";
+    $no = 0;
     while ($row = mysqli_fetch_assoc($result)) {
+        $no++;
         echo "<tr>
+                <td>" . $no . "</td>
                 <td>" . $row["id"] . "</td>
                 <td>" . $row["nama"] . "</td>
                 <td>" . $row["telepon"] . "</td>
@@ -70,7 +74,7 @@ if (mysqli_num_rows($result) > 0) {
                 <td>" . $row["order_date"] . "</td>
                 <td>" . $row["status"] . "</td>
                 <td>
-                    <a class='btn btn-danger' href='delete_order.php?id=" . $row["id"] . "'>Delete</a>
+                <a class='btn btn-danger' href='orders-delete.php?delete_id=" . $row['id'] . "'>Delete</a>
                 </td>
             </tr>";
     }
