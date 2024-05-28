@@ -1,24 +1,22 @@
-<?php include '../connection.php';
-
-// Logic for Delete
-$delete_mode = false;
-$delete_id = null;
-if (isset($_GET['delete_id'])) {
-    $delete_mode = true;
-    $delete_id = $_GET['delete_id'];
-    $result = mysqli_query($db, "SELECT * FROM products WHERE id=$delete_id");
-    $product_data = mysqli_fetch_assoc($result);
-}
-?>
+<?php include '../connection.php'; ?>
 
 <div id="products" class="container py-4 table-responsive">
     <h3 class="text-center fw-bold">DAFTAR PRODUK</h3>
     <div class="mb-3 d-flex align-content-center align-items-center">
         <a class="btn btn-success" href="product-form.php?id=<?php echo $id; ?>">Tambah Produk</a>
-        <form class="ms-auto" role="search">
+        <?php
+        $result = mysqli_query($db, "SELECT * FROM admin WHERE id='$_GET[id]'");
+        $row = mysqli_fetch_object($result);
+        ?>
+        <form class="ms-auto" role="search" action="search-products.php" method="get">
             <div class="search">
-                <input id="searchInput" type="text" class="form-control" placeholder="Search..." aria-label="Search">
-                <button id="searchButton" type="submit"><img src="../public/images/search.svg" width="20px" alt="search"></button>
+                <?php $tcari = isset($_GET['tcari']) ? $_GET['tcari'] : ''; ?>
+                <input id="searchInput" type="text" name="tcari" value="<?= $tcari ?>" class="form-control" placeholder="Search..." aria-label="Search">
+                <!-- Menambahkan input tersembunyi untuk menyertakan ID -->
+                <input type="hidden" name="id" value="<?= $row->id ?>">
+                <button id="searchButton" type="submit">
+                    <img src="../public/images/search.svg" width="20px" alt="search">
+                </button>
             </div>
         </form>
     </div>

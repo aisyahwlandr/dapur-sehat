@@ -1,10 +1,12 @@
+<?php include '../connection.php'; ?>
+
 <div id="receipts" class="container py-4 table-responsive">
     <h3 class="text-center fw-bold">DAFTAR BUKTI PEMBAYARAN</h3>
     <?php
     $result = mysqli_query($db, "SELECT * FROM admin WHERE id='$_GET[id]'");
     $row = mysqli_fetch_object($result);
     ?>
-    <form class="mb-3 float-end" role="search" action="search-admin.php" method="get">
+    <form class="mb-3 float-end" role="search" action="search-receipts.php" method="get">
         <div class="search">
             <?php $tcari = isset($_GET['tcari']) ? $_GET['tcari'] : ''; ?>
             <input id="searchInput" type="text" name="tcari" value="<?= $tcari ?>" class="form-control" placeholder="Search..." aria-label="Search">
