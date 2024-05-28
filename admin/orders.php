@@ -29,14 +29,19 @@ $result = mysqli_query($db, $query);
 
 if (mysqli_num_rows($result) > 0) {
     echo "<div id='orders' class='container py-4 table-responsive'>
-    <h3 class='text-center fw-bold'>DAFTAR PEMESANAN</h3>
-    <form class='mb-3 float-end' role='search'>
-        <div class='search'>
-            <input id='searchInput' type='text' class='form-control' placeholder='Search...' aria-label='Search'>
-            <button id='searchButton' type='submit'><img src='../public/images/search.svg' width='20px'
-                    alt='search'></button>
-        </div>
-    </form>
+    <h3 class='text-center fw-bold'>DAFTAR PEMESANAN</h3>";
+    $row_admin = mysqli_fetch_object(mysqli_query($db, "SELECT * FROM admin WHERE id='$_GET[id]'"));
+    echo "<form class='mb-3 float-end' role='search' action='search-orders.php' method='get'>
+            <div class='search'>
+                <?php \$tcari = isset(\$_GET['tcari']) ? \$_GET['tcari'] : ''; ?>
+                <input id='searchInput' type='text' name='tcari' value='" . htmlspecialchars($_GET['tcari'] ?? '', ENT_QUOTES) . "' class='form-control' placeholder='Search...' aria-label='Search'>
+                <!-- Menambahkan input tersembunyi untuk menyertakan ID -->
+                <input type='hidden' name='id' value='" . htmlspecialchars($row_admin->id, ENT_QUOTES) . "'>
+                <button id='searchButton' type='submit'>
+                    <img src='../public/images/search.svg' width='20px' alt='search'>
+                </button>
+            </div>
+        </form>
     <table class='table table-hover text-center' data-aos='fade-down'>
             <tr class='table-dark'>
                 <th>No</th>
@@ -81,6 +86,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "</table>
     </div>";
 } else {
-    echo "0 results";
+    echo "Belum ada data";
 }
 mysqli_close($db);
+?>

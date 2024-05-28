@@ -27,7 +27,7 @@
     <!-- form pemesanan -->
     <section id="formPemesanan">
         <div class="container py-4">
-            <form action="../admin/insert-order.php" method="POST" id="orderForm">
+            <form action="../admin/orders-insert.php" method="POST" id="orderForm">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <h2>Data Diri</h2>
