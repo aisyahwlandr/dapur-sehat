@@ -44,7 +44,7 @@
                         <button class="btn btn-primary" onclick="showReceipt('<?= $row->bktBayar ?>')">Lihat</button>
                     </td>
                     <td>
-                        <a class="btn btn-danger" href="aksi-proses.php?aksi=delete&id=<?= $row->id ?>">Delete</a>
+                        <a class="btn btn-danger" href="receipts-delete.php?delete_id=<?= $row->id ?>">Delete</a>
                     </td>
                 </tr>
             <?php } ?>
