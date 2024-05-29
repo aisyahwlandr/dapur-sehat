@@ -77,9 +77,21 @@ if (mysqli_num_rows($result) > 0) {
                 <td>" . $row["harga_orders"] . "</td>
                 <td>" . $row["mtdBayar"] . "</td>
                 <td>" . $row["order_date"] . "</td>
-                <td>" . $row["status"] . "</td>
                 <td>
-                <a class='btn btn-danger' href='orders-delete.php?delete_id=" . $row['id'] . "'>Delete</a>
+                    <form action='orders-update.php' method='post' onsubmit='return confirmUpdate()'>
+                        <input type='hidden' name='order_id' value='" . $row['id'] . "'>
+                        <select name='status' onchange='this.form.submit()'>
+                            <option value='Menunggu Bukti Pembayaran'" . ($row['status'] == 'Menunggu Bukti Pembayaran' ? ' selected' : '') . ">Menunggu Bukti Pembayaran</option>
+                            <option value='Bukti Bayar Terkonfirmasi'" . ($row['status'] == 'Bukti Bayar Terkonfirmasi' ? ' selected' : '') . ">Bukti Bayar Terkonfirmasi</option>
+                            <option value='Pesanan Diproses'" . ($row['status'] == 'Pesanan Diproses' ? ' selected' : '') . ">Pesanan Diproses</option>
+                            <option value='Pesanan Diantar'" . ($row['status'] == 'Pesanan Diantar' ? ' selected' : '') . ">Pesanan Diantar</option>
+                            <option value='Pesanan Diterima'" . ($row['status'] == 'Pesanan Diterima' ? ' selected' : '') . ">Pesanan Diterima</option>
+                            <option value='Pesanan Ditolak'" . ($row['status'] == 'Pesanan Ditolak' ? ' selected' : '') . ">Pesanan Ditolak</option>
+                        </select>
+                    </form>
+                </td>
+                <td>
+                <a class='btn btn-danger' href='orders-delete.php?delete_id=" . $row['id'] . "' onclick='return confirm(\"Yakin ingin menghapus order ini?\")'>Delete</a>
                 </td>
             </tr>";
     }
@@ -90,3 +102,9 @@ if (mysqli_num_rows($result) > 0) {
 }
 mysqli_close($db);
 ?>
+
+<script>
+function confirmUpdate() {
+    return confirm('Yakin ingin mengubah status order?');
+}
+</script>
