@@ -88,22 +88,28 @@ if ($id !== $_SESSION['id']) {
 
     <div class="container py-4 table-responsive">
         <main>
+            <form class='mb-3 float-end' role='search' action='search-orders.php' method='get'>
+                <div class='search'>
+                    <input id='searchInput' type='text' name='tcari' value='<?php echo htmlspecialchars($_GET['tcari'] ?? '', ENT_QUOTES); ?>' class='form-control' placeholder='Search...' aria-label='Search'>
+                    <input type='hidden' name='id' value='<?php echo htmlspecialchars($row->id, ENT_QUOTES); ?>'>
+                    <button id='searchButton' type='submit'>
+                        <img src='../public/images/search.svg' width='20px' alt='search'>
+                    </button>
+                </div>
+            </form>
+            <div class='clearfix'></div>
             <table class="table table-hover text-center" data-aos="fade-down">
                 <tr class="table-dark">
                     <th>No</th>
-                    <th>Id</th>
                     <th>Nama</th>
                     <th>Telepon</th>
-                    <th>Email</th>
-                    <th>Wilayah</th>
-                    <th>Alamat</th>
                     <th>Variant</th>
-                    <th>Variant ID</th>
                     <th>Quantity</th>
                     <th>Harga</th>
                     <th>Metode Pembayaran</th>
                     <th>Waktu Order</th>
                     <th>Status</th>
+                    <th>Detail</th>
                     <th>Aksi</th>
                 </tr>
                 <?php
@@ -147,76 +153,87 @@ if ($id !== $_SESSION['id']) {
                     if ($result && mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             $no++;
+                            $detail_id = "detail_" . $row["id"];
                             echo "<tr>
                                     <td>" . $no . "</td>
-                                    <td>" . $row["id"] . "</td>
                                     <td>" . $row["nama"] . "</td>
                                     <td>" . $row["telepon"] . "</td>
-                                    <td>" . $row["email"] . "</td>
-                                    <td>" . $row["wilayah"] . "</td>
-                                    <td>" . $row["alamat"] . "</td>
                                     <td>" . $row["variant"] . "</td>
-                                    <td>" . $row["product_id"] . "</td>
                                     <td>" . $row["quantity"] . "</td>
                                     <td>" . $row["harga_orders"] . "</td>
                                     <td>" . $row["mtdBayar"] . "</td>
                                     <td>" . $row["order_date"] . "</td>
-                                    <td>" . $row["status"] . "</td>
                                     <td>
-                                    <a class='btn btn-danger' href='orders-delete.php?delete_id=" . $row['id'] . "'>Delete</a>
+                                        <form action='orders-update.php' method='post' onsubmit='return confirmUpdate()'>
+                                            <input type='hidden' name='order_id' value='" . $row['id'] . "'>
+                                            <select name='status' onchange='this.form.submit()'>
+                                                <option value='Menunggu Bukti Pembayaran'" . ($row['status'] == 'Menunggu Bukti Pembayaran' ? ' selected' : '') . ">Menunggu Bukti Pembayaran</option>
+                                                <option value='Bukti Bayar Terkonfirmasi'" . ($row['status'] == 'Bukti Bayar Terkonfirmasi' ? ' selected' : '') . ">Bukti Bayar Terkonfirmasi</option>
+                                                <option value='Pesanan Diproses'" . ($row['status'] == 'Pesanan Diproses' ? ' selected' : '') . ">Pesanan Diproses</option>
+                                                <option value='Pesanan Diantar'" . ($row['status'] == 'Pesanan Diantar' ? ' selected' : '') . ">Pesanan Diantar</option>
+                                                <option value='Pesanan Diterima'" . ($row['status'] == 'Pesanan Diterima' ? ' selected' : '') . ">Pesanan Diterima</option>
+                                                <option value='Pesanan Ditolak'" . ($row['status'] == 'Pesanan Ditolak' ? ' selected' : '') . ">Pesanan Ditolak</option>
+                                            </select>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <button class='btn btn-info text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
+                                        <div class='modal fade' id='" . $detail_id . "' tabindex='-1' aria-labelledby='" . $detail_id . "Label' aria-hidden='true'>
+                                            <div class='modal-dialog'>
+                                                <div class='modal-content'>
+                                                    <div class='modal-header'>
+                                                        <h5 class='modal-title' id='" . $detail_id . "Label'>Detail Order ID: " . $row["id"] . "</h5>
+                                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                    </div>
+                                                    <div class='modal-body'>
+                                                        <div style='text-align: left;'><strong>No:</strong> " . $no . "</div>
+                                                        <div style='text-align: left;'><strong>Nama:</strong> " . $row["nama"] . "</div>
+                                                        <div style='text-align: left;'><strong>Telepon:</strong> " . $row["telepon"] . "</div>
+                                                        <div style='text-align: left;'><strong>Email:</strong> " . $row["email"] . "</div>
+                                                        <div style='text-align: left;'><strong>Wilayah:</strong> " . $row["wilayah"] . "</div>
+                                                        <div style='text-align: left;'><strong>Alamat:</strong> " . $row["alamat"] . "</div>
+                                                        <div style='text-align: left;'><strong>Variant:</strong> " . $row["variant"] . "</div>
+                                                        <div style='text-align: left;'><strong>Variant ID:</strong> " . $row["product_id"] . "</div>
+                                                        <div style='text-align: left;'><strong>Quantity:</strong> " . $row["quantity"] . "</div>
+                                                        <div style='text-align: left;'><strong>Harga:</strong> " . $row["harga_orders"] . "</div>
+                                                        <div style='text-align: left;'><strong>Metode Pembayaran:</strong> " . $row["mtdBayar"] . "</div>
+                                                        <div style='text-align: left;'><strong>Waktu Order:</strong> " . $row["order_date"] . "</div>
+                                                        <div style='text-align: left;'><strong>Status:</strong> " . $row["status"] . "</div>
+                                                    </div>
+                                                    <div class='modal-footer'>
+                                                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href='delete-order.php?id=" . $row["id"] . "' onclick='return confirmDelete()' class='btn btn-danger text-white'>Hapus</a>
                                     </td>
                                 </tr>";
                         }
                     } else {
-                        echo '<tr><td colspan="15"><h5>Tidak ada data.</h5></td></tr>';
+                        echo "<tr><td colspan='11'>Tidak ada hasil pencarian untuk '" . htmlspecialchars($keyword, ENT_QUOTES) . "'</td></tr>";
                     }
                 } else {
-                    echo '<tr><td colspan="15"><h5>Tidak ada data.</h5></td></tr>';
+                    echo "<tr><td colspan='11'>Silakan masukkan kata kunci pencarian.</td></tr>";
                 }
                 ?>
             </table>
         </main>
     </div>
 
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="productModalLabel">Photo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img id="receiptImage" src="" alt="Photo" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Import Bootsrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-
-    <!-- Import AOS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({
-            once: true,
-        });
-    </script>
+        AOS.init();
 
+        function confirmUpdate() {
+            return confirm('Apakah Anda yakin ingin memperbarui status ini?');
+        }
 
-    <script>
-        function showProduct(imageSrc) {
-            // Menambahkan path yang diinginkan sebelum nama file gambar
-            var imagePath = "./uploads/products/" + imageSrc;
-            document.getElementById('receiptImage').src = imagePath;
-            var myModal = new bootstrap.Modal(document.getElementById('productModal'), {
-                keyboard: false
-            });
-            myModal.show();
+        function confirmDelete() {
+            return confirm('Apakah Anda yakin ingin menghapus pesanan ini?');
         }
     </script>
 </body>

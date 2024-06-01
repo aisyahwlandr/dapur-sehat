@@ -28,7 +28,7 @@ $query = "SELECT
 $result = mysqli_query($db, $query);
 
 if (mysqli_num_rows($result) > 0) {
-    echo "<div id='orders' class='container py-4 table-responsive'>
+    echo "<div id='orders' class='container py-4'>
     <h3 class='text-center fw-bold'>DAFTAR PEMESANAN</h3>";
     $row_admin = mysqli_fetch_object(mysqli_query($db, "SELECT * FROM admin WHERE id='$_GET[id]'"));
     echo "<form class='mb-3 float-end' role='search' action='search-orders.php' method='get'>
@@ -42,37 +42,31 @@ if (mysqli_num_rows($result) > 0) {
                 </button>
             </div>
         </form>
+    <div class='clearfix'></div>
+    <div class='table-responsive'>
     <table class='table table-hover text-center' data-aos='fade-down'>
             <tr class='table-dark'>
                 <th>No</th>
-                <th>Id</th>
                 <th>Nama</th>
                 <th>Telepon</th>
-                <th>Email</th>
-                <th>Wilayah</th>
-                <th>Alamat</th>
                 <th>Variant</th>
-                <th>Variant ID</th>
                 <th>Quantity</th>
                 <th>Harga</th>
                 <th>Metode Pembayaran</th>
                 <th>Waktu Order</th>
                 <th>Status</th>
+                <th>Detail</th>
                 <th>Aksi</th>
             </tr>";
     $no = 0;
     while ($row = mysqli_fetch_assoc($result)) {
         $no++;
+        $detail_id = "detail_" . $row["id"];
         echo "<tr>
                 <td>" . $no . "</td>
-                <td>" . $row["id"] . "</td>
                 <td>" . $row["nama"] . "</td>
                 <td>" . $row["telepon"] . "</td>
-                <td>" . $row["email"] . "</td>
-                <td>" . $row["wilayah"] . "</td>
-                <td>" . $row["alamat"] . "</td>
                 <td>" . $row["variant"] . "</td>
-                <td>" . $row["product_id"] . "</td>
                 <td>" . $row["quantity"] . "</td>
                 <td>" . $row["harga_orders"] . "</td>
                 <td>" . $row["mtdBayar"] . "</td>
@@ -91,11 +85,45 @@ if (mysqli_num_rows($result) > 0) {
                     </form>
                 </td>
                 <td>
+                    <button class='btn btn-info text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
+                </td>
+                <td>
                 <a class='btn btn-danger' href='orders-delete.php?delete_id=" . $row['id'] . "' onclick='return confirm(\"Yakin ingin menghapus order ini?\")'>Delete</a>
                 </td>
             </tr>";
+        
+        // Modal
+        echo "<div class='modal fade' id='" . $detail_id . "' tabindex='-1' aria-labelledby='" . $detail_id . "Label' aria-hidden='true'>
+                <div class='modal-dialog'>
+                    <div class='modal-content'>
+                        <div class='modal-header'>
+                            <h5 class='modal-title' id='" . $detail_id . "Label'>Detail Order ID: " . $row["id"] . "</h5>
+                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </div>
+                        <div class='modal-body'>
+                            <div><strong>No:</strong> " . $no . "</div>
+                            <div><strong>Nama:</strong> " . $row["nama"] . "</div>
+                            <div><strong>Telepon:</strong> " . $row["telepon"] . "</div>
+                            <div><strong>Email:</strong> " . $row["email"] . "</div>
+                            <div><strong>Wilayah:</strong> " . $row["wilayah"] . "</div>
+                            <div><strong>Alamat:</strong> " . $row["alamat"] . "</div>
+                            <div><strong>Variant:</strong> " . $row["variant"] . "</div>
+                            <div><strong>Variant ID:</strong> " . $row["product_id"] . "</div>
+                            <div><strong>Quantity:</strong> " . $row["quantity"] . "</div>
+                            <div><strong>Harga:</strong> " . $row["harga_orders"] . "</div>
+                            <div><strong>Metode Pembayaran:</strong> " . $row["mtdBayar"] . "</div>
+                            <div><strong>Waktu Order:</strong> " . $row["order_date"] . "</div>
+                            <div><strong>Status:</strong> " . $row["status"] . "</div>
+                        </div>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>";
     }
     echo "</table>
+    </div>
     </div>";
 } else {
     echo "Belum ada data";
@@ -103,6 +131,8 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($db);
 ?>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
 <script>
 function confirmUpdate() {
     return confirm('Yakin ingin mengubah status order?');
