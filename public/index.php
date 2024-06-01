@@ -154,21 +154,21 @@
                 while ($row = mysqli_fetch_object($result)) {
                     $counter++; // Increment counter setiap kali loop
                 ?>
-                    <div class="col-md-3">
-                        <div class="card mb-3 shadow">
+                    <div class="col-md-4 d-flex align-items-stretch">
+                        <div class="card mb-3 shadow d-flex flex-column">
                             <div class="card-body">
                                 <!-- Carousel Bootstrap -->
                                 <h4>Tersedia: <?= $row->stock ?></h4>
                                 <div id="productCarousel<?= $counter ?>" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="../admin/uploads/products/<?= $row->photo1 ?>" class="d-block w-100 rounded card-image mb-3" alt="Photo1">
+                                            <img src="../admin/uploads/products/<?= $row->photo1 ?>" class="d-block w-100 h-100 rounded card-image mb-3" alt="Photo1">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="../admin/uploads/products/<?= $row->photo2 ?>" class="d-block w-100 rounded card-image mb-3" alt="Photo2">
+                                            <img src="../admin/uploads/products/<?= $row->photo2 ?>" class="d-block w-100 h-100 rounded card-image mb-3" alt="Photo2">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="../admin/uploads/products/<?= $row->photo3 ?>" class="d-block w-100 rounded card-image mb-3" alt="variantLogo">
+                                            <img src="../admin/uploads/products/<?= $row->photo3 ?>" class="d-block w-100 h-100 rounded card-image mb-3" alt="variantLogo">
                                         </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel<?= $counter ?>" data-bs-slide="prev">
@@ -182,8 +182,10 @@
                                 </div>
                                 <!-- End of Carousel -->
                                 <h5 class="custom-card-title"><?= $row->variant ?></h5>
-                                <p>Rp <?= $row->harga ?> / kotak (isi <?= $row->isi ?> pcs)</p>
-                                <p class="custom-paragraf"><?= $row->deskripsi ?></p>
+                                <p>Rp <?= $row->harga ?> / kotak (isi <?= $row->isi ?>)</p>
+                                <p class="custom-paragraf" style="text-align: justify;"><?= $row->deskripsi ?></p>
+                            </div>
+                            <div class="mb-3">
                                 <a class="d-flex align-items-center justify-content-center button-order" href="pemesanan.php">
                                     <button type="button" class="btn fw-bold">Order</button>
                                 </a>
