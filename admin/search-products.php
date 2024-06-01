@@ -111,36 +111,39 @@ if ($id !== $_SESSION['id']) {
                     $result = mysqli_query($db, $query);
 
                     if ($result) {
-                        while ($row = mysqli_fetch_object($result)) {
-                            $no++;
-                            echo '<tr>';
-                            echo '<td>' . $no . '</td>';
-                            echo '<td>' . $row->id . '</td>';
-                            echo '<td>' . $row->variant . '</td>';
-                            echo '<td><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo1 . '\')">Lihat</button></td>';
-                            echo '<td><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo2 . '\')">Lihat</button></td>';
-                            echo '<td><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo3 . '\')">Lihat</button></td>';
-                            echo '<td>' . $row->harga . '</td>';
-                            echo '<td>' . $row->isi . '</td>';
-                            echo '<td>' . $row->deskripsi . '</td>';
-                            echo '<td>' . $row->stock . '</td>';
-                            echo '<td>';
-                            echo '<div class="d-flex justify-content-center">';
-                            echo '<a class="btn btn-warning me-1" href="product-form.php?id=' . $id . '&update_id=' . $row->id . '">Update</a>';
-                            echo '<a class="btn btn-danger" href="product-delete.php?delete_id=' . $row->id . '">Delete</a>';
-                            echo '</div>';
-                            echo '</td>';
-                            echo '</tr>';
+                        // Cek jumlah baris hasil pencarian
+                        $num_rows = mysqli_num_rows($result);
+
+                        if ($num_rows > 0) {
+                            while ($row = mysqli_fetch_object($result)) {
+                                $no++;
+                                echo '<tr>';
+                                echo '<td>' . $no . '</td>';
+                                echo '<td>' . $row->id . '</td>';
+                                echo '<td>' . $row->variant . '</td>';
+                                echo '<td><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo1 . '\')">Lihat</button></td>';
+                                echo '<td><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo2 . '\')">Lihat</button></td>';
+                                echo '<td><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo3 . '\')">Lihat</button></td>';
+                                echo '<td>' . $row->harga . '</td>';
+                                echo '<td>' . $row->isi . '</td>';
+                                echo '<td>' . $row->deskripsi . '</td>';
+                                echo '<td>' . $row->stock . '</td>';
+                                echo '<td>';
+                                echo '<div class="d-flex justify-content-center">';
+                                echo '<a class="btn btn-warning me-1" href="product-form.php?id=' . $id . '&update_id=' . $row->id . '">Update</a>';
+                                echo '<a class="btn btn-danger" href="product-delete.php?delete_id=' . $row->id . '">Delete</a>';
+                                echo '</div>';
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                        } else {
+                            echo "<tr><td colspan='11'>Tidak ada hasil pencarian untuk '" . htmlspecialchars($keyword, ENT_QUOTES) . "'</td></tr>";
                         }
                     } else {
-                        echo '
-                            <h5>Terjadi kesalahan dalam mengambil data.</h5>
-                        ';
+                        echo '<tr><td colspan="11">Terjadi kesalahan dalam mengambil data.</td></tr>';
                     }
                 } else {
-                    echo '
-                        <h5>Tidak ada data.</h5>
-                    ';
+                    echo '<tr><td colspan="11">Tidak ada data.</td></tr>';
                 }
                 ?>
             </table>
