@@ -235,6 +235,27 @@
             const payButton = document.getElementById('payButton');
 
             nextButton.addEventListener('click', function() {
+                // Validasi apakah semua input telah diisi
+                const requiredInputs = orderForm.querySelectorAll('input[required], select[required]');
+                let isValid = true;
+                requiredInputs.forEach(input => {
+                    if (!input.value) {
+                        isValid = false;
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+
+                if (!isValid) {
+                    const emptyInputs = Array.from(requiredInputs).filter(input => !input.value);
+                    let errorMessage = 'Mohon lengkapi data berikut:\n';
+                    emptyInputs.forEach(input => {
+                        errorMessage += `- ${input.previousElementSibling.textContent.replace(':', '')}\n`;
+                    });
+                    alert(errorMessage);
+                    return;
+                }
+
                 const formData = new FormData(orderForm);
 
                 summaryDataDiri.innerHTML = `
