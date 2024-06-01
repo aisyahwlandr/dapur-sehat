@@ -44,7 +44,7 @@
                         <button class="btn btn-primary" onclick="showReceipt('<?= $row->bktBayar ?>')">Lihat</button>
                     </td>
                     <td>
-                        <a class="btn btn-danger" href="receipts-delete.php?delete_id=<?= $row->id ?>">Delete</a>
+                        <a class="btn btn-danger" href="receipts-delete.php?delete_id=<?= $row->id ?>" onclick="return confirmDelete()">Delete</a>
                     </td>
                 </tr>
             <?php } ?>
@@ -78,5 +78,11 @@
             keyboard: false
         });
         myModal.show();
+    }
+</script>
+
+<script>
+    function confirmDelete() {
+        return confirm('Apakah Anda yakin ingin menghapus Bukti Pembayaran ini?');
     }
 </script>

@@ -131,7 +131,7 @@ if ($id !== $_SESSION['id']) {
                                 echo '<td>';
                                 echo '<div class="d-flex justify-content-center">';
                                 echo '<a class="btn btn-warning me-1" href="product-form.php?id=' . $id . '&update_id=' . $row->id . '">Update</a>';
-                                echo '<a class="btn btn-danger" href="product-delete.php?delete_id=' . $row->id . '">Delete</a>';
+                                echo '<a class="btn btn-danger" href="product-delete.php?delete_id=' . $row->id . '" onclick="return confirmDelete()" >Delete</a>';
                                 echo '</div>';
                                 echo '</td>';
                                 echo '</tr>';
@@ -189,6 +189,12 @@ if ($id !== $_SESSION['id']) {
                 keyboard: false
             });
             myModal.show();
+        }
+    </script>
+
+    <script>
+        function confirmDelete() {
+            return confirm('Apakah Anda yakin ingin menghapus produk ini?');
         }
     </script>
 </body>

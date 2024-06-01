@@ -55,7 +55,7 @@
                 <td>
                     <div class="d-flex justify-content-center">
                         <a class="btn btn-warning me-1" href="product-form.php?id=<?php echo $id; ?>&update_id=<?= $row->id ?>">Update</a>
-                        <a class="btn btn-danger" href="product-delete.php?delete_id=<?= $row->id ?>">Delete</a>
+                        <a class="btn btn-danger" href="product-delete.php?delete_id=<?= $row->id ?>" onclick='return confirmDelete()'>Delete</a>
                     </div>
                 </td>
             </tr>
@@ -88,4 +88,10 @@
         });
         myModal.show();
     }
+</script>
+
+<script>
+    function confirmDelete() {
+            return confirm('Apakah Anda yakin ingin menghapus produk ini?');
+        }
 </script>

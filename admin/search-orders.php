@@ -208,7 +208,7 @@ if ($id !== $_SESSION['id']) {
                                         </div>
                                     </td>
                                     <td>
-                                        <a href='delete-order.php?id=" . $row["id"] . "' onclick='return confirmDelete()' class='btn btn-danger text-white'>Hapus</a>
+                                        <a href='orders-delete.php?delete_id=" . $row['id'] . "' onclick='return confirmDelete()' class='btn btn-danger text-white'>Hapus</a>
                                     </td>
                                 </tr>";
                         }

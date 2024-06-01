@@ -121,7 +121,7 @@ if ($id !== $_SESSION['id']) {
                                 echo '<button class="btn btn-primary" onclick="showReceipt(\'' . $row->bktBayar . '\')">Lihat</button>';
                                 echo '</td>';
                                 echo '<td>';
-                                echo '<a class="btn btn-danger" href="aksi-proses.php?aksi=delete&id=' . $row->id . '">Delete</a>';
+                                echo '<a class="btn btn-danger" href="receipts-delete.php?delete_id=' . $row->id . '" onclick="return confirmDelete()">Delete</a>';
                                 echo '</td>';
                                 echo '</tr>';
                             }
@@ -177,6 +177,12 @@ if ($id !== $_SESSION['id']) {
                 keyboard: false
             });
             myModal.show();
+        }
+    </script>
+
+    <script>
+        function confirmDelete() {
+            return confirm('Apakah Anda yakin ingin menghapus Bukti Pembayaran ini?');
         }
     </script>
 </body>
