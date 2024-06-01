@@ -74,7 +74,7 @@ if (mysqli_num_rows($result) > 0) {
                 <td>
                     <form action='orders-update.php' method='post' onsubmit='return confirmUpdate()'>
                         <input type='hidden' name='order_id' value='" . $row['id'] . "'>
-                        <select name='status' onchange='this.form.submit()'>
+                        <select name='status' onchange='confirmStatusUpdate(this)'>
                             <option value='Menunggu Bukti Pembayaran'" . ($row['status'] == 'Menunggu Bukti Pembayaran' ? ' selected' : '') . ">Menunggu Bukti Pembayaran</option>
                             <option value='Bukti Bayar Terkonfirmasi'" . ($row['status'] == 'Bukti Bayar Terkonfirmasi' ? ' selected' : '') . ">Bukti Bayar Terkonfirmasi</option>
                             <option value='Pesanan Diproses'" . ($row['status'] == 'Pesanan Diproses' ? ' selected' : '') . ">Pesanan Diproses</option>
@@ -88,10 +88,10 @@ if (mysqli_num_rows($result) > 0) {
                     <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
                 </td>
                 <td>
-                <a class='btn btn-danger' href='orders-delete.php?delete_id=" . $row['id'] . "' onclick='return confirm(\"Yakin ingin menghapus order ini?\")'>Delete</a>
+                <a class='btn btn-danger' href='orders-delete.php?delete_id=" . $row['id'] . "' onclick='return confirmDelete()'>Delete</a>
                 </td>
             </tr>";
-        
+
         // Modal
         echo "<div class='modal fade' id='" . $detail_id . "' tabindex='-1' aria-labelledby='" . $detail_id . "Label' aria-hidden='true'>
                 <div class='modal-dialog'>
@@ -134,7 +134,16 @@ mysqli_close($db);
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
 <script>
-function confirmUpdate() {
-    return confirm('Yakin ingin mengubah status order?');
-}
+    function confirmStatusUpdate(selectElement) {
+        if (confirm('Yakin ingin mengubah status order?')) {
+            selectElement.form.submit();
+        } else {
+            // Jika pembatalan, kembalikan ke status sebelumnya
+            selectElement.value = selectElement.dataset.previousValue;
+        }
+    }
+
+    function confirmDelete() {
+            return confirm('Apakah Anda yakin ingin menghapus pesanan ini?');
+        }
 </script>

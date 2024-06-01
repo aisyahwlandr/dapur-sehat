@@ -166,7 +166,7 @@ if ($id !== $_SESSION['id']) {
                                     <td>
                                         <form action='orders-update.php' method='post' onsubmit='return confirmUpdate()'>
                                             <input type='hidden' name='order_id' value='" . $row['id'] . "'>
-                                            <select name='status' onchange='this.form.submit()'>
+                                            <select name='status' onchange='confirmStatusUpdate(this)'>
                                                 <option value='Menunggu Bukti Pembayaran'" . ($row['status'] == 'Menunggu Bukti Pembayaran' ? ' selected' : '') . ">Menunggu Bukti Pembayaran</option>
                                                 <option value='Bukti Bayar Terkonfirmasi'" . ($row['status'] == 'Bukti Bayar Terkonfirmasi' ? ' selected' : '') . ">Bukti Bayar Terkonfirmasi</option>
                                                 <option value='Pesanan Diproses'" . ($row['status'] == 'Pesanan Diproses' ? ' selected' : '') . ">Pesanan Diproses</option>
@@ -228,8 +228,13 @@ if ($id !== $_SESSION['id']) {
     <script>
         AOS.init();
 
-        function confirmUpdate() {
-            return confirm('Apakah Anda yakin ingin memperbarui status ini?');
+        function confirmStatusUpdate(selectElement) {
+            if (confirm('Yakin ingin mengubah status order?')) {
+                selectElement.form.submit();
+            } else {
+                // Jika pembatalan, kembalikan ke status sebelumnya
+                selectElement.value = selectElement.dataset.previousValue;
+            }
         }
 
         function confirmDelete() {
