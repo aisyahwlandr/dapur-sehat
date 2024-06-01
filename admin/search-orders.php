@@ -177,7 +177,7 @@ if ($id !== $_SESSION['id']) {
                                         </form>
                                     </td>
                                     <td>
-                                        <button class='btn btn-info text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
+                                        <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
                                         <div class='modal fade' id='" . $detail_id . "' tabindex='-1' aria-labelledby='" . $detail_id . "Label' aria-hidden='true'>
                                             <div class='modal-dialog'>
                                                 <div class='modal-content'>

@@ -85,7 +85,7 @@ if (mysqli_num_rows($result) > 0) {
                     </form>
                 </td>
                 <td>
-                    <button class='btn btn-info text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
+                    <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
                 </td>
                 <td>
                 <a class='btn btn-danger' href='orders-delete.php?delete_id=" . $row['id'] . "' onclick='return confirm(\"Yakin ingin menghapus order ini?\")'>Delete</a>
