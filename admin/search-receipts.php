@@ -113,14 +113,14 @@ if ($id !== $_SESSION['id']) {
                             while ($row = mysqli_fetch_object($result)) {
                                 $no++;
                                 echo '<tr>';
-                                echo '<td>' . $no . '</td>';
-                                echo '<td>' . $row->id . '</td>';
-                                echo '<td>' . $row->telepon . '</td>';
-                                echo '<td>' . $row->createdAt . '</td>';
-                                echo '<td>';
+                                echo '<td class="align-middle">' . $no . '</td>';
+                                echo '<td class="align-middle">' . $row->id . '</td>';
+                                echo '<td class="align-middle">' . $row->telepon . '</td>';
+                                echo '<td class="align-middle">' . $row->createdAt . '</td>';
+                                echo '<td class="align-middle">';
                                 echo '<button class="btn btn-primary" onclick="showReceipt(\'' . $row->bktBayar . '\')">Lihat</button>';
                                 echo '</td>';
-                                echo '<td>';
+                                echo '<td class="align-middle">';
                                 echo '<a class="btn btn-danger" href="receipts-delete.php?delete_id=' . $row->id . '" onclick="return confirmDelete()">Delete</a>';
                                 echo '</td>';
                                 echo '</tr>';

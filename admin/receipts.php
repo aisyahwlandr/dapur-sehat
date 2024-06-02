@@ -36,14 +36,14 @@
                 $no++;
             ?>
                 <tr>
-                    <td><?= $no ?></td>
-                    <td><?= $row->id ?></td>
-                    <td><?= $row->telepon ?></td>
-                    <td><?= $row->createdAt ?></td>
-                    <td>
+                    <td class="align-middle"><?= $no ?></td>
+                    <td class="align-middle"><?= $row->id ?></td>
+                    <td class="align-middle"><?= $row->telepon ?></td>
+                    <td class="align-middle"><?= $row->createdAt ?></td>
+                    <td class="align-middle">
                         <button class="btn btn-primary" onclick="showReceipt('<?= $row->bktBayar ?>')">Lihat</button>
                     </td>
-                    <td>
+                    <td class="align-middle">
                         <a class="btn btn-danger" href="receipts-delete.php?delete_id=<?= $row->id ?>" onclick="return confirmDelete()">Delete</a>
                     </td>
                 </tr>

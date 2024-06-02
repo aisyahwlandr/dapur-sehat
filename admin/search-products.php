@@ -118,17 +118,17 @@ if ($id !== $_SESSION['id']) {
                             while ($row = mysqli_fetch_object($result)) {
                                 $no++;
                                 echo '<tr>';
-                                echo '<td>' . $no . '</td>';
-                                echo '<td>' . $row->id . '</td>';
-                                echo '<td>' . $row->variant . '</td>';
-                                echo '<td><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo1 . '\')">Lihat</button></td>';
-                                echo '<td><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo2 . '\')">Lihat</button></td>';
-                                echo '<td><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo3 . '\')">Lihat</button></td>';
-                                echo '<td>' . $row->harga . '</td>';
-                                echo '<td>' . $row->isi . '</td>';
-                                echo '<td>' . $row->deskripsi . '</td>';
-                                echo '<td>' . $row->stock . '</td>';
-                                echo '<td>';
+                                echo '<td class="align-middle">' . $no . '</td>';
+                                echo '<td class="align-middle">' . $row->id . '</td>';
+                                echo '<td class="align-middle">' . $row->variant . '</td>';
+                                echo '<td class="align-middle"><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo1 . '\')">Lihat</button></td>';
+                                echo '<td class="align-middle"><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo2 . '\')">Lihat</button></td>';
+                                echo '<td class="align-middle"><button class="btn btn-primary" onclick="showProduct(\'' . $row->photo3 . '\')">Lihat</button></td>';
+                                echo '<td class="align-middle">' . $row->harga . '</td>';
+                                echo '<td class="align-middle">' . $row->isi . '</td>';
+                                echo '<td class="align-middle">' . $row->deskripsi . '</td>';
+                                echo '<td class="align-middle">' . $row->stock . '</td>';
+                                echo '<td class="align-middle">';
                                 echo '<div class="d-flex justify-content-center">';
                                 echo '<a class="btn btn-warning me-1" href="product-form.php?id=' . $id . '&update_id=' . $row->id . '">Update</a>';
                                 echo '<a class="btn btn-danger" href="product-delete.php?delete_id=' . $row->id . '" onclick="return confirmDelete()" >Delete</a>';

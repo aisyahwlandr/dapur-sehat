@@ -42,17 +42,17 @@
             $no++;
         ?>
             <tr>
-                <td><?= $no ?></td>
-                <td><?= $row->id ?></td>
-                <td><?= $row->variant ?></td>
-                <td><button class="btn btn-primary" onclick="showProduct('<?= $row->photo1 ?>')">Lihat</button></td>
-                <td><button class="btn btn-primary" onclick="showProduct('<?= $row->photo2 ?>')">Lihat</button></td>
-                <td><button class="btn btn-primary" onclick="showProduct('<?= $row->photo3 ?>')">Lihat</button></td>
-                <td><?= $row->harga ?></td>
-                <td><?= $row->isi ?></td>
-                <td><?= $row->deskripsi ?></td>
-                <td><?= $row->stock ?></td>
-                <td>
+                <td class='align-middle'><?= $no ?></td>
+                <td class='align-middle'><?= $row->id ?></td>
+                <td class='align-middle'><?= $row->variant ?></td>
+                <td class='align-middle'><button class="btn btn-primary" onclick="showProduct('<?= $row->photo1 ?>')">Lihat</button></td>
+                <td class='align-middle'><button class="btn btn-primary" onclick="showProduct('<?= $row->photo2 ?>')">Lihat</button></td>
+                <td class='align-middle'><button class="btn btn-primary" onclick="showProduct('<?= $row->photo3 ?>')">Lihat</button></td>
+                <td class='align-middle'><?= $row->harga ?></td>
+                <td class='align-middle'><?= $row->isi ?></td>
+                <td class='align-middle'><?= $row->deskripsi ?></td>
+                <td class='align-middle'><?= $row->stock ?></td>
+                <td class='align-middle'>
                     <div class="d-flex justify-content-center">
                         <a class="btn btn-warning me-1" href="product-form.php?id=<?php echo $id; ?>&update_id=<?= $row->id ?>">Update</a>
                         <a class="btn btn-danger" href="product-delete.php?delete_id=<?= $row->id ?>" onclick='return confirmDelete()'>Delete</a>

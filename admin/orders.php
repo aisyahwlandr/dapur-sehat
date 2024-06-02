@@ -64,16 +64,16 @@ if (mysqli_num_rows($result) > 0) {
         $no++;
         $detail_id = "detail_" . $row["id"];
         echo "<tr>
-                <td>" . $no . "</td>
-                <td>" . $row["id"] . "</td>
-                <td>" . $row["nama"] . "</td>
-                <td>" . $row["telepon"] . "</td>
-                <td>" . $row["variant"] . "</td>
-                <td>" . $row["quantity"] . "</td>
-                <td>" . $row["harga_orders"] . "</td>
-                <td>" . $row["mtdBayar"] . "</td>
-                <td>" . $row["order_date"] . "</td>
-                <td>
+                <td class='align-middle'>" . $no . "</td>
+                <td class='align-middle'>" . $row["id"] . "</td>
+                <td class='align-middle'>" . $row["nama"] . "</td>
+                <td class='align-middle'>" . $row["telepon"] . "</td>
+                <td class='align-middle'>" . $row["variant"] . "</td>
+                <td class='align-middle'>" . $row["quantity"] . "</td>
+                <td class='align-middle'>" . $row["harga_orders"] . "</td>
+                <td class='align-middle'>" . $row["mtdBayar"] . "</td>
+                <td class='align-middle'>" . $row["order_date"] . "</td>
+                <td class='align-middle'>
                     <form action='orders-update.php' method='post' onsubmit='return confirmUpdate()'>
                         <input type='hidden' name='order_id' value='" . $row['id'] . "'>
                         <select name='status' onchange='confirmStatusUpdate(this)'>
@@ -86,10 +86,10 @@ if (mysqli_num_rows($result) > 0) {
                         </select>
                     </form>
                 </td>
-                <td>
+                <td class='align-middle'>
                     <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
                 </td>
-                <td>
+                <td class='align-middle'>
                 <a class='btn btn-danger' href='orders-delete.php?delete_id=" . $row['id'] . "' onclick='return confirmDelete()'>Delete</a>
                 </td>
             </tr>";
