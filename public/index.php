@@ -122,7 +122,7 @@
                             </div>
                             <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
                             <div class="bg-primary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
-                                Diterima
+                                Diterima Pemesan
                             </div>
                         </div>
                     </div>

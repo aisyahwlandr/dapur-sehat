@@ -82,6 +82,31 @@
                                 if ($num_rows > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         $detail_id = "detail_" . $row["id"];
+                                        $status_class = "";
+
+                                        switch ($row["status"]) {
+                                            case 'Menunggu Bukti Pembayaran':
+                                                $status_class = "bg-secondary";
+                                                break;
+                                            case 'Bukti Bayar Terkonfirmasi':
+                                                $status_class = "bg-success";
+                                                break;
+                                            case 'Harap Kirim Ulang Bukti Bayar':
+                                                $status_class = "bg-danger";
+                                                break;
+                                            case 'Pesanan Diproses':
+                                                $status_class = "bg-warning";
+                                                break;
+                                            case 'Pesanan Diantar':
+                                                $status_class = "bg-info";
+                                                break;
+                                            case 'Pesanan Diterima Pemesan':
+                                                $status_class = "bg-primary";
+                                                break;
+                                            default:
+                                                break;
+                                        }
+
                                         echo "<tr>
                                                 <td>" . $row["id"] . "</td>
                                                 <td>" . $row["nama"] . "</td>
@@ -91,7 +116,7 @@
                                                 <td>" . $row["harga_orders"] . "</td>
                                                 <td>" . $row["mtdBayar"] . "</td>
                                                 <td>" . $row["order_date"] . "</td>
-                                                <td>" . $row["status"] . "</td>
+                                                <td class='text-white {$status_class}'>" . $row["status"] . "</td>
                                                 <td>
                                                     <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
                                                 </td>

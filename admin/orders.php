@@ -79,8 +79,8 @@ if (mysqli_num_rows($result) > 0) {
                             <option value='Bukti Bayar Terkonfirmasi'" . ($row['status'] == 'Bukti Bayar Terkonfirmasi' ? ' selected' : '') . ">Bukti Bayar Terkonfirmasi</option>
                             <option value='Pesanan Diproses'" . ($row['status'] == 'Pesanan Diproses' ? ' selected' : '') . ">Pesanan Diproses</option>
                             <option value='Pesanan Diantar'" . ($row['status'] == 'Pesanan Diantar' ? ' selected' : '') . ">Pesanan Diantar</option>
-                            <option value='Pesanan Diterima'" . ($row['status'] == 'Pesanan Diterima' ? ' selected' : '') . ">Pesanan Diterima</option>
-                            <option value='Pesanan Ditolak'" . ($row['status'] == 'Pesanan Ditolak' ? ' selected' : '') . ">Pesanan Ditolak</option>
+                            <option value='Pesanan Diterima Pemesan'" . ($row['status'] == 'Pesanan Diterima Pemesan' ? ' selected' : '') . ">Pesanan Diterima Pemesan</option>
+                            <option value='Harap Kirim Ulang Bukti Bayar'" . ($row['status'] == 'Harap Kirim Ulang Bukti Bayar' ? ' selected' : '') . ">Harap Kirim Ulang Bukti Bayar</option>
                         </select>
                     </form>
                 </td>
