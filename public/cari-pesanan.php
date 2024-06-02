@@ -86,42 +86,42 @@
 
                                         switch ($row["status"]) {
                                             case 'Menunggu Bukti Pembayaran':
-                                                $status_class = "bg-secondary";
+                                                $status_class = "style='background-color: #6C757D'";
                                                 break;
                                             case 'Bukti Bayar Terkonfirmasi':
-                                                $status_class = "bg-success";
+                                                $status_class = "style='background-color: #198754'";
                                                 break;
                                             case 'Harap Kirim Ulang Bukti Bayar':
-                                                $status_class = "bg-danger";
+                                                $status_class = "style='background-color: #DC3545'";
                                                 break;
                                             case 'Pesanan Diproses':
-                                                $status_class = "bg-warning";
+                                                $status_class = "style='background-color: #FF9843'";
                                                 break;
                                             case 'Pesanan Diantar':
-                                                $status_class = "bg-info";
+                                                $status_class = "style='background-color: #0DCAF0'";
                                                 break;
                                             case 'Pesanan Diterima Pemesan':
-                                                $status_class = "bg-primary";
+                                                $status_class = "style='background-color: #38419D'";
                                                 break;
                                             default:
                                                 break;
                                         }
 
                                         echo "<tr>
-                                                <td>" . $row["id"] . "</td>
-                                                <td>" . $row["nama"] . "</td>
-                                                <td>" . $row["telepon"] . "</td>
-                                                <td>" . $row["variant"] . "</td>
-                                                <td>" . $row["quantity"] . "</td>
-                                                <td>" . $row["harga_orders"] . "</td>
-                                                <td>" . $row["mtdBayar"] . "</td>
-                                                <td>" . $row["order_date"] . "</td>
-                                                <td class='text-white {$status_class}'>" . $row["status"] . "</td>
-                                                <td>
+                                                <td class='align-middle'>" . $row["id"] . "</td>
+                                                <td class='align-middle'>" . $row["nama"] . "</td>
+                                                <td class='align-middle'>" . $row["telepon"] . "</td>
+                                                <td class='align-middle'>" . $row["variant"] . "</td>
+                                                <td class='align-middle'>" . $row["quantity"] . "</td>
+                                                <td class='align-middle'>" . $row["harga_orders"] . "</td>
+                                                <td class='align-middle'>" . $row["mtdBayar"] . "</td>
+                                                <td class='align-middle'>" . $row["order_date"] . "</td>
+                                                <td class='text-white align-middle' {$status_class}>" . $row["status"] . "</td>
+                                                <td class='align-middle'>
                                                     <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
                                                 </td>
-                                                <td>
-                                                    <a class='btn btn-success'>Print</a>
+                                                <td class='align-middle'>
+                                                    <a class='btn text-white' style='background-color: purple';>Print</a>
                                                 </td>
                                             </tr>";
 

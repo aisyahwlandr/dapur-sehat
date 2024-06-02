@@ -113,7 +113,7 @@
                             <div class="bg-success align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Bukti Bayar
                                 Terkonfirmasi</div>
                             <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-warning align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
+                            <div class="align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px; background-color: #FF9843;">Pesanan
                                 Diproses
                             </div>
                             <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
@@ -121,7 +121,7 @@
                                 Diantar
                             </div>
                             <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-primary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
+                            <div class="align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px; background-color: #38419D;">Pesanan
                                 Diterima Pemesan
                             </div>
                         </div>
