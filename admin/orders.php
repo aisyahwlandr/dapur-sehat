@@ -47,6 +47,7 @@ if (mysqli_num_rows($result) > 0) {
     <table class='table table-hover text-center' data-aos='fade-down'>
             <tr class='table-dark'>
                 <th>No</th>
+                <th>Id</th>
                 <th>Nama</th>
                 <th>Telepon</th>
                 <th>Variant</th>
@@ -64,6 +65,7 @@ if (mysqli_num_rows($result) > 0) {
         $detail_id = "detail_" . $row["id"];
         echo "<tr>
                 <td>" . $no . "</td>
+                <td>" . $row["id"] . "</td>
                 <td>" . $row["nama"] . "</td>
                 <td>" . $row["telepon"] . "</td>
                 <td>" . $row["variant"] . "</td>
