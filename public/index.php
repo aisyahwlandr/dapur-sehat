@@ -127,15 +127,11 @@
                         </div>
                     </div>
                     <div class="col-md-6 align-content-center text-center">
-                        <p class="custom-paragraf fw-bold px-5 pt-3">*Pelanggan dapat mengecek status pesanan dengan
-                            memasukkan nomor
-                            telepon di kolom cek pesanan.</p>
-                        <form role="search" action="cari-pesanan.php" method="get">
-                            <div class="search my-md-0 my-3">
-                                <input id="searchInput" placeholder="Cek Pesanan..." type="text">
-                                <button id="searchButton" type="submit"><img src="images/search.svg" width="20px" alt="search"></button>
-                            </div>
-                        </form>
+                        <p class="custom-paragraf fw-bold px-5 pt-3" style="text-align: justify;">
+                        *Pelanggan dapat mengecek status pesanan dengan
+                            memasukkan nomor telepon yang didaftarkan pada saat order di kolom cek pesanan 
+                            yang terdapat di bagian atas jajaran menu website.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -158,7 +154,7 @@
                         <div class="card mb-3 shadow d-flex flex-column">
                             <div class="card-body">
                                 <!-- Carousel Bootstrap -->
-                                <h4>Tersedia: <?= $row->stock ?></h4>
+                                <h5 style="color: #200E3A";>Tersedia: <?= $row->stock ?> Produk</h5>
                                 <div id="productCarousel<?= $counter ?>" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
