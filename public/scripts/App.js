@@ -25,7 +25,7 @@ class App {
                                 <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="index.php#produk">Produk</a>
+                                <a class="nav-link" href="index.php#produk">Produk</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="pembayaran.php">Pembayaran</a>
@@ -36,24 +36,44 @@ class App {
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php#faq">FAQ</a>
                             </li>
-                            <li class=" nav-item mx-md-2 align-content-center">
-                                    <form role="search" action="cari-pesanan.php" method="get">
-                                        <div class="search my-md-0 my-3">
-                                            <input id="searchInput" placeholder="Cek Pesanan..." type="text">
-                                            <button id="searchButton" type="submit"><img src="images/search.svg"
-                                                    width="20px" alt="search"></button>
-                                        </div>
-                                    </form>
+                            <li class="nav-item mx-md-2 align-content-center">
+                                <form id="searchForm" class='mb-3 float-end' action="cari-pesanan.php" method='GET'>
+                                    <div class='search'>
+                                        <input id='searchInput' type='text' name='tcari' value='${this.getSearchQuery()}' class='form-control' placeholder='Cari Pesanan...' aria-label='Search'>
+                                        <button id="searchButton" type="submit">
+                                            <img src="images/search.svg" width="20px" alt="search">
+                                        </button>
+                                    </div>
+                                </form>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
-        `
+        `;
 
         this.navbarSection.innerHTML = content;
-    };
+
+        // Menambahkan event listener untuk form pencarian
+        document.getElementById("searchForm").addEventListener("submit", this.handleSearch.bind(this));
+    }
+
+    handleSearch(event) {
+        // Mendapatkan nilai pencarian dari input
+        const searchTerm = document.getElementById("searchInput").value.trim();
+        console.log("Search term:", searchTerm); // Tambahkan ini
+        // Mengecek apakah nilai pencarian tidak kosong
+        if (searchTerm === "") {
+            // Menghentikan perilaku default form jika nilai pencarian kosong
+            event.preventDefault();
+        }
+    }
+
+    getSearchQuery() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('tcari') || '';
+    }
 
     renderFooter() {
         const content = `
@@ -103,13 +123,13 @@ class App {
     `;
 
         this.footerSection.innerHTML = content;
-    };
+    }
 
     init() {
         this.renderNavbar();
         this.renderFooter();
-    };
-};
+    }
+}
 
 // Inisialisasi App setelah DOM dimuat
 document.addEventListener("DOMContentLoaded", function () {
