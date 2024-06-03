@@ -1,4 +1,4 @@
 connection.php
-../admin/uploads/products/*
-../admin/uploads/receipts/*
+../admin/uploads/products/
+../admin/uploads/receipts/
 vendor/*
