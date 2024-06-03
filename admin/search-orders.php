@@ -88,19 +88,11 @@ if ($id !== $_SESSION['id']) {
 
     <div class="container py-4 table-responsive">
         <main>
-            <form class='mb-3 float-end' role='search' action='search-orders.php' method='get'>
-                <div class='search'>
-                    <input id='searchInput' type='text' name='tcari' value='<?php echo htmlspecialchars($_GET['tcari'] ?? '', ENT_QUOTES); ?>' class='form-control' placeholder='Search...' aria-label='Search'>
-                    <input type='hidden' name='id' value='<?php echo htmlspecialchars($row->id, ENT_QUOTES); ?>'>
-                    <button id='searchButton' type='submit'>
-                        <img src='../public/images/search.svg' width='20px' alt='search'>
-                    </button>
-                </div>
-            </form>
             <div class='clearfix'></div>
             <table class="table table-hover text-center" data-aos="fade-down">
                 <tr class="table-dark">
                     <th>No</th>
+                    <th>Id</th>
                     <th>Nama</th>
                     <th>Telepon</th>
                     <th>Variant</th>
@@ -156,6 +148,7 @@ if ($id !== $_SESSION['id']) {
                             $detail_id = "detail_" . $row["id"];
                             echo "<tr>
                                     <td class='align-middle'>" . $no . "</td>
+                                    <td class='align-middle'>" . $id . "</td>
                                     <td class='align-middle'>" . $row["nama"] . "</td>
                                     <td class='align-middle'>" . $row["telepon"] . "</td>
                                     <td class='align-middle'>" . $row["variant"] . "</td>
