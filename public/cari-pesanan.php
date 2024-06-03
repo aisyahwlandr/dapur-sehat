@@ -121,7 +121,7 @@
                                                     <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
                                                 </td>
                                                 <td class='align-middle'>
-                                                    <a class='btn text-white' style='background-color: purple';>Print</a>
+                                                    <a class='btn text-white' href='../print-order.php?order_id=" .  $row["id"] . "' style='background-color: purple';>Print</a>
                                                 </td>
                                             </tr>";
 
