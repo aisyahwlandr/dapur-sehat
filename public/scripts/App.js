@@ -89,13 +89,13 @@ class App {
                             <a href="index.php#produk" class="custom-paragraf-bold pt-0-bold">Produk</a>
                         </li>
                         <li class="nav-item mb-2">
+                            <a href="pembayaran.php" class="custom-paragraf-bold pt-0-bold">Pembayaran</a>
+                        </li>
+                        <li class="nav-item mb-2">
                             <a href="about.php" class="custom-paragraf-bold pt-0-bold">Tentang Kami</a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="index.php#faq" class="custom-paragraf-bold pt-0-bold">FAQ</a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="pembayaran.php" class="custom-paragraf-bold pt-0-bold">Pembayaran</a>
                         </li>
                     </ul>
                 </div>
