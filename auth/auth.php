@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
         $_SESSION['email'] = $email;
         $_SESSION['id'] = $row->id;  // Menyimpan id ke dalam sesi jika diperlukan
         $loginSuccess = true;
-        header("Location: ../admin/dashboard.php?id=" . $row->id );
+        header("Location: ../admin/dashboard.php?id=" . $row->id);
         exit();
     } else {
         // Login gagal
@@ -33,22 +33,28 @@ if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $code = $_POST['code'];  // input kode
 
     // Pemeriksaan apakah 'confirmPassword' ada dalam $_POST
     if (isset($_POST['confirmPassword'])) {
         $confirmPassword = $_POST['confirmPassword'];
 
         if ($password === $confirmPassword) {
-            $hashedPassword = md5($password);
-            // Proses register
-            $result =  mysqli_query($db, "INSERT INTO admin (username, email, password) VALUES ('$username', '$email', '$hashedPassword')");
-            if ($result) {
-                // Register berhasil
-                $registerMessage = "Registrasi berhasil, silahkan login.";
-                $registerSuccess = true;
+            if ($code === 'DAPURsehat') {  // Pemeriksaan kode
+                $hashedPassword = md5($password);
+                // Proses register
+                $result =  mysqli_query($db, "INSERT INTO admin (username, email, password) VALUES ('$username', '$email', '$hashedPassword')");
+                if ($result) {
+                    // Register berhasil
+                    $registerMessage = "Registrasi berhasil, silahkan login.";
+                    $registerSuccess = true;
+                } else {
+                    // Register gagal
+                    $registerMessage = "Terjadi kesalahan: " . mysqli_error($db);
+                    $registerSuccess = false;
+                }
             } else {
-                // Register gagal
-                $registerMessage = "Terjadi kesalahan: " . mysqli_error($db);
+                $registerMessage = "Kode registrasi salah. Harap registrasi ulang!";
                 $registerSuccess = false;
             }
         } else {
@@ -135,6 +141,13 @@ background-image: linear-gradient(90deg, rgba(141, 139, 226, 1), rgba(253, 187, 
             </svg>
             <input type="password" class="input-field" placeholder="Confirm Password" name="confirmPassword" required />
         </div>
+        <div class="field">
+            <svg viewBox="0 0 16 16" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" class="input-icon">
+                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z">
+                </path>
+            </svg>
+            <input type="password" class="input-field" placeholder="Registration Code" name="code" required />
+        </div>
         <div class="custom-btn">
             <button class="button1 py-2" type="button" onclick="showLoginForm()">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -145,8 +158,7 @@ background-image: linear-gradient(90deg, rgba(141, 139, 226, 1), rgba(253, 187, 
 
     <!-- Toast Container -->
     <div id="toast-failed" class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="liveToastFailed" class="toast" role="alert" aria-live="assertive" aria-atomic="true" 
-        style="background-color: #BF3131; color: #F3EDC8;">
+        <div id="liveToastFailed" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="background-color: #BF3131; color: #F3EDC8;">
             <div class="toast-header" style="background-color: #7D0A0A; color: #EAD196;">
                 <strong class="me-auto" id="toast-title-failed"></strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -157,8 +169,7 @@ background-image: linear-gradient(90deg, rgba(141, 139, 226, 1), rgba(253, 187, 
     </div>
 
     <div id="toast-success" class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="liveToastSuccess" class="toast" role="alert" aria-live="assertive" aria-atomic="true" 
-        style="background-color: #7ABA78; color: #FFFFFF;">
+        <div id="liveToastSuccess" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="background-color: #7ABA78; color: #FFFFFF;">
             <div class="toast-header" style="background-color: #0A6847; color: #FFFFFF;">
                 <strong class="me-auto" id="toast-title-success"></strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
