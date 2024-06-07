@@ -144,7 +144,7 @@ INSERT INTO `products` (`id`, `variant`, `photo1`, `photo2`, `photo3`, `harga`, 
 --
 
 CREATE TABLE `receipts` (
-  `id` int(3) NOT NULL,
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
   `telepon` varchar(50) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `bktBayar` varchar(255) NOT NULL

@@ -148,7 +148,7 @@ if ($id !== $_SESSION['id']) {
                             $detail_id = "detail_" . $row["id"];
                             echo "<tr>
                                     <td class='align-middle'>" . $no . "</td>
-                                    <td class='align-middle'>" . $id . "</td>
+                                    <td class='align-middle'>" . $row["id"] . "</td>
                                     <td class='align-middle'>" . $row["nama"] . "</td>
                                     <td class='align-middle'>" . $row["telepon"] . "</td>
                                     <td class='align-middle'>" . $row["variant"] . "</td>
