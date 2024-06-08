@@ -10,7 +10,8 @@ html {
 body {
     /* background-color: #D0F5BE; */
     color: #200E3A;
-    background-color: #B4D4FF;
+    /* background-color: #B4D4FF; */
+    background-image: linear-gradient(180deg, #EEF5FF 0%, #B4D4FF 50%, #82ADDC 100%);
 }
 
 /* custom-text */
@@ -100,7 +101,7 @@ body {
 }
 
 .button-order button:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
     color: rgb(255, 255, 255);
     background-color: #38419D;
 }
@@ -112,7 +113,7 @@ body {
 
 .card-image {
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
 }
 

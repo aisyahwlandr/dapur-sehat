@@ -29,7 +29,7 @@
             <div class="row justify-content-between">
                 <div class="col-md-5">
                     <!-- Cara Bayar-->
-                    <div id="caraBayar" class="py-3">
+                    <div id="caraBayar" class="py-3" data-aos="fade-in" data-aos-duration="1500" data-aos-delay="100">
                         <h2>Bagaimana Cara Melakukan Pembayaran?</h2>
                         <ol class="py-3">
                             <li>Buka E-Wallet Anda (OVO/GOPAY)</li>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-md-6">
                     <!-- form pembayaran -->
-                    <div id="formPembayaran">
+                    <div id="formPembayaran" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="200">
                         <form method="post" action="../admin/receipts-proses.php?aksi=insert" enctype="multipart/form-data" class="p-4 mb-md-0 mb-4 rounded" style="max-width: 500px; background-color: rgba(248, 249, 250, 0.5); box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);">
                             <h2>Bukti Pembayaran</h2>
                             <div class="mb-3">

@@ -86,24 +86,25 @@
 
                                         switch ($row["status"]) {
                                             case 'Menunggu Bukti Pembayaran':
-                                                $status_class = "style='background-color: #6C757D'";
+                                                $status_class = "style='color: #6C757D; font-weight: bold;'";
                                                 break;
                                             case 'Bukti Bayar Terkonfirmasi':
-                                                $status_class = "style='background-color: #198754'";
+                                                $status_class = "style='color: #198754; font-weight: bold;'";
                                                 break;
                                             case 'Harap Kirim Ulang Bukti Bayar':
-                                                $status_class = "style='background-color: #DC3545'";
+                                                $status_class = "style='color: #DC3545; font-weight: bold;'";
                                                 break;
                                             case 'Pesanan Diproses':
-                                                $status_class = "style='background-color: #FF9843'";
+                                                $status_class = "style='color: #FF9843; font-weight: bold;'";
                                                 break;
                                             case 'Pesanan Diantar':
-                                                $status_class = "style='background-color: #0DCAF0'";
+                                                $status_class = "style='color: #0DCAF0; font-weight: bold;'";
                                                 break;
                                             case 'Pesanan Diterima Pemesan':
-                                                $status_class = "style='background-color: #38419D'";
+                                                $status_class = "style='color: #38419D; font-weight: bold;'";
                                                 break;
                                             default:
+                                                $status_class = "";
                                                 break;
                                         }
 
@@ -116,7 +117,7 @@
                                                 <td class='align-middle'>" . $row["harga_orders"] . "</td>
                                                 <td class='align-middle'>" . $row["mtdBayar"] . "</td>
                                                 <td class='align-middle'>" . $row["order_date"] . "</td>
-                                                <td class='text-white align-middle' {$status_class}>" . $row["status"] . "</td>
+                                                <td class='align-middle' {$status_class}>" . $row["status"] . "</td>
                                                 <td class='align-middle'>
                                                     <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
                                                 </td>

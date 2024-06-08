@@ -31,7 +31,7 @@
                     setiap penikmatnya dan terbuat dari bahan pilihan bebas pengawet dan higienis.
                 </p>
                 <div>
-                    <a href="#produk">
+                    <a href="pemesanan.php">
                         <button type="button" class="btn fw-bold custom-button-submit">Order Sekarang</button>
                     </a>
                 </div>
@@ -43,11 +43,11 @@
     <section id="whyus">
         <div class="container py-2">
             <div class="text-md-start text-center">
-                <h1 class="title py-2">Apa yang membuat produk kami istimewa?</h1>
+                <h1 class="title py-2" data-aos="fade-down">Apa yang membuat produk kami istimewa?</h1>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <div class="card mb-3 border-0">
+                    <div class="card mb-3 border-0 shadow" data-aos="zoom-in" data-aos-duration="1000">
                         <div class="card-body text-center">
                             <img class="mb-3" width="50px" src="images/higienis.png" alt="complete">
                             <h5>Higienis</h5>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card mb-3 border-0">
+                    <div class="card mb-3 border-0 shadow" data-aos="zoom-in" data-aos-duration="1500">
                         <div class="card-body text-center">
                             <img class="mb-3" width="50px" src="images/bebaspengawet.png" alt="price">
                             <h5>Bebas Pengawet</h5>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card mb-3 border-0">
+                    <div class="card mb-3 border-0 shadow" data-aos="zoom-in" data-aos-duration="2000">
                         <div class="card-body text-center">
                             <img class="mb-3" width="50px" src="images/fresh.png" alt="24hours">
                             <h5>Fresh</h5>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card mb-3 border-0">
+                    <div class="card mb-3 border-0 shadow" data-aos="zoom-in" data-aos-duration="2500">
                         <div class="card-body text-center">
                             <img class="mb-3" width="50px" src="images/halal.png" alt="professional">
                             <h5>Halal</h5>
@@ -91,45 +91,45 @@
     <section id="alurPemesanan">
         <div class="container py-2">
             <div class="text-md-start text-center">
-                <h1 class="title py-2">Alur Pemesanan</h1>
+                <h1 class="title py-2" data-aos="fade-down">Alur Pemesanan</h1>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Proses 1</p>
+                        <p data-aos="fade-right">Proses 1</p>
                         <div class="d-flex gap-md-3 gap-1 pb-4">
-                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pilih Produk
+                            <div data-aos="fade-right" data-aos-delay="200" class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pilih Produk
                             </div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Isi Data
+                            <i data-aos="fade-right" data-aos-delay="200" class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div data-aos="fade-right" data-aos-delay="300" class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Isi Data
                             </div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Lakukan
+                            <i data-aos="fade-right" data-aos-delay="300" class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div data-aos="fade-right" data-aos-delay="400" class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Lakukan
                                 Pembayaran</div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Upload Bukti
+                            <i data-aos="fade-right" data-aos-delay="400" class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div data-aos="fade-right" data-aos-delay="500" class="bg-secondary align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Upload Bukti
                                 Pembayaran</div>
                         </div>
-                        <p>Proses 2</p>
+                        <p data-aos="fade-right" data-aos-delay="600">Proses 2</p>
                         <div class="d-flex gap-md-3 gap-1 pb-4">
-                            <div class="bg-success align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Bukti Bayar
-                                Terkonfirmasi</div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px; background-color: #FF9843;">Pesanan
+                            <div data-aos="fade-right" data-aos-delay="700" class="bg-success align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">
+                                Bukti Bayar Terkonfirmasi</div>
+                            <i data-aos="fade-right" data-aos-delay="700" class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div data-aos="fade-right" data-aos-delay="800" class="align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px; background-color: #FF9843;">Pesanan
                                 Diproses
                             </div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="bg-info align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
+                            <i data-aos="fade-right" data-aos-delay="800" class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div data-aos="fade-right" data-aos-delay="900" class="bg-info align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px;">Pesanan
                                 Diantar
                             </div>
-                            <i class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
-                            <div class="align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px; background-color: #38419D;">Pesanan
+                            <i data-aos="fade-right" data-aos-delay="900" class="bi bi-arrow-right alur-icon align-content-center" style="font-size: 2rem; color: cornflowerblue;"></i>
+                            <div data-aos="fade-right" data-aos-delay="1000" class="align-content-center text-center custom-paragraf-bold alur-body" style="font-size: 0.8rem; width: 90px; height: 60px; border-radius: 10px; background-color: #38419D;">Pesanan
                                 Diterima Pemesan
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 align-content-center text-center">
-                        <p class="custom-paragraf fw-bold px-5 pt-3" style="text-align: justify;">
-                        *Pelanggan dapat mengecek status pesanan dengan
-                            memasukkan nomor telepon yang didaftarkan pada saat order di kolom cek pesanan 
+                        <p data-aos="fade-up"class="custom-paragraf fw-bold px-5 pt-3" style="text-align: justify;">
+                            *Pelanggan dapat mengecek status pesanan dengan
+                            memasukkan nomor telepon yang didaftarkan pada saat order di kolom cek pesanan
                             yang terdapat di bagian atas jajaran menu website.
                         </p>
                     </div>
@@ -141,7 +141,7 @@
     <section id="produk">
         <div class="container py-2">
             <div class="text-md-start text-center">
-                <h1 class="title py-2">Produk</h1>
+                <h1 class="title py-2" data-aos="fade-down" data-aos-delay="100">Produk</h1>
             </div>
             <div class="row my-3">
                 <?php
@@ -149,22 +149,23 @@
                 $counter = 0; // Counter untuk menghasilkan ID yang unik
                 while ($row = mysqli_fetch_object($result)) {
                     $counter++; // Increment counter setiap kali loop
+                    $delay = $counter * 150; // Set delay for each card
                 ?>
                     <div class="col-md-4 d-flex align-items-stretch">
-                        <div class="card mb-3 shadow d-flex flex-column">
+                        <div class="card mb-3 shadow d-flex flex-column" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="<?= $delay ?>">
                             <div class="card-body">
                                 <!-- Carousel Bootstrap -->
-                                <h5 style="color: #200E3A";>Tersedia: <?= $row->stock ?> Produk</h5>
-                                <div id="productCarousel<?= $counter ?>" class="carousel slide" data-bs-ride="carousel">
+                                <h5 style="color: #200E3A" ;>Tersedia: <?= $row->stock ?> Produk</h5>
+                                <div id="productCarousel<?= $counter ?>" class="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="../admin/uploads/products/<?= $row->photo1 ?>" class="d-block w-100 h-100 rounded card-image mb-3" alt="Photo1">
+                                            <img src="../admin/uploads/products/<?= $row->photo1 ?>" class="d-block rounded card-image mb-3" alt="Photo1">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="../admin/uploads/products/<?= $row->photo2 ?>" class="d-block w-100 h-100 rounded card-image mb-3" alt="Photo2">
+                                            <img src="../admin/uploads/products/<?= $row->photo2 ?>" class="d-block rounded card-image mb-3" alt="Photo2">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="../admin/uploads/products/<?= $row->photo3 ?>" class="d-block w-100 h-100 rounded card-image mb-3" alt="variantLogo">
+                                            <img src="../admin/uploads/products/<?= $row->photo3 ?>" class="d-block rounded card-image mb-3" alt="variantLogo">
                                         </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel<?= $counter ?>" data-bs-slide="prev">
@@ -194,13 +195,8 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" style="
-    background-image: url('images/bgbottom.svg'); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center;
-    ">
-        <div class="container-fluid mt-5">
+    <section id="faq">
+        <div class="container-fluid my-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 mt-3">
@@ -316,7 +312,12 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
-            once: true,
+            once: false, // Ensures the animation repeats every time the element comes into view
+            duration: 1000, // Adjust as necessary
+        });
+
+        window.addEventListener('scroll', function() {
+            AOS.refresh(); // Refresh AOS to detect when elements are back in view
         });
     </script>
 
