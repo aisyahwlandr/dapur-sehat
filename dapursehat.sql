@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 04:13 PM
+-- Generation Time: Jun 08, 2024 at 07:43 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -68,15 +68,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `nama`, `telepon`, `email`, `wilayah`, `alamat`, `mtdBayar`, `order_date`, `status`) VALUES
-(1, 'bimo ragil w', '6281818181', 'matapancing@gmail.com', 'Kampus K Universitas Gunadarma', 'sekdos', 'GOPAY', '2024-05-26 10:57:06', 'Menunggu Bukti Pembayaran'),
-(2, 'bimo ragil w', '6281818181', 'matapancing@gmail.com', 'Kampus K Universitas Gunadarma', 'sekdos', 'GOPAY', '2024-05-26 10:57:06', 'Menunggu Bukti Pembayaran'),
-(6, 'widodo', '6284848484', '', 'Tangerang Selatan', 'kebon', 'GOPAY', '2024-05-27 08:09:12', 'Pesanan Diterima Pemesan'),
-(14, 'hani', '6284848484', '', 'Tangerang Selatan', 'Pamulang', 'OVO', '2024-05-28 07:51:44', 'Harap Kirim Ulang Bukti Bayar'),
-(15, 'bimo ragil', '6383838383', 'matapancing@gmail.com', 'Kampus K Universitas Gunadarma', 'sekdos', 'OVO', '2024-05-29 15:19:22', 'Pesanan Diproses'),
-(16, 'moko', '6383838383', 'matapancing@gmail.com', 'Kampus K Universitas Gunadarma', 'sekdos', 'OVO', '2024-06-01 16:37:47', 'Bukti Bayar Terkonfirmasi'),
-(17, '', '', '', '', '', '', '2024-06-01 16:45:00', 'Menunggu Bukti Pembayaran'),
-(18, 'viko', '6383838383', 'matapancing@gmail.com', 'Cisauk', 'kebon', 'OVO', '2024-06-01 16:54:07', 'Pesanan Diterima Pemesan'),
-(19, 'tari', '6281818181', '', 'Tangerang Selatan', 'Pamulang', 'GOPAY', '2024-06-01 16:54:52', 'Menunggu Bukti Pembayaran');
+(1, 'Viko', '6281818181', 'viko@gmail.com', 'Kampus K Universitas Gunadarma', 'Perumnas 2, Jalan Rama Raya', 'OVO', '2024-06-07 14:54:03', 'Bukti Bayar Terkonfirmasi');
 
 -- --------------------------------------------------------
 
@@ -98,15 +90,8 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `variant`, `quantity`, `harga_orders`) VALUES
-(5, 6, 3, 'variant_placeholder', 1, '20000'),
-(16, 14, 3, 'Nugget Pisang', 1, '20000'),
-(17, 14, 4, 'Nugget Ayam Original', 3, '90000'),
-(18, 15, 1, 'Nugget Ayam Original', 2, '60000'),
-(19, 15, 4, 'Bakso Sapi', 1, '25000'),
-(20, 16, 2, 'Nugget Ayam Keju', 2, '70000'),
-(21, 16, 4, 'Bakso Sapi', 1, '25000'),
-(22, 18, 4, 'Bakso Sapi', 2, '50000'),
-(23, 19, 4, 'Bakso Sapi', 2, '50000');
+(1, 1, 3, 'Nugget Pisang', 1, '20000'),
+(2, 1, 4, 'Bakso Sapi', 1, '25000');
 
 -- --------------------------------------------------------
 
@@ -131,10 +116,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `variant`, `photo1`, `photo2`, `photo3`, `harga`, `isi`, `deskripsi`, `stock`) VALUES
-(1, 'Nugget Ayam Original', 'NuggetAyamPhoto1.jpg', 'NuggetUniversalPhoto2.jpg', 'NuggetAyamOriginal.png', '30000', '10 Pcs', 'Terbuat dari daging ayam pilihan yang telah digiling dan dibumbui tanpa menggunakan bahan pengawet, kemudian dibentuk menjadi potongan-potongan bundar dengan tekstur lembut di dalam dan lapisan renyah di luar', 8),
-(2, 'Nugget Ayam Keju', 'NuggetKejuPhoto1.jpg', 'NuggetUniversalPhoto2.jpg', 'NuggetAyamKeju.png', '35000', '10 Pcs', 'Terbuat dari daging ayam pilihan yang telah digiling dan isian keju yang melimpah, kemudian dibentuk oval dengan tekstur lembut di dalam dan lapisan renyah di luar', 8),
-(3, 'Nugget Pisang', 'NuggetPisangPhoto1.jpg', 'NuggetUniversalPhoto2.jpg', 'NuggetPisang.png', '20000', '10 Pcs', 'Terbuat dari pisang kepok berkualitas yang bercita rasa manis dan lembut, lalu dibalut dengan lapisan luar yang renyah, cocok untuk di tambahkan topping seperti saus coklat maupun keju', 10),
-(4, 'Bakso Sapi', 'BaksoSapiPhoto1.jpg', 'BaksoSapiPhoto2.jpg', 'BaksoSapi.png', '25000', '10 Pcs', 'Terbuat dari daging sapi dengan memperhatikan kualitas dan kehigienisan daging yang dipilih, sehingga aman, halal, dan sehat untuk di konsumsi', 15),
+(1, 'Nugget Ayam Original', 'NuggetAyamPhoto1.jpg', 'NuggetUniversalPhoto2.jpg', 'NuggetAyamOriginal.png', '30000', '10 Pcs', 'Terbuat dari daging ayam pilihan yang telah digiling dan dibumbui tanpa menggunakan bahan pengawet, kemudian dibentuk menjadi potongan-potongan bundar dengan tekstur lembut di dalam dan lapisan renyah di luar', 10),
+(2, 'Nugget Ayam Keju', 'NuggetKejuPhoto1.jpg', 'NuggetUniversalPhoto2.jpg', 'NuggetAyamKeju.png', '35000', '10 Pcs', 'Terbuat dari daging ayam pilihan yang telah digiling dan isian keju yang melimpah, kemudian dibentuk oval dengan tekstur lembut di dalam dan lapisan renyah di luar', 15),
+(3, 'Nugget Pisang', 'NuggetPisangPhoto1.jpg', 'NuggetUniversalPhoto2.jpg', 'NuggetPisang.png', '20000', '10 Pcs', 'Terbuat dari pisang kepok berkualitas yang bercita rasa manis dan lembut, lalu dibalut dengan lapisan luar yang renyah, cocok untuk di tambahkan topping seperti saus coklat maupun keju', 7),
+(4, 'Bakso Sapi', 'BaksoSapiPhoto1.jpg', 'BaksoSapiPhoto2.jpg', 'BaksoSapi.png', '25000', '10 Pcs', 'Terbuat dari daging sapi dengan memperhatikan kualitas dan kehigienisan daging yang dipilih, sehingga aman, halal, dan sehat untuk di konsumsi.', 14),
 (5, 'Kentang Goreng Beku', 'KentangGorengPhoto1.jpg', 'KentangGorengPhoto2.jpg', 'KentangGoreng.png', '35000', '1 Kg', 'Terbuat dari kentang premium yang bercita rasa manis, kentang beku ini juga telah dibumbui dengan rasa yang gurih sehingga sangat nikmat setelah digoreng', 10);
 
 -- --------------------------------------------------------
@@ -144,7 +129,7 @@ INSERT INTO `products` (`id`, `variant`, `photo1`, `photo2`, `photo3`, `harga`, 
 --
 
 CREATE TABLE `receipts` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `id` int(11) NOT NULL,
   `telepon` varchar(50) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `bktBayar` varchar(255) NOT NULL
@@ -155,27 +140,7 @@ CREATE TABLE `receipts` (
 --
 
 INSERT INTO `receipts` (`id`, `telepon`, `createdAt`, `bktBayar`) VALUES
-(1, '6281818181', '2024-05-19 16:58:23', '2024-05-19_23-58-23_avatar.jpg'),
-(3, '6282828282', '2024-05-19 17:30:24', '2024-05-20_00-30-24_pepe.jpg'),
-(4, '6281818181', '2024-05-19 17:45:13', '2024-05-20_00-45-13_lambo.jpeg'),
-(6, '6281818181', '2024-05-19 18:07:54', '2024-05-20_01-07-54_man.jpg'),
-(7, '6282828282', '2024-05-20 03:18:44', '2024-05-20_10-18-44_mobiltruck.jpeg'),
-(8, '6281818181', '2024-05-20 03:22:23', '2024-05-20_10-22-23_man.jpg'),
-(9, '6281818181', '2024-05-20 03:27:10', '2024-05-20_10-27-10_pepe.jpg'),
-(11, '6281818181', '2024-05-20 03:37:25', '2024-05-20_10-37-25_lambo.jpeg'),
-(12, '6281818181', '2024-05-20 03:39:56', '2024-05-20_10-39-56_mobiltruck.jpeg'),
-(13, '6282828282', '2024-05-20 03:42:49', '2024-05-20_10-42-49_man.jpg'),
-(14, '6282828282', '2024-05-20 03:47:39', '2024-05-20_10-47-39_avatar.jpg'),
-(15, '6281818181', '2024-05-20 04:07:05', '2024-05-20_11-07-05_pepe.jpg'),
-(16, '6281818181', '2024-05-20 04:16:05', '2024-05-20_11-16-05_odong-odong.jpg'),
-(17, '6281818181', '2024-05-20 04:17:04', '2024-05-20_11-17-04_lambo.jpeg'),
-(18, '6282828282', '2024-05-20 04:17:54', '2024-05-20_11-17-54_avatar.jpg'),
-(19, '6281818181', '2024-05-20 04:18:15', '2024-05-20_11-18-15_man.jpg'),
-(20, '6383838383', '2024-05-20 04:44:29', '2024-05-20_11-44-29_mobiltruck.jpeg'),
-(21, '6284848484', '2024-05-20 18:07:15', '2024-05-21_01-07-15_lambo.jpeg'),
-(22, '6284848484', '2024-05-22 17:17:45', '2024-05-23_00-17-45_kucing.jpg'),
-(24, '6284848484', '2024-05-25 07:29:53', '2024-05-25_14-29-53_pepe.jpg'),
-(26, '6383838383', '2024-06-01 16:41:17', '2024-06-01_23-41-17_2023-bmw-xm.jpg');
+(1, '6281818181', '2024-06-07 15:00:57', '2024-06-07_22-00-57_WhatsApp Image 2024-06-07 at 21.56.00_be503d1e.jpg');
 
 --
 -- Indexes for dumped tables
@@ -227,25 +192,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
