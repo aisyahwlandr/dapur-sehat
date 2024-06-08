@@ -32,3 +32,17 @@ CREATE TABLE order_items (
     FOREIGN KEY (order_id) REFERENCES orders(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
+
+CREATE TABLE admin (
+    id INT(3) AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE receipts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    telepon VARCHAR(50) NOT NULL,
+    createdAt timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    bktBayar VARCHAR(255) NOT NULL
+);
