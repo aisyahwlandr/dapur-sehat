@@ -89,6 +89,8 @@ if (isset($_POST['register'])) {
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
     </style>
 </head>
@@ -109,7 +111,7 @@ background-image: linear-gradient(90deg, rgba(141, 139, 226, 1), rgba(253, 187, 
                 </path>
             </svg>
             <input type="password" class="input-field" placeholder="Password" name="password" id="login-password" required />
-            <i class="bi bi-eye toggle-password" onclick="togglePassword('login-password')"></i>
+            <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('login-password')"></i>
         </div>
         <div class="custom-btn">
             <button class="button1 py-2" type="submit" name="login">
@@ -133,7 +135,7 @@ background-image: linear-gradient(90deg, rgba(141, 139, 226, 1), rgba(253, 187, 
                 </path>
             </svg>
             <input type="password" class="input-field" placeholder="Password" name="password" id="register-password" required />
-            <i class="bi bi-eye toggle-password" onclick="togglePassword('register-password')"></i>
+            <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('register-password')"></i>
         </div>
         <div class="field position-relative">
             <svg viewBox="0 0 16 16" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" class="input-icon">
@@ -141,7 +143,7 @@ background-image: linear-gradient(90deg, rgba(141, 139, 226, 1), rgba(253, 187, 
                 </path>
             </svg>
             <input type="password" class="input-field" placeholder="Confirm Password" name="confirmPassword" id="confirm-password" required />
-            <i class="bi bi-eye toggle-password" onclick="togglePassword('confirm-password')"></i>
+            <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('confirm-password')"></i>
         </div>
         <div class="field position-relative">
             <svg viewBox="0 0 16 16" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" class="input-icon">
@@ -149,7 +151,7 @@ background-image: linear-gradient(90deg, rgba(141, 139, 226, 1), rgba(253, 187, 
                 </path>
             </svg>
             <input type="password" class="input-field" placeholder="Registration Code" name="code" id="code-password" required />
-            <i class="bi bi-eye toggle-password" onclick="togglePassword('code-password')"></i>
+            <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('code-password')"></i>
         </div>
         <div class="custom-btn">
             <button class="button1 py-2" type="button" onclick="showLoginForm()">
@@ -235,12 +237,12 @@ background-image: linear-gradient(90deg, rgba(141, 139, 226, 1), rgba(253, 187, 
             var icon = field.nextElementSibling;
             if (field.type === "password") {
                 field.type = "text";
-                icon.classList.remove('bi-eye');
-                icon.classList.add('bi-eye-slash');
-            } else {
-                field.type = "password";
                 icon.classList.remove('bi-eye-slash');
                 icon.classList.add('bi-eye');
+            } else {
+                field.type = "password";
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
             }
         }
     </script>
