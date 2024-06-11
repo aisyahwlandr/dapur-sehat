@@ -2,8 +2,8 @@
 session_start();
 include '../connection.php';
 
-// Periksa apakah sesi email telah disetel
-if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+// Periksa apakah sesi username telah disetel
+if (!isset($_SESSION['username']) || !isset($_SESSION['id'])) {
     header("Location: ../auth/auth.php");
     exit();
 }
