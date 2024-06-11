@@ -28,7 +28,7 @@
     <section id="formPemesanan">
         <div class="container py-4">
             <form action="../admin/orders-insert.php" method="POST" id="orderForm">
-                <div class="row">
+                <div class="row" data-aos="fade-up">
                     <div class="col-md-6 col-12">
                         <h2>Data Diri</h2>
                         <div class="mb-3">
@@ -57,7 +57,7 @@
                             <input class="form-control" placeholder="Ingin Diantar Kemana?" type="text" id="alamat" name="alamat" required>
                         </div>
                     </div>
-                    <div class="col-md-6 col-12 pt-md-0 pt-3">
+                    <div class="col-md-6 col-12 pt-md-0 pt-3" data-aos="fade-up">
                         <h2>Produk</h2>
                         <?php
                         // Ambil data produk dari database
@@ -79,7 +79,7 @@
                         ?>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" data-aos="fade-up">
                     <div class="col-md-6 col-12 pt-md-5 pt-3">
                         <div class="mb-3">
                             <label class="form-label h2" for="mtdBayar">Metode Pembayaran</label>
