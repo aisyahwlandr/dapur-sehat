@@ -103,6 +103,15 @@
                                             case 'Pesanan Diterima Pemesan':
                                                 $status_class = "style='color: #38419D; font-weight: bold;'";
                                                 break;
+                                            case 'Harap Kirim Ulang Bukti Bayar':
+                                                $status_class = "style='color: #DC3545; font-weight: bold;'";
+                                                break;
+                                            case 'Pesanan Ditolak, Alamat di luar Wilayah':
+                                                $status_class = "style='color: #DC3545; font-weight: bold;'";
+                                                break;
+                                            case 'Pesanan Ditolak, Alamat di luar Wilayah & Dana Dikembalikan':
+                                                $status_class = "style='color: #DC3545; font-weight: bold;'";
+                                                break;
                                             default:
                                                 $status_class = "";
                                                 break;
