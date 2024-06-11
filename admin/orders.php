@@ -76,13 +76,15 @@ if (mysqli_num_rows($result) > 0) {
                 <td class='align-middle'>
                     <form action='orders-update.php' method='post' onsubmit='return confirmUpdate()'>
                         <input type='hidden' name='order_id' value='" . $row['id'] . "'>
-                        <select name='status' onchange='confirmStatusUpdate(this)'>
+                        <select name='status' onchange='confirmStatusUpdate(this)' data-previous-value='" . $row['status'] . "'>
                             <option value='Menunggu Bukti Pembayaran'" . ($row['status'] == 'Menunggu Bukti Pembayaran' ? ' selected' : '') . ">Menunggu Bukti Pembayaran</option>
                             <option value='Bukti Bayar Terkonfirmasi'" . ($row['status'] == 'Bukti Bayar Terkonfirmasi' ? ' selected' : '') . ">Bukti Bayar Terkonfirmasi</option>
                             <option value='Pesanan Diproses'" . ($row['status'] == 'Pesanan Diproses' ? ' selected' : '') . ">Pesanan Diproses</option>
                             <option value='Pesanan Diantar'" . ($row['status'] == 'Pesanan Diantar' ? ' selected' : '') . ">Pesanan Diantar</option>
                             <option value='Pesanan Diterima Pemesan'" . ($row['status'] == 'Pesanan Diterima Pemesan' ? ' selected' : '') . ">Pesanan Diterima Pemesan</option>
                             <option value='Harap Kirim Ulang Bukti Bayar'" . ($row['status'] == 'Harap Kirim Ulang Bukti Bayar' ? ' selected' : '') . ">Harap Kirim Ulang Bukti Bayar</option>
+                            <option value='Pesanan Ditolak, Alamat di luar Wilayah'" . ($row['status'] == 'Pesanan Ditolak, Alamat di luar Wilayah' ? ' selected' : '') . ">Ditolak, Luar Wilayah</option>
+                            <option value='Pesanan Ditolak, Alamat di luar Wilayah & Dana Dikembalikan'" . ($row['status'] == 'Pesanan Ditolak, Alamat di luar Wilayah & Dana Dikembalikan' ? ' selected' : '') . ">Ditolak, Dana Kembali</option>
                         </select>
                     </form>
                 </td>
@@ -139,9 +141,9 @@ mysqli_close($db);
     function confirmStatusUpdate(selectElement) {
         if (confirm('Yakin ingin mengubah status order?')) {
             selectElement.form.submit();
-        } else {
+        }  else {
             // Jika pembatalan, kembalikan ke status sebelumnya
-            selectElement.value = selectElement.dataset.previousValue;
+            selectElement.value = selectElement.getAttribute('data-previous-value');
         }
     }
 
