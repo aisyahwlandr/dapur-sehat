@@ -197,11 +197,18 @@
                 let total = 0;
                 checkboxes.forEach((checkbox, index) => {
                     const quantity = parseFloat(quantities[index].value) || 0;
+                    const stock = parseInt(checkbox.getAttribute('data-stock'));
                     if (quantity > 0) {
                         checkbox.checked = true;
                     } else {
                         checkbox.checked = false;
                     }
+
+                    if (quantity > stock) {
+                    alert(`Jumlah pesanan melebihi stok untuk produk: ${checkbox.nextElementSibling.textContent}`);
+                    quantities[index].value = stock; // Set to maximum available stock
+                    return;
+                }
 
                     if (checkbox.checked) {
                         const price = parseFloat(checkbox.getAttribute('data-harga'));

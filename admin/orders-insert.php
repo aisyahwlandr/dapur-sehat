@@ -10,6 +10,22 @@ $mtdBayar = $_POST['mtdBayar'];
 $variant = "SELECT variant FROM products WHERE id = $product_id";
 
 $product_ids = $_POST['product_id'];
+$quantities = $_POST['quantity'];
+
+// Periksa stok sebelum memasukkan data ke dalam database
+foreach ($quantities as $product_id => $quantity) {
+    $sql_check_stock = "SELECT stock FROM products WHERE id = $product_id";
+    $result_stock = $db->query($sql_check_stock);
+    $row_stock = $result_stock->fetch_assoc();
+
+    if ($quantity > $row_stock['stock']) {
+        echo "<script>
+                alert('Jumlah pesanan melebihi stok untuk produk dengan ID: $product_id');
+                window.history.back();
+            </script>";
+        exit();
+    }
+}
 
 // Memasukkan data pemesan ke dalam tabel orders
 $sql_order = "INSERT INTO orders (nama, telepon, email, wilayah, alamat, mtdBayar)
@@ -18,9 +34,9 @@ if ($db->query($sql_order) === TRUE) {
     $order_id = $db->insert_id; // Mendapatkan ID pesanan yang baru saja dimasukkan
 
     // Proses setiap produk yang dipesan
-    foreach ($_POST['quantity'] as $product_id => $quantity) {
+    foreach ($quantities as $product_id => $quantity) {
         // Periksa apakah checkbox produk terkait telah dicentang
-        if (isset($_POST['product_id'][$product_id])) {
+        if (isset($product_ids[$product_id])) {
             // Ambil nama variant dari database berdasarkan product ID
             $sql_variant = "SELECT variant FROM products WHERE id = $product_id";
             $result_variant = $db->query($sql_variant);
