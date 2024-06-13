@@ -38,6 +38,7 @@ if (isset($_GET['update_id'])) {
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" href="../public/images/logo.png" type="image/x-icon">
     <title>Admin Dapur Sehat</title>
 </head>
 
