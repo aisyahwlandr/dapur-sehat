@@ -7,24 +7,43 @@ $email = $_POST['email'];
 $wilayah = $_POST['wilayah'];
 $alamat = $_POST['alamat'];
 $mtdBayar = $_POST['mtdBayar'];
-$variant = "SELECT variant FROM products WHERE id = $product_id";
 
 $product_ids = $_POST['product_id'];
 $quantities = $_POST['quantity'];
 
+$total_harga = 0;
+$valid_order = false;
+
+
 // Periksa stok sebelum memasukkan data ke dalam database
 foreach ($quantities as $product_id => $quantity) {
-    $sql_check_stock = "SELECT stock FROM products WHERE id = $product_id";
-    $result_stock = $db->query($sql_check_stock);
-    $row_stock = $result_stock->fetch_assoc();
+    if (isset($product_ids[$product_id])) {
+        $sql_check_stock = "SELECT stock, harga FROM products WHERE id = $product_id";
+        $result_stock = $db->query($sql_check_stock);
+        $row_stock = $result_stock->fetch_assoc();
 
-    if ($quantity > $row_stock['stock']) {
-        echo "<script>
-                alert('Jumlah pesanan melebihi stok untuk produk dengan ID: $product_id');
-                window.history.back();
-            </script>";
-        exit();
+        if ($quantity > $row_stock['stock']) {
+            echo "<script>
+                    alert('Jumlah pesanan melebihi stok untuk produk');
+                    window.history.back();
+                </script>";
+            exit();
+        }
+
+        if ($quantity > 0) {
+            $valid_order = true;
+            $total_harga += $quantity * $row_stock['harga'];
+        }
     }
+}
+
+// Cek apakah pesanan valid dan total harga lebih besar dari 0
+if (!$valid_order || $total_harga == 0) {
+    echo "<script>
+            alert('Jumlah pesanan tidak valid atau total pembayaran adalah 0');
+            window.history.back();
+        </script>";
+    exit();
 }
 
 // Memasukkan data pemesan ke dalam tabel orders
@@ -78,7 +97,10 @@ if ($db->query($sql_order) === TRUE) {
     $db->close();
 
     // Redirect ke halaman pembayaran
-    header("Location: ../public/pembayaran.php");
+    echo "<script>
+            alert('Pemesanan berhasil dibuat!');
+            window.location.href = '../public/pembayaran.php';
+        </script>";
     exit();
 } else {
     echo "Error: " . $sql_order . "<br>" . $db->error;

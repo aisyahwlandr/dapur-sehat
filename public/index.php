@@ -52,7 +52,7 @@
                         <div class="card-body text-center">
                             <img class="mb-3" width="50px" src="images/higienis.png" alt="complete">
                             <h5>Higienis</h5>
-                            <p>Dibuat dengan mengutamakan kebersihan dan keamanan dari setiap bahan
+                            <p>Mengutamakan kebersihan dan keamanan dari setiap bahan pilihan
                             </p>
                         </div>
                     </div>

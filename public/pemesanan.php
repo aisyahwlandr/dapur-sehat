@@ -206,10 +206,11 @@
                     }
 
                     if (quantity > stock) {
-                    alert(`Jumlah pesanan melebihi stok untuk produk: ${checkbox.nextElementSibling.textContent}`);
-                    quantities[index].value = stock; // Set to maximum available stock
-                    return;
-                }
+                        alert(`Jumlah pesanan melebihi stock produk, stock tersedia hanya ${stock}.`);
+                        quantities[index].value = null; // Set to maximum available stock adn make it input null
+                        checkbox.checked = false; //make it unchecked
+                        return;
+                    }
 
                     if (checkbox.checked) {
                         const price = parseFloat(checkbox.getAttribute('data-harga'));
@@ -265,34 +266,42 @@
                 }
 
                 const formData = new FormData(orderForm);
+                let totalProductsSelected = 0;
+                let totalPrice = 0;
 
                 summaryDataDiri.innerHTML = `
-        <strong>Nama:</strong> ${formData.get('nama')}<br>
-        <strong>Telepon:</strong> ${formData.get('telepon')}<br>
-        <strong>Email:</strong> ${formData.get('email')}<br>
-        <strong>Wilayah:</strong> ${formData.get('wilayah')}<br>
-        <strong>Alamat:</strong> ${formData.get('alamat')}
-    `;
+                <strong>Nama:</strong> ${formData.get('nama')}<br>
+                <strong>Telepon:</strong> ${formData.get('telepon')}<br>
+                <strong>Email:</strong> ${formData.get('email')}<br>
+                <strong>Wilayah:</strong> ${formData.get('wilayah')}<br>
+                <strong>Alamat:</strong> ${formData.get('alamat')}
+            `;
 
                 summaryProducts.innerHTML = '';
-                let total = 0;
                 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
                 const quantities = document.querySelectorAll('input[type="number"]');
                 checkboxes.forEach((checkbox, index) => {
                     if (checkbox.checked) {
+                        totalProductsSelected++;
                         const productName = checkbox.nextElementSibling.textContent.split('(')[0].trim();
                         const quantity = formData.get(`quantity[${checkbox.value}]`);
                         const price = parseFloat(checkbox.getAttribute('data-harga'));
                         const subtotal = price * quantity; // Hitung subtotal harga per pesanan
-                        total += subtotal;
+                        totalPrice += subtotal;
 
                         const productItem = document.createElement('li');
                         productItem.innerHTML = `${productName} - ${quantity} <br>Subtotal: Rp ${formatRupiah(subtotal)}`; // Tampilkan harga per pesanan
                         summaryProducts.appendChild(productItem);
                     }
                 });
+
+                if (totalProductsSelected === 0 || totalPrice === 0) {
+                    alert("Pesanan tidak dapat dilakukan karena anda belum menentukan jumlah variant produk. Anda harus memilih setidaknya satu produk untuk melakukan pemesanan.");
+                    return;
+                }
+
                 summaryMtdBayar.textContent = formData.get('mtdBayar');
-                summaryTotalHarga.textContent = formatRupiah(total);
+                summaryTotalHarga.textContent = formatRupiah(totalPrice);
 
                 summaryModal.show();
             });
@@ -312,6 +321,7 @@
             return 'Rp ' + amount.toLocaleString('id-ID') + ',-';
         }
     </script>
+
 
 </body>
 

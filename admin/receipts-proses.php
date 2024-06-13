@@ -5,6 +5,15 @@ if ($_GET['aksi'] == 'insert') {
     $telepon = $_POST['telepon'];
     $bukti = $_FILES['bktBayar'];
 
+    // Check if phone number exists in the database
+    $phoneCheckQuery = "SELECT * FROM orders WHERE telepon = '$telepon'";
+    $phoneCheckResult = mysqli_query($db, $phoneCheckQuery);
+
+    if (mysqli_num_rows($phoneCheckResult) == 0) {
+        header("Location: ../public/pembayaran.php?error=nomor_telepon");
+        exit();
+    }
+
     // Handle file upload
     date_default_timezone_set('Asia/Jakarta');
     $timestamp = date("Y-m-d_H-i-s");
@@ -19,40 +28,28 @@ if ($_GET['aksi'] == 'insert') {
     if ($check !== false) {
         $uploadOk = 1;
     } else {
-        echo "<script>
-                alert('File bukan gambar.');
-                window.location.href = '../public/pembayaran.php';
-                </script>";
+        header("Location: ../public/pembayaran.php?error=file_bukan_gambar");
         $uploadOk = 0;
         exit(); // Menghentikan eksekusi skrip PHP setelah menampilkan popup
     }
 
     // Check file size
     if ($bukti["size"] > 5000000) {
-        echo "<script>
-                alert('Maaf, file Anda terlalu besar.');
-                window.location.href = '../public/pembayaran.php';
-                </script>";
+        header("Location: ../public/pembayaran.php?error=file_terlalu_besar");
         $uploadOk = 0;
         exit(); // Menghentikan eksekusi skrip PHP setelah menampilkan popup
     }
 
     // Allow certain file formats
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-        echo "<script>
-                alert('File bukan gambar.');
-                window.location.href = '../public/pembayaran.php';
-                </script>";
+        header("Location: ../public/pembayaran.php?error=format_tidak_valid");
         $uploadOk = 0;
         exit(); // Menghentikan eksekusi skrip PHP setelah menampilkan popup
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "<script>
-                alert('Maaf, file Anda belum diunggah.');
-                window.location.href = '../public/pembayaran.php';
-                </script>";
+        header("Location: ../public/pembayaran.php?error=upload_gagal");
         exit(); // Menghentikan eksekusi skrip PHP setelah menampilkan popup
     }
 
@@ -62,21 +59,12 @@ if ($_GET['aksi'] == 'insert') {
         $result = mysqli_query($db, $insertQuery);
 
         if ($result) {
-            echo "<script>
-                    alert('Terima Kasih, Bukti Bayar Berhasil Diunggah');
-                    window.location.href = '../public/index.php';
-                    </script>";
+            header("Location: ../public/index.php?success=upload_berhasil");
         } else {
-            echo "<script>
-                    alert('Error: " . mysqli_error($db) . "');
-                    window.location.href = '../public/pembayaran.php';
-                    </script>";
+            header("Location: ../public/pembayaran.php?error=" . mysqli_error($db));
         }
     } else {
-        echo "<script>
-                alert('Maaf, terjadi kesalahan saat mengunggah file Anda.');
-                window.location.href = '../public/pembayaran.php';
-                </script>";
+        header("Location: ../public/pembayaran.php?error=upload_error");
     }
 }
 ?>

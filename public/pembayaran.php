@@ -67,6 +67,24 @@
         </div>
     </section>
 
+    <!-- Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="errorMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- footer -->
     <section id="footer" style="background-color: #3468C0;">
     </section>
@@ -94,7 +112,6 @@
         });
     </script>
 
-    <!-- Scroll Up -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Fungsi untuk menangani perilaku tombol "Scroll Up"
@@ -115,6 +132,41 @@
                     document.getElementById('scrollUpBtn').classList.add('d-none');
                 }
             });
+
+            // Show modal if there's an error
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('error')) {
+                const errorType = urlParams.get('error');
+                let errorMessage = '';
+
+                switch (errorType) {
+                    case 'nomor_telepon':
+                        errorMessage = 'Periksa kembali nomor telepon anda, harap masukkan nomor telepon yang didaftarkan pada saat melakukan pemesanan.';
+                        break;
+                    case 'file_bukan_gambar':
+                        errorMessage = 'File bukan gambar.';
+                        break;
+                    case 'file_terlalu_besar':
+                        errorMessage = 'Maaf, file Anda terlalu besar. Harap unggah dengan ukuran dibawah 5 MB';
+                        break;
+                    case 'format_tidak_valid':
+                        errorMessage = 'File bukan gambar.';
+                        break;
+                    case 'upload_gagal':
+                        errorMessage = 'Maaf, file Anda belum diunggah.';
+                        break;
+                    case 'upload_error':
+                        errorMessage = 'Maaf, terjadi kesalahan saat mengunggah file Anda.';
+                        break;
+                    default:
+                        errorMessage = 'Terjadi kesalahan. Silakan coba lagi.';
+                        break;
+                }
+
+                document.getElementById('errorMessage').textContent = errorMessage;
+                var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                errorModal.show();
+            }
         });
     </script>
 

@@ -71,7 +71,7 @@
                                     JOIN
                                         products p ON oi.product_id = p.id
                                     WHERE
-                                        o.telepon LIKE '%$keyword%'
+                                        o.telepon  = '$keyword'
                                     GROUP BY
                                         o.id, o.nama, o.telepon, o.email, o.wilayah, o.alamat, o.mtdBayar, o.order_date, o.status";
                             $result = mysqli_query($db, $query);
