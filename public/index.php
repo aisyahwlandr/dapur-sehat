@@ -129,7 +129,7 @@
                     </div>
                     <div class="col-md-6 align-content-center text-center">
                         <p data-aos="fade-up"class="custom-paragraf fw-bold px-5 pt-3" style="text-align: justify;">
-                            *Pelanggan dapat mengecek status pesanan dengan
+                            *Pelanggan dapat mengecek status pesanan dan mencetak invoice dengan
                             memasukkan nomor telepon yang didaftarkan pada saat order di kolom cek pesanan
                             yang terdapat di bagian atas jajaran menu website.
                         </p>
