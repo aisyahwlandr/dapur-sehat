@@ -290,7 +290,7 @@
                         totalPrice += subtotal;
 
                         const productItem = document.createElement('li');
-                        productItem.innerHTML = `${productName} - ${quantity} <br>Subtotal: Rp ${formatRupiah(subtotal)}`; // Tampilkan harga per pesanan
+                        productItem.innerHTML = `${productName} - ${quantity} <br>Subtotal: ${formatRupiah(subtotal)}`; // Tampilkan harga per pesanan
                         summaryProducts.appendChild(productItem);
                     }
                 });

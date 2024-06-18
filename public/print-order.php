@@ -1,6 +1,6 @@
 <?php
-include './connection.php';
-require './vendor/autoload.php';
+include '../connection.php';
+require '../vendor/autoload.php';
 
 // reference the Dompdf namespace
 use Dompdf\Dompdf;
@@ -31,6 +31,7 @@ $hasil = mysqli_query($db, "
         GROUP_CONCAT(oi.product_id) AS product_id,
         GROUP_CONCAT(p.variant) AS variant,
         GROUP_CONCAT(oi.quantity) AS quantity,
+        GROUP_CONCAT(oi.harga_orders) AS harga_per_variant,
         SUM(oi.harga_orders) AS harga_orders
     FROM
         orders o
@@ -49,7 +50,11 @@ if (mysqli_num_rows($hasil) == 0) {
     die('Order not found');
 }
 
-// Build HTML content with styling
+// Define the path to your image
+$imagePath = realpath('./images/logo.png');
+$imageData = base64_encode(file_get_contents($imagePath));
+$src = 'data:image/png;base64,' . $imageData;
+
 $html = '
     <style>
         body {
@@ -80,13 +85,44 @@ $html = '
             font-size: 0.9em;
             color: #888;
         }
+        .details ul {
+            list-style: none;
+            padding: 0;
+        }
+        .details ul li {
+            padding: 5px 0;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 150px;
+        }
     </style>
+    <div class="logo">
+        <img src="' . $src . '" alt="Logo Dapur Sehat">
+    </div>
     <div class="header">
         <h2>Dapur Sehat - Pesanan</h2>
     </div>
 ';
 
+
 while ($row = mysqli_fetch_object($hasil)) {
+    // Menggabungkan data variant, quantity, dan harga per variant ke dalam array
+    $variants = explode(',', $row->variant);
+    $quantities = explode(',', $row->quantity);
+    $harga_per_variants = explode(',', $row->harga_per_variant);
+    $details = [];
+    for ($i = 0; $i < count($variants); $i++) {
+        $details[] = [
+            'variant' => $variants[$i],
+            'quantity' => $quantities[$i],
+            'harga' => $harga_per_variants[$i]
+        ];
+    }
+
     $html .= '
     <table>
         <tr>
@@ -114,19 +150,19 @@ while ($row = mysqli_fetch_object($hasil)) {
             <td>' . $row->alamat . '</td>
         </tr>
         <tr>
-            <th>Variant</th>
-            <td>' . $row->variant . '</td>
+            <th>Detail Produk</th>
+            <td>
+                <div class="details">
+                    <ul>';
+    foreach ($details as $detail) {
+        $html .= '<li>Variant: ' . $detail['variant'] . ', Quantity: ' . $detail['quantity'] . ', Harga: ' . $detail['harga'] . '</li>';
+    }
+    $html .= '        </ul>
+                </div>
+            </td>
         </tr>
         <tr>
-            <th>Variant ID</th>
-            <td>' . $row->product_id . '</td>
-        </tr>
-        <tr>
-            <th>Quantity</th>
-            <td>' . $row->quantity . '</td>
-        </tr>
-        <tr>
-            <th>Harga</th>
+            <th>Total Harga</th>
             <td>' . $row->harga_orders . '</td>
         </tr>
         <tr>

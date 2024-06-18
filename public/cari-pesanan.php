@@ -63,6 +63,7 @@
                                         GROUP_CONCAT(oi.product_id) AS product_id,
                                         GROUP_CONCAT(p.variant) AS variant,
                                         GROUP_CONCAT(oi.quantity) AS quantity,
+                                        GROUP_CONCAT(oi.harga_orders) AS harga_per_variant,
                                         SUM(oi.harga_orders) AS harga_orders
                                     FROM
                                         orders o
@@ -118,6 +119,20 @@
                                                 break;
                                         }
 
+                                        // Menggabungkan data variant, quantity, dan harga per variant ke dalam array
+                                        $variants = explode(',', $row["variant"]);
+                                        $quantities = explode(',', $row["quantity"]);
+                                        $harga_per_variants = explode(',', $row["harga_per_variant"]);
+                                        $details = [];
+                                        for ($i = 0; $i < count($variants); $i++) {
+                                            $details[] = [
+                                                'variant' => $variants[$i],
+                                                'quantity' => $quantities[$i],
+                                                'harga' => $harga_per_variants[$i]
+                                            ];
+                                        }
+
+
                                         echo "<tr>
                                                 <td class='align-middle'>" . $row["id"] . "</td>
                                                 <td class='align-middle'>" . $row["nama"] . "</td>
@@ -132,7 +147,7 @@
                                                     <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
                                                 </td>
                                                 <td class='align-middle'>
-                                                    <a class='btn text-white' href='../print-order.php?order_id=" .  $row["id"] . "' style='background-color: purple';>Print</a>
+                                                    <a class='btn text-white' href='./print-order.php?order_id=" .  $row["id"] . "' style='background-color: purple';>Print</a>
                                                 </td>
                                             </tr>";
 
@@ -150,10 +165,13 @@
                                                             <div><strong>Email:</strong> " . $row["email"] . "</div>
                                                             <div><strong>Wilayah:</strong> " . $row["wilayah"] . "</div>
                                                             <div><strong>Alamat:</strong> " . $row["alamat"] . "</div>
-                                                            <div><strong>Variant:</strong> " . $row["variant"] . "</div>
-                                                            <div><strong>Variant ID:</strong> " . $row["product_id"] . "</div>
-                                                            <div><strong>Quantity:</strong> " . $row["quantity"] . "</div>
-                                                            <div><strong>Harga:</strong> " . $row["harga_orders"] . "</div>
+                                                            <div><strong>Detail Produk:</strong></div>
+                                                            <ul>";
+                                                                                foreach ($details as $detail) {
+                                                                                    echo "<li>Variant: " . $detail['variant'] . ", Quantity: " . $detail['quantity'] . ", Harga: " . $detail['harga'] . "</li>";
+                                                                                }
+                                                                                echo "      </ul>
+                                                            <div><strong>Total Harga:</strong> " . $row["harga_orders"] . "</div>
                                                             <div><strong>Metode Pembayaran:</strong> " . $row["mtdBayar"] . "</div>
                                                             <div><strong>Waktu Order:</strong> " . $row["order_date"] . "</div>
                                                             <div><strong>Status:</strong> " . $row["status"] . "</div>
