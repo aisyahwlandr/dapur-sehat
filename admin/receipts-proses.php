@@ -15,6 +15,11 @@ if ($_GET['aksi'] == 'insert') {
     }
 
     // Handle file upload
+    if ($bukti['error'] == UPLOAD_ERR_NO_FILE) {
+        header("Location: ../public/pembayaran.php?error=upload_gagal");
+        exit(); // Menghentikan eksekusi skrip PHP setelah menampilkan popup
+    }
+
     date_default_timezone_set('Asia/Jakarta');
     $timestamp = date("Y-m-d_H-i-s");
     $target_dir = "uploads/receipts/";

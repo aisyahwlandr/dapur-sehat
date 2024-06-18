@@ -144,16 +144,16 @@
                         errorMessage = 'Periksa kembali nomor telepon anda, harap masukkan nomor telepon yang didaftarkan pada saat melakukan pemesanan.';
                         break;
                     case 'file_bukan_gambar':
-                        errorMessage = 'File bukan gambar.';
+                        errorMessage = 'File bukan gambar. Mohon unggah bukti pembayaran dalam format JPG / JPEG / PNG.';
                         break;
                     case 'file_terlalu_besar':
                         errorMessage = 'Maaf, file Anda terlalu besar. Harap unggah dengan ukuran dibawah 5 MB';
                         break;
                     case 'format_tidak_valid':
-                        errorMessage = 'File bukan gambar.';
+                        errorMessage = 'File bukan gambar. Mohon unggah bukti pembayaran dalam format JPG / JPEG / PNG.';
                         break;
                     case 'upload_gagal':
-                        errorMessage = 'Maaf, file Anda belum diunggah.';
+                        errorMessage = 'Maaf, file Anda belum diunggah. Harap masukkan bukti bayar';
                         break;
                     case 'upload_error':
                         errorMessage = 'Maaf, terjadi kesalahan saat mengunggah file Anda.';
