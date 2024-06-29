@@ -4,7 +4,7 @@ nav-link {
 }
 
 .nav-link:hover,
-.nav-link:focus{
+.nav-link:focus {
     color: #ffffff;
     background-color: #38419D;
 }
@@ -48,4 +48,16 @@ nav-link {
     transform: scale(1.1);
     color: rgb(255, 255, 255);
     background-color: #38419D;
+}
+
+/* custom color tooltip */
+.custom-tooltip {
+    --bs-tooltip-bg: #1C274C;
+    --bs-tooltip-color: #D1E4FF;
+}
+
+.btn-pendapatan, .btn-pendapatan:hover{
+    background-color: #1C274C;
+    color: #D1E4FF;
+    padding: 1% 3%;
 }

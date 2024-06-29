@@ -35,7 +35,7 @@ CREATE TABLE order_items (
 
 CREATE TABLE admin (
     id INT(3) AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
+    username VARCHAR(20) NOT NULL,
     password VARCHAR(50) NOT NULL
 );
 
