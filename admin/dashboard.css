@@ -54,6 +54,7 @@ nav-link {
 .custom-tooltip {
     --bs-tooltip-bg: #1C274C;
     --bs-tooltip-color: #D1E4FF;
+    --bs-tooltip-max-width: 40vh;
 }
 
 .btn-pendapatan, .btn-pendapatan:hover{
