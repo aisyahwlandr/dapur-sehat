@@ -26,7 +26,7 @@
                 <th>No. Telepon</th>
                 <th>Created At</th>
                 <th>Bukti Pembayaran</th>
-                <th>Aksi</th>
+                <!-- <th>Aksi</th> -->
             </tr>
             <?php
             $no = 0;
@@ -43,9 +43,9 @@
                     <td class="align-middle">
                         <button class="btn btn-primary" onclick="showReceipt('<?= $row->bktBayar ?>')">Lihat</button>
                     </td>
-                    <td class="align-middle">
+                    <!-- <td class="align-middle">
                         <a class="btn btn-danger" href="receipts-delete.php?delete_id=<?= $row->id ?>" onclick="return confirmDelete()">Delete</a>
-                    </td>
+                    </td> -->
                 </tr>
             <?php } ?>
         </table>
@@ -80,9 +80,9 @@
         myModal.show();
     }
 </script>
-
+<!-- 
 <script>
     function confirmDelete() {
         return confirm('Apakah Anda yakin ingin menghapus Bukti Pembayaran ini?');
     }
-</script>
+</script> -->

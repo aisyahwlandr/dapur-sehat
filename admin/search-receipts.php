@@ -96,7 +96,7 @@ if ($id !== $_SESSION['id']) {
                     <th>No. Telepon</th>
                     <th>Created At</th>
                     <th>Bukti Pembayaran</th>
-                    <th>Aksi</th>
+                    <!-- <th>Aksi</th> -->
                 </tr>
                 <?php
                 $no = 0;
@@ -121,9 +121,9 @@ if ($id !== $_SESSION['id']) {
                                 echo '<td class="align-middle">';
                                 echo '<button class="btn btn-primary" onclick="showReceipt(\'' . $row->bktBayar . '\')">Lihat</button>';
                                 echo '</td>';
-                                echo '<td class="align-middle">';
-                                echo '<a class="btn btn-danger" href="receipts-delete.php?delete_id=' . $row->id . '" onclick="return confirmDelete()">Delete</a>';
-                                echo '</td>';
+                                // echo '<td class="align-middle">';
+                                // echo '<a class="btn btn-danger" href="receipts-delete.php?delete_id=' . $row->id . '" onclick="return confirmDelete()">Delete</a>';
+                                // echo '</td>';
                                 echo '</tr>';
                             }
                         } else {
@@ -181,11 +181,11 @@ if ($id !== $_SESSION['id']) {
         }
     </script>
 
-    <script>
+    <!-- <script>
         function confirmDelete() {
             return confirm('Apakah Anda yakin ingin menghapus Bukti Pembayaran ini?');
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
