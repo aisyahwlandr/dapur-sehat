@@ -33,7 +33,7 @@
                 </p>
                 <div>
                     <a href="pemesanan.php">
-                        <button type="button" class="btn fw-bold custom-button-submit">Order Sekarang</button>
+                        <button type="button" class="btn fw-bold custom-button-submit">Pesan Sekarang</button>
                     </a>
                 </div>
             </div>
@@ -130,8 +130,8 @@
                     <div class="col-md-6 align-content-center text-center">
                         <p data-aos="fade-up"class="custom-paragraf fw-bold px-5 pt-3" style="text-align: justify;">
                             *Pelanggan dapat mengecek status pesanan dan mencetak invoice dengan
-                            memasukkan nomor telepon yang didaftarkan pada saat order di kolom cek pesanan
-                            yang terdapat di bagian atas jajaran menu website.
+                            memasukkan nomor telepon yang didaftarkan pada saat pesan, menu cari pesanan
+                            terdapat di bagian atas jajaran menu website.
                         </p>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                             </div>
                             <div class="mb-3">
                                 <a class="d-flex align-items-center justify-content-center button-order" href="pemesanan.php">
-                                    <button type="button" class="btn fw-bold">Order</button>
+                                    <button type="button" class="btn fw-bold">Pesan</button>
                                 </a>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                     <div class="accordion-body custom-paragraf">
-                                        <p>Pilih Menu Pembayaran > Masukkan No Telp Pemesan > Upload Bukti Pembayaran
+                                        <p>Pilih Menu Pembayaran > Masukkan No Telp Pemesan > Unggah Bukti Pembayaran
                                         </p>
                                     </div>
                                 </div>

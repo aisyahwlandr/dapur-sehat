@@ -150,12 +150,12 @@ while ($row = mysqli_fetch_object($hasil)) {
             <td>' . $row->alamat . '</td>
         </tr>
         <tr>
-            <th>Detail Produk</th>
+            <th>Rincian Produk</th>
             <td>
                 <div class="details">
                     <ul>';
     foreach ($details as $detail) {
-        $html .= '<li>Variant: ' . $detail['variant'] . ', Quantity: ' . $detail['quantity'] . ', Harga: ' . $detail['harga'] . '</li>';
+        $html .= '<li>Varian: ' . $detail['variant'] . ', Kuantitas: ' . $detail['quantity'] . ', Harga: ' . $detail['harga'] . '</li>';
     }
     $html .= '        </ul>
                 </div>
@@ -170,7 +170,7 @@ while ($row = mysqli_fetch_object($hasil)) {
             <td>' . $row->mtdBayar . '</td>
         </tr>
         <tr>
-            <th>Waktu Order</th>
+            <th>Waktu Pesan</th>
             <td>' . $row->order_date . '</td>
         </tr>
         <tr>

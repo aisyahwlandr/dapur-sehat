@@ -36,9 +36,9 @@
                             <li>Buka E-Wallet Anda (OVO/GOPAY)</li>
                             <li>Transfer ke Nomor Tujuan <b>6281337742520</b> </li>
                             <li>Lakukan Transfer dengan Total Nominal Pemesanan</li>
-                            <li>Simpan Capture Bukti Pembayaran Anda</li>
+                            <li>Simpan Tangkapan Layar Bukti Pembayaran Anda</li>
                             <li>Pada Form Pembayaran, <br> Isi Nomor Telepon yang Sama dengan yang Anda Daftarkan pada Form Pemesanan</li>
-                            <li>Upload Gambar dari Bukti Pembayaran</li>
+                            <li>Unggah Gambar dari Bukti Pembayaran</li>
                         </ol>
 
                     </div>
@@ -53,12 +53,12 @@
                                 <input type="text" name="telepon" class="form-control" placeholder="Contoh: 628xxxxxxx">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Upload Bukti Pembayaran</label>
+                                <label class="form-label">Unggah Bukti Pembayaran</label>
                                 <input type="file" name="bktBayar" class="form-control">
                                 <small class="form-text text-muted">Mohon unggah bukti pembayaran dalam format JPG / JPEG / PNG.</small>
                             </div>
                             <div class="mb-3 ms-auto">
-                                <button type="submit" class="btn custom-button-submit w-100">UPLOAD</button>
+                                <button type="submit" class="btn custom-button-submit w-100">UNGGAH</button>
                             </div>
                         </form>
                     </div>

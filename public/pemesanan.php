@@ -98,7 +98,7 @@
                                 <h4 id="totalHarga">Rp 0,-</h4>
                             </div>
                             <div class="mb-3 ms-auto">
-                                <button type="button" class="btn custom-button-submit" id="nextButton">NEXT</button>
+                                <button type="button" class="btn custom-button-submit" id="nextButton">LANJUT</button>
                             </div>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                     <p id="summaryTotalHarga"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="cancelButton">CANCEL</button>
+                    <button type="button" class="btn btn-secondary" id="cancelButton">BATAL</button>
                     <button type="button" class="btn btn-primary" id="payButton">PESAN</button>
                 </div>
             </div>

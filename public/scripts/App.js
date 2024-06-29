@@ -22,7 +22,7 @@ class App {
                     <div class="offcanvas-body">
                         <ul class="navbar-nav custom-navbar ms-auto"> <!-- Changed ms-auto to mx-auto -->
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php">Home</a>
+                                <a class="nav-link" href="index.php">Beranda</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php#produk">Produk</a>

@@ -37,14 +37,14 @@
                             <th>Id Pesanan</th>
                             <th>Nama</th>
                             <th>Telepon</th>
-                            <th>Variant</th>
-                            <th>Quantity</th>
+                            <th>Varian</th>
+                            <th>Kuantitas</th>
                             <th>Harga</th>
                             <th>Metode Pembayaran</th>
-                            <th>Waktu Order</th>
+                            <th>Waktu Pesan</th>
                             <th>Status</th>
-                            <th>Detail</th>
-                            <th>Print</th>
+                            <th>Rincian</th>
+                            <th>Cetak</th>
                         </tr>
                         <?php
                         if (isset($_GET['tcari'])) {
@@ -144,10 +144,10 @@
                                                 <td class='align-middle'>" . $row["order_date"] . "</td>
                                                 <td class='align-middle' {$status_class}>" . $row["status"] . "</td>
                                                 <td class='align-middle'>
-                                                    <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Detail</button>
+                                                    <button class='btn btn-primary text-white' data-bs-toggle='modal' data-bs-target='#" . $detail_id . "'>Rincian</button>
                                                 </td>
                                                 <td class='align-middle'>
-                                                    <a class='btn text-white' href='./print-order.php?order_id=" .  $row["id"] . "' style='background-color: purple';>Print</a>
+                                                    <a class='btn text-white' href='./print-order.php?order_id=" .  $row["id"] . "' style='background-color: purple';>Cetak</a>
                                                 </td>
                                             </tr>";
 
@@ -156,7 +156,7 @@
                                                 <div class='modal-dialog'>
                                                     <div class='modal-content'>
                                                         <div class='modal-header'>
-                                                            <h5 class='modal-title' id='" . $detail_id . "Label'>Detail Order ID: " . $row["id"] . "</h5>
+                                                            <h5 class='modal-title' id='" . $detail_id . "Label'>Rincian Pesanan ID: " . $row["id"] . "</h5>
                                                             <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                                         </div>
                                                         <div class='modal-body'>
@@ -168,16 +168,16 @@
                                                             <div><strong>Detail Produk:</strong></div>
                                                             <ul>";
                                                                                 foreach ($details as $detail) {
-                                                                                    echo "<li>Variant: " . $detail['variant'] . ", Quantity: " . $detail['quantity'] . ", Harga: " . $detail['harga'] . "</li>";
+                                                                                    echo "<li>Varian: " . $detail['variant'] . ", Kuantitas: " . $detail['quantity'] . ", Harga: " . $detail['harga'] . "</li>";
                                                                                 }
                                                                                 echo "      </ul>
                                                             <div><strong>Total Harga:</strong> " . $row["harga_orders"] . "</div>
                                                             <div><strong>Metode Pembayaran:</strong> " . $row["mtdBayar"] . "</div>
-                                                            <div><strong>Waktu Order:</strong> " . $row["order_date"] . "</div>
+                                                            <div><strong>Waktu Pesan:</strong> " . $row["order_date"] . "</div>
                                                             <div><strong>Status:</strong> " . $row["status"] . "</div>
                                                         </div>
                                                         <div class='modal-footer'>
-                                                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                                                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Tutup</button>
                                                         </div>
                                                     </div>
                                                 </div>
