@@ -69,7 +69,9 @@
                             foreach ($result as $row) {
                                 echo "<div class='form-check'>";
                                 echo "<input class='form-check-input' type='checkbox' id='product_" . $row["id"] . "' name='product_id[" . $row["id"] . "]' value='" . $row["id"] . "' data-harga='" . $row["harga"] . "' data-stock='" . $row["stock"] . "'>
-                                        <label class='form-check-label' for='product_" . $row["id"] . "'>" . $row["variant"] . " (Stok: " . $row["stock"] . ", Harga: Rp" . number_format($row["harga"], 0, ',', '.') . ",-)</label>";
+                                        <label class='form-check-label' for='product_" . $row["id"] . "'>" . $row["variant"] . "</label>";
+                                // echo "<input class='form-check-input' type='checkbox' id='product_" . $row["id"] . "' name='product_id[" . $row["id"] . "]' value='" . $row["id"] . "' data-harga='" . $row["harga"] . "' data-stock='" . $row["stock"] . "'>
+                                //         <label class='form-check-label' for='product_" . $row["id"] . "'>" . $row["variant"] . " (Stok: " . $row["stock"] . ", Harga: Rp" . number_format($row["harga"], 0, ',', '.') . ",-)</label>";
                                 echo "</div>";
                                 echo "<input class='form-control' placeholder='Ingin Berapa Kotak?' type='number' id='quantity_" . $row["id"] . "' name='quantity[" . $row["id"] . "]' min='1' data-harga='" . $row["harga"] . "'><br>";
                             }
